@@ -14,6 +14,7 @@
 		455BDE902062ED7A009CA00A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 455BDE8F2062ED7A009CA00A /* Assets.xcassets */; };
 		455BDE932062ED7A009CA00A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 455BDE912062ED7A009CA00A /* LaunchScreen.storyboard */; };
 		455BDE9B2062F583009CA00A /* cat.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 455BDE9A2062F583009CA00A /* cat.jpg */; };
+		45751AA0206C158A0022D594 /* UIImage+AH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45751A9F206C158A0022D594 /* UIImage+AH.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		455BDE922062ED7A009CA00A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		455BDE942062ED7A009CA00A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		455BDE9A2062F583009CA00A /* cat.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = cat.jpg; path = ../../../cat.jpg; sourceTree = "<group>"; };
+		45751A9F206C158A0022D594 /* UIImage+AH.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+AH.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 		455BDE852062ED7A009CA00A /* ArtHouse */ = {
 			isa = PBXGroup;
 			children = (
+				45751A9E206C15800022D594 /* Extensions */,
 				455BDE862062ED7A009CA00A /* AppDelegate.swift */,
 				455BDE9A2062F583009CA00A /* cat.jpg */,
 				455BDE882062ED7A009CA00A /* art.scnassets */,
@@ -68,6 +71,14 @@
 				455BDE942062ED7A009CA00A /* Info.plist */,
 			);
 			path = ArtHouse;
+			sourceTree = "<group>";
+		};
+		45751A9E206C15800022D594 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				45751A9F206C158A0022D594 /* UIImage+AH.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -97,7 +108,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "The Scarpa Group";
 				TargetAttributes = {
 					455BDE822062ED7A009CA00A = {
@@ -144,6 +155,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45751AA0206C158A0022D594 /* UIImage+AH.swift in Sources */,
 				455BDE8B2062ED7A009CA00A /* ViewController.swift in Sources */,
 				455BDE872062ED7A009CA00A /* AppDelegate.swift in Sources */,
 			);
@@ -185,6 +197,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -192,6 +205,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -242,6 +256,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -249,6 +264,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;

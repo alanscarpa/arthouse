@@ -43,8 +43,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     func setUpSceneView() {
         sceneView.delegate = self
-        sceneView.showsStatistics = true
-        sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints]
         sceneView.scene = SCNScene()
     }
     
@@ -54,23 +52,39 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         sceneView.session.run(configuration)
     }
     
+    func paintingCube() -> SCNNode {
+        let boxGeometry = SCNBox(width: 6 * 0.0254, height: 18 * 0.0254, length: 0.02, chamferRadius: 0.0)
+        let imageMaterial = SCNMaterial()
+        imageMaterial.diffuse.contents = UIImage(named: "cat.jpg")
+        let blackFrameMaterial = SCNMaterial()
+        blackFrameMaterial.diffuse.contents = UIColor.black
+        boxGeometry.materials = [imageMaterial, blackFrameMaterial, blackFrameMaterial, blackFrameMaterial, blackFrameMaterial, blackFrameMaterial]
+        return SCNNode(geometry: boxGeometry)
+    }
+    
     // MARK: - UIEvents
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard touches.first!.tapCount == 1 else { return }
         guard let touchPoint = touches.first?.location(in: sceneView) else { return }
         guard let cameraTransform = sceneView.session.currentFrame?.camera.transform else { return }
-
-        //let boxGeometry = SCNBox(width: 0.1, height: 0.1, length: 0.1, chamferRadius: 0)
-        let cube = SCNNode(geometry: paintingPlane)
-        
+        print(sceneView.session.currentFrame!.camera.eulerAngles.z)
         var translation = matrix_identity_float4x4
-        translation.columns.3.z = -0.8
-        let pointTransform = cameraTransform * translation
+        translation.columns.3.z = -1.0
+        let pointTransform = matrix_multiply(cameraTransform, translation)
         let normalizedZValue = sceneView.projectPoint(SCNVector3Make(pointTransform.columns.3.x, pointTransform.columns.3.y, pointTransform.columns.3.z)).z
         let position = sceneView.unprojectPoint(SCNVector3Make(Float(touchPoint.x), Float(touchPoint.y), normalizedZValue))
-        cube.position = position
-        sceneView.scene.rootNode.addChildNode(cube)
+        
+        let paintingNode = paintingCube()
+        paintingNode.position = position
+
+        let pitch: Float = 0
+        let yaw = sceneView.session.currentFrame?.camera.eulerAngles.y
+        let orientationCompensation = sceneView.session.currentFrame!.camera.eulerAngles.z < -0.5 ? Float.pi/2 : 0
+        let roll = sceneView.session.currentFrame!.camera.eulerAngles.z + orientationCompensation
+        let newRotation = SCNVector3Make(pitch, yaw!, roll)
+        paintingNode.eulerAngles = newRotation
+        sceneView.scene.rootNode.addChildNode(paintingNode)
     }
 
     // MARK: - ARSCNViewDelegate
