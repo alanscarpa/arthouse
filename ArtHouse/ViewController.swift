@@ -19,7 +19,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         let width: CGFloat = 6
         let plane = SCNPlane(width: width * 0.0254, height: height * 0.0254)
         let imageMaterial = SCNMaterial()
-        imageMaterial.diffuse.contents = UIImage(named: "cat.jpg")
+        imageMaterial.diffuse.contents = UIImage(named: "ed.jpg")
         plane.materials = [imageMaterial]
         return plane
     }
@@ -55,7 +55,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     func paintingCube() -> SCNNode {
         let boxGeometry = SCNBox(width: 6 * 0.0254, height: 18 * 0.0254, length: 0.02, chamferRadius: 0.0)
         let imageMaterial = SCNMaterial()
-        imageMaterial.diffuse.contents = UIImage(named: "cat.jpg")
+        imageMaterial.diffuse.contents = UIImage(named: "ed.jpg")
         let blackFrameMaterial = SCNMaterial()
         blackFrameMaterial.diffuse.contents = UIColor.black
         boxGeometry.materials = [imageMaterial, blackFrameMaterial, blackFrameMaterial, blackFrameMaterial, blackFrameMaterial, blackFrameMaterial]
