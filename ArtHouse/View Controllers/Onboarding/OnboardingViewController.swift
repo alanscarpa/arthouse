@@ -37,9 +37,13 @@ class OnboardingViewController: UIPageViewController, UIPageViewControllerDataSo
     // MARK: - OnboardingDelegate
     
     func nextButtonTapped() {
-        guard let currentVC = viewControllers?[currentVCIndex] else { return }
-        guard let nextVC = dataSource?.pageViewController(self, viewControllerAfter: currentVC) else { return }
-        setViewControllers([nextVC], direction: .forward, animated: true, completion: nil)
+        if currentVCIndex == allViewControllers.count - 1 {
+            RootViewController.shared.pushHomeVC()
+        } else {
+            guard let currentVC = viewControllers?[currentVCIndex] else { return }
+            guard let nextVC = dataSource?.pageViewController(self, viewControllerAfter: currentVC) else { return }
+            setViewControllers([nextVC], direction: .forward, animated: true, completion: nil)
+        }
     }
 
     // MARK: - UIPageViewControllerDataSource
@@ -55,9 +59,14 @@ class OnboardingViewController: UIPageViewController, UIPageViewControllerDataSo
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         guard let viewControllerIndex = indexOfViewController(viewController) else { return nil }
         let nextIndex = viewControllerIndex + 1
-        guard numberOfViewControllers != nextIndex && numberOfViewControllers > nextIndex else { return nil }
-        currentVCIndex = nextIndex
-        return allViewControllers[nextIndex]
+        if nextIndex == allViewControllers.count {
+            RootViewController.shared.pushHomeVC()
+            return nil
+        } else {
+            guard numberOfViewControllers != nextIndex && numberOfViewControllers > nextIndex else { return nil }
+            currentVCIndex = nextIndex
+            return allViewControllers[nextIndex]
+        }
     }
      
     // MARK: - Helpers
