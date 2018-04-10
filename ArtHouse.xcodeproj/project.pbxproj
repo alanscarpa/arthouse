@@ -13,6 +13,7 @@
 		455BDE8E2062ED7A009CA00A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 455BDE8C2062ED7A009CA00A /* Main.storyboard */; };
 		455BDE902062ED7A009CA00A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 455BDE8F2062ED7A009CA00A /* Assets.xcassets */; };
 		455BDE932062ED7A009CA00A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 455BDE912062ED7A009CA00A /* LaunchScreen.storyboard */; };
+		456CC2CF207C59680010676C /* OnboardingChildViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456CC2CE207C59680010676C /* OnboardingChildViewController.swift */; };
 		45751AA0206C158A0022D594 /* UIImage+AH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45751A9F206C158A0022D594 /* UIImage+AH.swift */; };
 		45814960207C525C005AE1DE /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4581495F207C525C005AE1DE /* HomeViewController.xib */; };
 		45C0D61E207927BE00CBBA44 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C0D61C207927BE00CBBA44 /* OnboardingViewController.swift */; };
@@ -39,6 +40,7 @@
 		455BDE8F2062ED7A009CA00A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		455BDE922062ED7A009CA00A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		455BDE942062ED7A009CA00A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		456CC2CE207C59680010676C /* OnboardingChildViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingChildViewController.swift; sourceTree = "<group>"; };
 		45751A9F206C158A0022D594 /* UIImage+AH.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+AH.swift"; sourceTree = "<group>"; };
 		4581495F207C525C005AE1DE /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		45C0D61C207927BE00CBBA44 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
@@ -151,12 +153,13 @@
 			isa = PBXGroup;
 			children = (
 				45C0D61C207927BE00CBBA44 /* OnboardingViewController.swift */,
+				45C0D6202079295300CBBA44 /* EnableCameraViewController.swift */,
+				45C0D6212079295300CBBA44 /* EnableCameraViewController.xib */,
 				45C0D6242079297B00CBBA44 /* ChooseArtworkViewController.swift */,
 				45C0D6252079297B00CBBA44 /* ChooseArtworkViewController.xib */,
 				45C0D6282079299000CBBA44 /* PositionYourselfViewController.swift */,
 				45C0D6292079299000CBBA44 /* PositionYourselfViewController.xib */,
-				45C0D6202079295300CBBA44 /* EnableCameraViewController.swift */,
-				45C0D6212079295300CBBA44 /* EnableCameraViewController.xib */,
+				456CC2CE207C59680010676C /* OnboardingChildViewController.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -315,6 +318,7 @@
 			files = (
 				45751AA0206C158A0022D594 /* UIImage+AH.swift in Sources */,
 				455BDE8B2062ED7A009CA00A /* HomeViewController.swift in Sources */,
+				456CC2CF207C59680010676C /* OnboardingChildViewController.swift in Sources */,
 				45C0D6262079297B00CBBA44 /* ChooseArtworkViewController.swift in Sources */,
 				45F7E222207448CE00C7228E /* RootViewController.swift in Sources */,
 				45C0D61E207927BE00CBBA44 /* OnboardingViewController.swift in Sources */,

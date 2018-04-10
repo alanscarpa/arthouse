@@ -16,9 +16,9 @@ class OnboardingViewController: UIPageViewController, UIPageViewControllerDataSo
         let enableVC = EnableCameraViewController()
         enableVC.delegate = self
         let chooseVC = ChooseArtworkViewController()
-        //chooseVC.delegate = self
+        chooseVC.delegate = self
         let positionYourselfVC = PositionYourselfViewController()
-        //positionYourselfVC.delegate = self
+        positionYourselfVC.delegate = self
         return [enableVC, chooseVC, positionYourselfVC]
     }()
     var numberOfViewControllers: Int {
@@ -40,8 +40,7 @@ class OnboardingViewController: UIPageViewController, UIPageViewControllerDataSo
         if currentVCIndex == allViewControllers.count - 1 {
             RootViewController.shared.pushHomeVC()
         } else {
-            guard let currentVC = viewControllers?[currentVCIndex] else { return }
-            guard let nextVC = dataSource?.pageViewController(self, viewControllerAfter: currentVC) else { return }
+            guard let nextVC = dataSource?.pageViewController(self, viewControllerAfter: allViewControllers[currentVCIndex]) else { return }
             setViewControllers([nextVC], direction: .forward, animated: true, completion: nil)
         }
     }
