@@ -10,28 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ArtHouse/View Controllers/Onboarding/OnboardingViewController.swift"
-            timestampString = "544497357.131008"
+            timestampString = "545017864.5616781"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ArtHouse/View Controllers/Onboarding/OnboardingViewController.swift"
-            timestampString = "544497357.1314321"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "95"
-            endingLineNumber = "95"
-            landmarkName = "onboardingConfigurationItem(_:index:)"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "nextButtonTapped()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
