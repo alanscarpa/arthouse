@@ -14,6 +14,7 @@
 		455BDE902062ED7A009CA00A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 455BDE8F2062ED7A009CA00A /* Assets.xcassets */; };
 		455BDE932062ED7A009CA00A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 455BDE912062ED7A009CA00A /* LaunchScreen.storyboard */; };
 		456CC2CF207C59680010676C /* OnboardingChildViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456CC2CE207C59680010676C /* OnboardingChildViewController.swift */; };
+		456CC2D2207C5C610010676C /* UIAlertController+AH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456CC2D1207C5C610010676C /* UIAlertController+AH.swift */; };
 		45751AA0206C158A0022D594 /* UIImage+AH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45751A9F206C158A0022D594 /* UIImage+AH.swift */; };
 		45814960207C525C005AE1DE /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4581495F207C525C005AE1DE /* HomeViewController.xib */; };
 		45C0D61E207927BE00CBBA44 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C0D61C207927BE00CBBA44 /* OnboardingViewController.swift */; };
@@ -41,6 +42,7 @@
 		455BDE922062ED7A009CA00A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		455BDE942062ED7A009CA00A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		456CC2CE207C59680010676C /* OnboardingChildViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingChildViewController.swift; sourceTree = "<group>"; };
+		456CC2D1207C5C610010676C /* UIAlertController+AH.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+AH.swift"; sourceTree = "<group>"; };
 		45751A9F206C158A0022D594 /* UIImage+AH.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+AH.swift"; sourceTree = "<group>"; };
 		4581495F207C525C005AE1DE /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		45C0D61C207927BE00CBBA44 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 				45751A9F206C158A0022D594 /* UIImage+AH.swift */,
 				45F7E22420744C9E00C7228E /* UIColor+AH.swift */,
 				45F7E22620744D1300C7228E /* UIViewController+AH.swift */,
+				456CC2D1207C5C610010676C /* UIAlertController+AH.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -327,6 +330,7 @@
 				455BDE872062ED7A009CA00A /* AppDelegate.swift in Sources */,
 				45F7E22520744C9E00C7228E /* UIColor+AH.swift in Sources */,
 				45C0D62A2079299000CBBA44 /* PositionYourselfViewController.swift in Sources */,
+				456CC2D2207C5C610010676C /* UIAlertController+AH.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
