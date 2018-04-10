@@ -20,20 +20,44 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Jer-1b-X3q">
+                    <rect key="frame" x="41.5" y="54" width="292" height="300"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="300" id="fWC-mS-rOX"/>
+                        <constraint firstAttribute="width" constant="292" id="x7w-JN-O7p"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="In order to start the fun, we need to enable your camera." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jAk-K5-kEL">
+                    <rect key="frame" x="41.5" y="378" width="292" height="55"/>
+                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="20"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="egL-mB-yZP">
-                    <rect key="frame" x="164" y="328.5" width="46" height="30"/>
-                    <state key="normal" title="Button"/>
+                    <rect key="frame" x="41" y="457" width="292" height="48"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="48" id="FrF-CM-NMm"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="17"/>
+                    <state key="normal" title="Enable Camera"/>
                     <connections>
                         <action selector="nextButtonTapped" destination="-1" eventType="touchUpInside" id="qGh-TM-3or"/>
                     </connections>
                 </button>
             </subviews>
-            <color key="backgroundColor" red="0.69761262690000003" green="0.69761262690000003" blue="0.69761262690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="egL-mB-yZP" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="R9p-m7-zBM"/>
-                <constraint firstItem="egL-mB-yZP" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="X8b-e1-WRV"/>
+                <constraint firstItem="Jer-1b-X3q" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="0aY-Xp-IdS"/>
+                <constraint firstItem="jAk-K5-kEL" firstAttribute="top" secondItem="Jer-1b-X3q" secondAttribute="bottom" constant="24" id="2CV-OH-twf"/>
+                <constraint firstItem="jAk-K5-kEL" firstAttribute="centerX" secondItem="Jer-1b-X3q" secondAttribute="centerX" id="3Se-VV-INm"/>
+                <constraint firstItem="jAk-K5-kEL" firstAttribute="width" secondItem="Jer-1b-X3q" secondAttribute="width" id="7wV-7b-0aO"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="top" secondItem="Jer-1b-X3q" secondAttribute="top" constant="-34" id="AtC-BD-ash"/>
+                <constraint firstItem="egL-mB-yZP" firstAttribute="centerX" secondItem="jAk-K5-kEL" secondAttribute="centerX" id="E94-XB-ixz"/>
+                <constraint firstItem="egL-mB-yZP" firstAttribute="top" secondItem="jAk-K5-kEL" secondAttribute="bottom" constant="24" id="Fab-ac-dNP"/>
+                <constraint firstItem="egL-mB-yZP" firstAttribute="width" secondItem="jAk-K5-kEL" secondAttribute="width" id="nE0-kY-t5C"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="33.5" y="104.5"/>
         </view>
     </objects>
 </document>
