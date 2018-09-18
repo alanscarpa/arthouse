@@ -16,12 +16,12 @@ class EnableCameraViewController: OnboardingChildViewController {
             // IF ACCEPTED, TRIGGER DELEGATE
             // IF DENIED, CHANGE TEXT, AND PREVENT MOVING FORWARD, THEN CHECK FOR CAMERA PERMISSIONS ON VIEWWILLAPPEAR
         guard UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.camera) else {
-            let alertVC = UIAlertController.simpleAlert(withTitle: "No Camera", message: "You are unable to use ArtHouse becuase your phone does not have a camera.")
+            let alertVC = UIAlertController.simpleAlert(withTitle: "No Camera", message: "You are unable to use ArtHouse because your phone does not have a camera.")
             present(alertVC, animated: true, completion: nil)
             return
         }
-        PHPhotoLibrary.requestAuthorization { [weak self] status in
-            if PHPhotoLibrary.authorizationStatus() == PHAuthorizationStatus.authorized {
+        AVCaptureDevice.requestAccess(for: AVMediaType.video) { [weak self] response in
+            if response {
                 DispatchQueue.main.async {
                     self?.delegate?.nextButtonTapped()
                 }

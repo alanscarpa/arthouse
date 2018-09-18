@@ -17,12 +17,6 @@ class RootViewController: UIViewController, UINavigationControllerDelegate {
             rootNavigationController.setNavigationBarHidden(!showNavigationBar, animated: true)
         }
     }
-//    var showStatusBarBackground = true {
-//        didSet {
-//            let statusBar: UIView = UIApplication.shared.value(forKey: "statusBar") as! UIView
-//            statusBar.backgroundColor = showStatusBarBackground  ? .thPrimaryPurple : .clear
-//        }
-//    }
     
     var showToolBar = true {
         didSet {
@@ -62,6 +56,10 @@ class RootViewController: UIViewController, UINavigationControllerDelegate {
     
     func goToOnboardingVC() {
         rootNavigationController.setViewControllers([OnboardingViewController()], animated: true)
+    }
+    
+    func goToHomeVC() {
+        rootNavigationController.setViewControllers([HomeViewController()], animated: true)
     }
     
     func pushHomeVC() {

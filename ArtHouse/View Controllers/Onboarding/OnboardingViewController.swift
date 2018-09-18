@@ -38,6 +38,7 @@ class OnboardingViewController: UIPageViewController, UIPageViewControllerDataSo
     
     func nextButtonTapped() {
         if currentVCIndex == allViewControllers.count - 1 {
+            UserDefaultsManager.shared.hasCompletedOnboarding = true
             RootViewController.shared.pushHomeVC()
         } else {
             guard let nextVC = dataSource?.pageViewController(self, viewControllerAfter: allViewControllers[currentVCIndex]) else { return }

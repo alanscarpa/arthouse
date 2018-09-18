@@ -24,6 +24,7 @@
 		45C0D6272079297B00CBBA44 /* ChooseArtworkViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45C0D6252079297B00CBBA44 /* ChooseArtworkViewController.xib */; };
 		45C0D62A2079299000CBBA44 /* PositionYourselfViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C0D6282079299000CBBA44 /* PositionYourselfViewController.swift */; };
 		45C0D62B2079299000CBBA44 /* PositionYourselfViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45C0D6292079299000CBBA44 /* PositionYourselfViewController.xib */; };
+		45C2B4E52151872D00F562D3 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C2B4E42151872D00F562D3 /* UserDefaultsManager.swift */; };
 		45E4B4BF209BD20D00A286E4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 45E4B4BE209BD20C00A286E4 /* GoogleService-Info.plist */; };
 		45F7E222207448CE00C7228E /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F7E221207448CE00C7228E /* RootViewController.swift */; };
 		45F7E22520744C9E00C7228E /* UIColor+AH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F7E22420744C9E00C7228E /* UIColor+AH.swift */; };
@@ -53,6 +54,7 @@
 		45C0D6252079297B00CBBA44 /* ChooseArtworkViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChooseArtworkViewController.xib; sourceTree = "<group>"; };
 		45C0D6282079299000CBBA44 /* PositionYourselfViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionYourselfViewController.swift; sourceTree = "<group>"; };
 		45C0D6292079299000CBBA44 /* PositionYourselfViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PositionYourselfViewController.xib; sourceTree = "<group>"; };
+		45C2B4E42151872D00F562D3 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		45E4B4BE209BD20C00A286E4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		45F7E221207448CE00C7228E /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		45F7E22420744C9E00C7228E /* UIColor+AH.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+AH.swift"; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 				455BDE862062ED7A009CA00A /* AppDelegate.swift */,
 				45F7E21F207448AB00C7228E /* View Controllers */,
 				45751A9E206C15800022D594 /* Extensions */,
+				45C2B4E32151871D00F562D3 /* Utilities */,
 				455BDE8C2062ED7A009CA00A /* Main.storyboard */,
 				455BDE882062ED7A009CA00A /* art.scnassets */,
 				455BDE8F2062ED7A009CA00A /* Assets.xcassets */,
@@ -135,6 +138,14 @@
 				4581495F207C525C005AE1DE /* HomeViewController.xib */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		45C2B4E32151871D00F562D3 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				45C2B4E42151872D00F562D3 /* UserDefaultsManager.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		45F7E21F207448AB00C7228E /* View Controllers */ = {
@@ -330,6 +341,7 @@
 				455BDE8B2062ED7A009CA00A /* HomeViewController.swift in Sources */,
 				456CC2CF207C59680010676C /* OnboardingChildViewController.swift in Sources */,
 				45C0D6262079297B00CBBA44 /* ChooseArtworkViewController.swift in Sources */,
+				45C2B4E52151872D00F562D3 /* UserDefaultsManager.swift in Sources */,
 				45F7E222207448CE00C7228E /* RootViewController.swift in Sources */,
 				45C0D61E207927BE00CBBA44 /* OnboardingViewController.swift in Sources */,
 				45F7E22720744D1300C7228E /* UIViewController+AH.swift in Sources */,
@@ -482,7 +494,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 98E8SVTQ29;
 				INFOPLIST_FILE = ArtHouse/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.thescarpagroup.ArtHouse;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -499,7 +511,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 98E8SVTQ29;
 				INFOPLIST_FILE = ArtHouse/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.thescarpagroup.ArtHouse;
 				PRODUCT_NAME = "$(TARGET_NAME)";

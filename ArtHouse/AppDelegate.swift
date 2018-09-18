@@ -22,7 +22,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window!.makeKeyAndVisible()
         window!.backgroundColor = .white
         
-        RootViewController.shared.goToOnboardingVC()
+        if UserDefaultsManager.shared.hasCompletedOnboarding {
+            RootViewController.shared.goToHomeVC()
+        } else {
+            RootViewController.shared.goToOnboardingVC()
+        }
         
         return true
     }

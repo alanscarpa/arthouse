@@ -15,8 +15,8 @@ class HomeViewController: UIViewController, ARSCNViewDelegate {
     @IBOutlet var sceneView: ARSCNView!
     var paintingPlane: SCNPlane {
         // 1 in = 0.0254 m
-        let height: CGFloat = 18
-        let width: CGFloat = 6
+        let height: CGFloat = 18 // inches
+        let width: CGFloat = 6 // inches
         let plane = SCNPlane(width: width * 0.0254, height: height * 0.0254)
         let imageMaterial = SCNMaterial()
         imageMaterial.diffuse.contents = UIImage(named: "ed.jpg")
