@@ -6,6 +6,6 @@ target 'ArtHouse' do
   use_frameworks!
 
   # Pods for ArtHouse
-  pod 'paper-onboarding'
+  pod 'Firebase/Core'
 
 end

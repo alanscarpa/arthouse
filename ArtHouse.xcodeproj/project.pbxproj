@@ -24,6 +24,7 @@
 		45C0D6272079297B00CBBA44 /* ChooseArtworkViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45C0D6252079297B00CBBA44 /* ChooseArtworkViewController.xib */; };
 		45C0D62A2079299000CBBA44 /* PositionYourselfViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C0D6282079299000CBBA44 /* PositionYourselfViewController.swift */; };
 		45C0D62B2079299000CBBA44 /* PositionYourselfViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45C0D6292079299000CBBA44 /* PositionYourselfViewController.xib */; };
+		45E4B4BF209BD20D00A286E4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 45E4B4BE209BD20C00A286E4 /* GoogleService-Info.plist */; };
 		45F7E222207448CE00C7228E /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F7E221207448CE00C7228E /* RootViewController.swift */; };
 		45F7E22520744C9E00C7228E /* UIColor+AH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F7E22420744C9E00C7228E /* UIColor+AH.swift */; };
 		45F7E22720744D1300C7228E /* UIViewController+AH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F7E22620744D1300C7228E /* UIViewController+AH.swift */; };
@@ -52,6 +53,7 @@
 		45C0D6252079297B00CBBA44 /* ChooseArtworkViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChooseArtworkViewController.xib; sourceTree = "<group>"; };
 		45C0D6282079299000CBBA44 /* PositionYourselfViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionYourselfViewController.swift; sourceTree = "<group>"; };
 		45C0D6292079299000CBBA44 /* PositionYourselfViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PositionYourselfViewController.xib; sourceTree = "<group>"; };
+		45E4B4BE209BD20C00A286E4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		45F7E221207448CE00C7228E /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		45F7E22420744C9E00C7228E /* UIColor+AH.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+AH.swift"; sourceTree = "<group>"; };
 		45F7E22620744D1300C7228E /* UIViewController+AH.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+AH.swift"; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 				455BDE8F2062ED7A009CA00A /* Assets.xcassets */,
 				45F7E22B207454F100C7228E /* Videos */,
 				455BDE912062ED7A009CA00A /* LaunchScreen.storyboard */,
+				45E4B4BE209BD20C00A286E4 /* GoogleService-Info.plist */,
 				455BDE942062ED7A009CA00A /* Info.plist */,
 			);
 			path = ArtHouse;
@@ -253,6 +256,7 @@
 				455BDE902062ED7A009CA00A /* Assets.xcassets in Resources */,
 				45C0D6232079295300CBBA44 /* EnableCameraViewController.xib in Resources */,
 				455BDE8E2062ED7A009CA00A /* Main.storyboard in Resources */,
+				45E4B4BF209BD20D00A286E4 /* GoogleService-Info.plist in Resources */,
 				45C0D6272079297B00CBBA44 /* ChooseArtworkViewController.xib in Resources */,
 				45814960207C525C005AE1DE /* HomeViewController.xib in Resources */,
 			);
@@ -268,11 +272,13 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-ArtHouse/Pods-ArtHouse-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/paper-onboarding/paper_onboarding.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/paper_onboarding.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
