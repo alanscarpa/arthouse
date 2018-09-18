@@ -12,10 +12,10 @@ import UIKit
 
 extension UIViewController {
     func ahAddChildViewController(_ childVC: UIViewController) {
-        childVC.willMove(toParentViewController: self)
-        addChildViewController(childVC)
+        childVC.willMove(toParent: self)
+        addChild(childVC)
         view.addSubview(childVC.view)
         childVC.view.frame = view.frame
-        childVC.didMove(toParentViewController: self)
+        childVC.didMove(toParent: self)
     }
 }

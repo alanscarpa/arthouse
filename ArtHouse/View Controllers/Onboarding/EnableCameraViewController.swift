@@ -15,7 +15,7 @@ class EnableCameraViewController: OnboardingChildViewController {
         // TODO: PRESENT CAMERA PERMISSION,
             // IF ACCEPTED, TRIGGER DELEGATE
             // IF DENIED, CHANGE TEXT, AND PREVENT MOVING FORWARD, THEN CHECK FOR CAMERA PERMISSIONS ON VIEWWILLAPPEAR
-        guard UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera) else {
+        guard UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.camera) else {
             let alertVC = UIAlertController.simpleAlert(withTitle: "No Camera", message: "You are unable to use ArtHouse becuase your phone does not have a camera.")
             present(alertVC, animated: true, completion: nil)
             return
