@@ -62,8 +62,4 @@ class RootViewController: UIViewController, UINavigationControllerDelegate {
         rootNavigationController.setViewControllers([HomeViewController()], animated: true)
     }
     
-    func pushHomeVC() {
-        rootNavigationController.pushViewController(HomeViewController(), animated: true)
-    }
-    
 }

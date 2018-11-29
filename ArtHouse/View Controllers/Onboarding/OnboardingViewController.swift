@@ -38,8 +38,7 @@ class OnboardingViewController: UIPageViewController, UIPageViewControllerDataSo
     
     func nextButtonTapped() {
         if currentVCIndex == allViewControllers.count - 1 {
-            UserDefaultsManager.shared.hasCompletedOnboarding = true
-            RootViewController.shared.pushHomeVC()
+            finishOnboarding()
         } else {
             guard let nextVC = dataSource?.pageViewController(self, viewControllerAfter: allViewControllers[currentVCIndex]) else { return }
             setViewControllers([nextVC], direction: .forward, animated: true, completion: nil)
@@ -60,7 +59,7 @@ class OnboardingViewController: UIPageViewController, UIPageViewControllerDataSo
         guard let viewControllerIndex = indexOfViewController(viewController) else { return nil }
         let nextIndex = viewControllerIndex + 1
         if nextIndex == allViewControllers.count {
-            RootViewController.shared.pushHomeVC()
+            finishOnboarding()
             return nil
         } else {
             guard numberOfViewControllers != nextIndex && numberOfViewControllers > nextIndex else { return nil }
@@ -74,6 +73,11 @@ class OnboardingViewController: UIPageViewController, UIPageViewControllerDataSo
     private func indexOfViewController(_ viewController: UIViewController) -> Int? {
         guard let viewControllerIndex = allViewControllers.index(of: viewController) else { return nil }
         return viewControllerIndex
+    }
+    
+    private func finishOnboarding() {
+        UserDefaultsManager.shared.hasCompletedOnboarding = true
+        RootViewController.shared.goToHomeVC()
     }
     
 }
