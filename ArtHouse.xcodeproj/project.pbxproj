@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4505BBA221B47CC100336295 /* Artwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4505BBA121B47CC100336295 /* Artwork.swift */; };
 		455BDE872062ED7A009CA00A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455BDE862062ED7A009CA00A /* AppDelegate.swift */; };
 		455BDE892062ED7A009CA00A /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 455BDE882062ED7A009CA00A /* art.scnassets */; };
 		455BDE8B2062ED7A009CA00A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455BDE8A2062ED7A009CA00A /* HomeViewController.swift */; };
@@ -35,6 +36,7 @@
 
 /* Begin PBXFileReference section */
 		01D3B9BC83A99C37572CE42D /* Pods-ArtHouse.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArtHouse.release.xcconfig"; path = "Pods/Target Support Files/Pods-ArtHouse/Pods-ArtHouse.release.xcconfig"; sourceTree = "<group>"; };
+		4505BBA121B47CC100336295 /* Artwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artwork.swift; sourceTree = "<group>"; };
 		455BDE832062ED7A009CA00A /* ArtHouse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArtHouse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		455BDE862062ED7A009CA00A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		455BDE882062ED7A009CA00A /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -84,6 +86,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		4505BBA021B47CB700336295 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4505BBA121B47CC100336295 /* Artwork.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		455BDE7A2062ED7A009CA00A = {
 			isa = PBXGroup;
 			children = (
@@ -105,6 +115,7 @@
 		455BDE852062ED7A009CA00A /* ArtHouse */ = {
 			isa = PBXGroup;
 			children = (
+				4505BBA021B47CB700336295 /* Models */,
 				455BDE862062ED7A009CA00A /* AppDelegate.swift */,
 				45F7E21F207448AB00C7228E /* View Controllers */,
 				45751A9E206C15800022D594 /* Extensions */,
@@ -353,6 +364,7 @@
 			files = (
 				45751AA0206C158A0022D594 /* UIImage+AH.swift in Sources */,
 				455BDE8B2062ED7A009CA00A /* HomeViewController.swift in Sources */,
+				4505BBA221B47CC100336295 /* Artwork.swift in Sources */,
 				456CC2CF207C59680010676C /* OnboardingChildViewController.swift in Sources */,
 				45C0D6262079297B00CBBA44 /* ChooseArtworkViewController.swift in Sources */,
 				45C2B4E52151872D00F562D3 /* UserDefaultsManager.swift in Sources */,
