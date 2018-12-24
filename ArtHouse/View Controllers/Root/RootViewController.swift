@@ -59,7 +59,7 @@ class RootViewController: UIViewController, UINavigationControllerDelegate {
     }
     
     func goToHomeVC() {
-        rootNavigationController.setViewControllers([HomeCollectionViewController()], animated: true)
+        rootNavigationController.setViewControllers([HomeCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())], animated: true)
     }
     
 }
