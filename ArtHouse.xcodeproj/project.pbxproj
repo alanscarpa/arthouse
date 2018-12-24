@@ -10,14 +10,14 @@
 		4505BBA221B47CC100336295 /* Artwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4505BBA121B47CC100336295 /* Artwork.swift */; };
 		455BDE872062ED7A009CA00A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455BDE862062ED7A009CA00A /* AppDelegate.swift */; };
 		455BDE892062ED7A009CA00A /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 455BDE882062ED7A009CA00A /* art.scnassets */; };
-		455BDE8B2062ED7A009CA00A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455BDE8A2062ED7A009CA00A /* HomeViewController.swift */; };
+		455BDE8B2062ED7A009CA00A /* ARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455BDE8A2062ED7A009CA00A /* ARViewController.swift */; };
 		455BDE8E2062ED7A009CA00A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 455BDE8C2062ED7A009CA00A /* Main.storyboard */; };
 		455BDE902062ED7A009CA00A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 455BDE8F2062ED7A009CA00A /* Assets.xcassets */; };
 		455BDE932062ED7A009CA00A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 455BDE912062ED7A009CA00A /* LaunchScreen.storyboard */; };
 		456CC2CF207C59680010676C /* OnboardingChildViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456CC2CE207C59680010676C /* OnboardingChildViewController.swift */; };
 		456CC2D2207C5C610010676C /* UIAlertController+AH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456CC2D1207C5C610010676C /* UIAlertController+AH.swift */; };
 		45751AA0206C158A0022D594 /* UIImage+AH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45751A9F206C158A0022D594 /* UIImage+AH.swift */; };
-		45814960207C525C005AE1DE /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4581495F207C525C005AE1DE /* HomeViewController.xib */; };
+		45814960207C525C005AE1DE /* ARViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4581495F207C525C005AE1DE /* ARViewController.xib */; };
 		45C0D61E207927BE00CBBA44 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C0D61C207927BE00CBBA44 /* OnboardingViewController.swift */; };
 		45C0D6222079295300CBBA44 /* EnableCameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C0D6202079295300CBBA44 /* EnableCameraViewController.swift */; };
 		45C0D6232079295300CBBA44 /* EnableCameraViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45C0D6212079295300CBBA44 /* EnableCameraViewController.xib */; };
@@ -40,7 +40,7 @@
 		455BDE832062ED7A009CA00A /* ArtHouse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArtHouse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		455BDE862062ED7A009CA00A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		455BDE882062ED7A009CA00A /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
-		455BDE8A2062ED7A009CA00A /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		455BDE8A2062ED7A009CA00A /* ARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewController.swift; sourceTree = "<group>"; };
 		455BDE8D2062ED7A009CA00A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		455BDE8F2062ED7A009CA00A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		455BDE922062ED7A009CA00A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -48,7 +48,7 @@
 		456CC2CE207C59680010676C /* OnboardingChildViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingChildViewController.swift; sourceTree = "<group>"; };
 		456CC2D1207C5C610010676C /* UIAlertController+AH.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+AH.swift"; sourceTree = "<group>"; };
 		45751A9F206C158A0022D594 /* UIImage+AH.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+AH.swift"; sourceTree = "<group>"; };
-		4581495F207C525C005AE1DE /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
+		4581495F207C525C005AE1DE /* ARViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ARViewController.xib; sourceTree = "<group>"; };
 		45C0D61C207927BE00CBBA44 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		45C0D6202079295300CBBA44 /* EnableCameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnableCameraViewController.swift; sourceTree = "<group>"; };
 		45C0D6212079295300CBBA44 /* EnableCameraViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EnableCameraViewController.xib; sourceTree = "<group>"; };
@@ -115,8 +115,8 @@
 		455BDE852062ED7A009CA00A /* ArtHouse */ = {
 			isa = PBXGroup;
 			children = (
-				4505BBA021B47CB700336295 /* Models */,
 				455BDE862062ED7A009CA00A /* AppDelegate.swift */,
+				4505BBA021B47CB700336295 /* Models */,
 				45F7E21F207448AB00C7228E /* View Controllers */,
 				45751A9E206C15800022D594 /* Extensions */,
 				45C2B4E32151871D00F562D3 /* Utilities */,
@@ -142,13 +142,13 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		4581495E207C5198005AE1DE /* Home */ = {
+		4581495E207C5198005AE1DE /* AR */ = {
 			isa = PBXGroup;
 			children = (
-				455BDE8A2062ED7A009CA00A /* HomeViewController.swift */,
-				4581495F207C525C005AE1DE /* HomeViewController.xib */,
+				455BDE8A2062ED7A009CA00A /* ARViewController.swift */,
+				4581495F207C525C005AE1DE /* ARViewController.xib */,
 			);
-			path = Home;
+			path = AR;
 			sourceTree = "<group>";
 		};
 		45C2B4E32151871D00F562D3 /* Utilities */ = {
@@ -162,7 +162,7 @@
 		45F7E21F207448AB00C7228E /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				4581495E207C5198005AE1DE /* Home */,
+				4581495E207C5198005AE1DE /* AR */,
 				45F7E2282074524C00C7228E /* Onboarding */,
 				45F7E220207448B700C7228E /* Root */,
 			);
@@ -281,7 +281,7 @@
 				455BDE8E2062ED7A009CA00A /* Main.storyboard in Resources */,
 				45E4B4BF209BD20D00A286E4 /* GoogleService-Info.plist in Resources */,
 				45C0D6272079297B00CBBA44 /* ChooseArtworkViewController.xib in Resources */,
-				45814960207C525C005AE1DE /* HomeViewController.xib in Resources */,
+				45814960207C525C005AE1DE /* ARViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -363,7 +363,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				45751AA0206C158A0022D594 /* UIImage+AH.swift in Sources */,
-				455BDE8B2062ED7A009CA00A /* HomeViewController.swift in Sources */,
+				455BDE8B2062ED7A009CA00A /* ARViewController.swift in Sources */,
 				4505BBA221B47CC100336295 /* Artwork.swift in Sources */,
 				456CC2CF207C59680010676C /* OnboardingChildViewController.swift in Sources */,
 				45C0D6262079297B00CBBA44 /* ChooseArtworkViewController.swift in Sources */,

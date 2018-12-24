@@ -10,7 +10,7 @@ import UIKit
 import SceneKit
 import ARKit
 
-class HomeViewController: UIViewController, ARSCNViewDelegate {
+class ARViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
 //    var paintingPlane: SCNPlane {
