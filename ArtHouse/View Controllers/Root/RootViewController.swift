@@ -59,7 +59,7 @@ class RootViewController: UIViewController, UINavigationControllerDelegate {
     }
     
     func goToHomeVC() {
-        rootNavigationController.setViewControllers([ARViewController()], animated: true)
+        rootNavigationController.setViewControllers([HomeCollectionViewController()], animated: true)
     }
     
 }
