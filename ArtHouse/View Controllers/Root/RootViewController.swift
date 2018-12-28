@@ -62,4 +62,8 @@ class RootViewController: UIViewController, UINavigationControllerDelegate {
         rootNavigationController.setViewControllers([HomeCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())], animated: true)
     }
     
+    func presentARVC() {
+        rootNavigationController.pushViewController(ARViewController(), animated: true)
+    }
+    
 }
