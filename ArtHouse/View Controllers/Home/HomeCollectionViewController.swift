@@ -8,11 +8,15 @@
 
 import UIKit
 
-class HomeCollectionViewController: UICollectionViewController {
+class HomeCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.collectionView.registerCell(HomeCollectionViewCell.self)
+        setUpCollectionView()
+    }
+    
+    private func setUpCollectionView() {
+        collectionView.registerCell(HomeCollectionViewCell.self)
     }
 
     /*
@@ -33,12 +37,26 @@ class HomeCollectionViewController: UICollectionViewController {
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 100
+        return 35
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(with: HomeCollectionViewCell.self, for: indexPath)
         return cell
+    }
+    
+    // MARK: UICollectionViewDelegateFlowLayout
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: view.frame.size.width / 3, height: 250)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
     }
 
     // MARK: UICollectionViewDelegate
