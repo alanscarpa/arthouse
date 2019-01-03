@@ -8,5 +8,7 @@ target 'ArtHouse' do
   # Pods for ArtHouse
   pod 'Firebase/Core'
   pod 'Firebase/Firestore'
-
+  pod 'Firebase/Auth'
+  pod 'FirebaseUI'
+  pod 'FirebaseStorage'
 end

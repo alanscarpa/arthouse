@@ -13,5 +13,15 @@ struct Artwork {
     let height: Int
     let width: Int
     let depth: Int
-    let image: UIImage
+    let imageURLString: String
+    
+    var dictionary: [String: Any] {
+        return [
+            "title": title,
+            "height": height,
+            "width": width,
+            "depth": depth,
+            "image-URL-string": imageURLString
+        ]
+    }
 }

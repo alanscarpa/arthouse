@@ -7,16 +7,51 @@
 //
 
 import UIKit
+import FirebaseFirestore
+import FirebaseAuthUI
+import FirebaseStorage
 
 class HomeCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpCollectionView()
+        Auth.auth().signInAnonymously() { (user, error) in
+            guard user != nil else { print(error?.localizedDescription ?? ""); return }
+            self.loadArtwork()
+        }
     }
     
     private func setUpCollectionView() {
         collectionView.registerCell(HomeCollectionViewCell.self)
+    }
+    
+    private func loadArtwork() {
+        
+        let artPieceTitle = "Art1"
+        
+        let storage = Storage.storage()
+        let fileName = artPieceTitle
+        let storageRef = storage.reference(forURL: "gs://arthouse-571c6.appspot.com")
+        let fileRef = storageRef.child("art-images/\(fileName)")
+        
+        let metadata = StorageMetadata()
+        metadata.contentType = "image/jpeg"
+        
+        let photoData = UIImage(named: "holding-phone")!.jpegData(compressionQuality: 0.8)
+        
+        fileRef.downloadURL { url, error in
+            guard error == nil else { print (error?.localizedDescription ?? ""); return }
+            fileRef.putData(photoData!, metadata: metadata) { metadata, error in
+                if let error = error {
+                    print(error.localizedDescription)
+                } else {
+                    let collection = Firestore.firestore().collection("artwork")
+                    let artPiece = Artwork(title: artPieceTitle, height: 20, width: 10, depth: 2, imageURLString: url?.absoluteString ?? "")
+                    collection.addDocument(data: artPiece.dictionary)
+                }
+            }
+        }
     }
 
     /*
