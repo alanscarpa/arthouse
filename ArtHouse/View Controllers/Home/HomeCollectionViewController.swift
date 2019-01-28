@@ -21,7 +21,7 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
         Auth.auth().signInAnonymously() { [weak self] user, error in
             guard user != nil, let self = self else { print(error?.localizedDescription ?? ""); return }
             // TODO: RUN AN UPLOAD FOR ARTWORK THEN COMMENT OUT
-            //self.uploadArtwork()
+            // Uploader.uploadArtwork()
             self.downloadArtwork()
         }
     }
@@ -39,46 +39,6 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
             self.collectionView.reloadData()
         }
     }
-    
-    private func uploadArtwork() {
-        
-        let artPieceTitle = "Art2"
-        
-        let storage = Storage.storage()
-        let fileName = artPieceTitle
-        let storageRef = storage.reference(forURL: "gs://arthouse-571c6.appspot.com")
-        let fileRef = storageRef.child("art-images/\(fileName)")
-        
-        let metadata = StorageMetadata()
-        metadata.contentType = "image/jpeg"
-        
-        let photoData = UIImage(named: "lawn")!.jpegData(compressionQuality: 0.9)
-        
-        fileRef.putData(photoData!, metadata: metadata) { metadata, error in
-            guard error == nil else { print (error?.localizedDescription ?? ""); return }
-            fileRef.downloadURL { url, error in
-                guard error == nil else { print (error?.localizedDescription ?? ""); return }
-                let collection = Firestore.firestore().collection("artwork")
-                let artPiece = Artwork(title: artPieceTitle,
-                                       height: 20,
-                                       width: 10,
-                                       depth: 2,
-                                       price: 99.95,
-                                       imageURLString: url?.absoluteString ?? "")
-                collection.addDocument(data: artPiece.dictionary)
-            }
-        }
-    }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
 
     // MARK: UICollectionViewDataSource
 
