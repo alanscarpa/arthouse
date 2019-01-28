@@ -13,6 +13,8 @@ import FirebaseStorage
 
 class HomeCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
+    private var artworks = [Artwork]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpCollectionView()
@@ -30,18 +32,17 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
     
     private func downloadArtwork() {
         Firestore.firestore().collection("artwork").getDocuments() { [weak self] querySnapshot, error in
-            guard error == nil, let self = self else { print(error?.localizedDescription ?? ""); return }
-            for document in querySnapshot!.documents {
-                print("\(document.documentID) => \(document.data())")
-                let artwork = Artwork(with: document.data())
-                print(artwork)
+            guard error == nil, let self = self, let snapshot = querySnapshot else { print(error?.localizedDescription ?? "Something went wrong. :("); return }
+            for document in snapshot.documents {
+                self.artworks.append(Artwork(with: document.data()))
             }
+            self.collectionView.reloadData()
         }
     }
     
     private func uploadArtwork() {
         
-        let artPieceTitle = "Art1"
+        let artPieceTitle = "Art2"
         
         let storage = Storage.storage()
         let fileName = artPieceTitle
@@ -51,22 +52,20 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
         let metadata = StorageMetadata()
         metadata.contentType = "image/jpeg"
         
-        let photoData = UIImage(named: "holding-phone")!.jpegData(compressionQuality: 0.9)
+        let photoData = UIImage(named: "lawn")!.jpegData(compressionQuality: 0.9)
         
-        fileRef.downloadURL { url, error in
+        fileRef.putData(photoData!, metadata: metadata) { metadata, error in
             guard error == nil else { print (error?.localizedDescription ?? ""); return }
-            fileRef.putData(photoData!, metadata: metadata) { metadata, error in
-                if let error = error {
-                    print(error.localizedDescription)
-                } else {
-                    let collection = Firestore.firestore().collection("artwork")
-                    let artPiece = Artwork(title: artPieceTitle,
-                                           height: 20,
-                                           width: 10,
-                                           depth: 2,
-                                           imageURLString: url?.absoluteString ?? "")
-                    collection.addDocument(data: artPiece.dictionary)
-                }
+            fileRef.downloadURL { url, error in
+                guard error == nil else { print (error?.localizedDescription ?? ""); return }
+                let collection = Firestore.firestore().collection("artwork")
+                let artPiece = Artwork(title: artPieceTitle,
+                                       height: 20,
+                                       width: 10,
+                                       depth: 2,
+                                       price: 99.95,
+                                       imageURLString: url?.absoluteString ?? "")
+                collection.addDocument(data: artPiece.dictionary)
             }
         }
     }
@@ -89,11 +88,12 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 35
+        return artworks.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(with: HomeCollectionViewCell.self, for: indexPath)
+        cell.setUpWithArtwork(artworks[indexPath.row])
         return cell
     }
     
