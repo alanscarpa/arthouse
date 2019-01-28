@@ -16,9 +16,11 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpCollectionView()
-        Auth.auth().signInAnonymously() { (user, error) in
-            guard user != nil else { print(error?.localizedDescription ?? ""); return }
-            self.loadArtwork()
+        Auth.auth().signInAnonymously() { [weak self] user, error in
+            guard user != nil, let self = self else { print(error?.localizedDescription ?? ""); return }
+            // TODO: RUN AN UPLOAD FOR ARTWORK THEN COMMENT OUT
+            //self.uploadArtwork()
+            self.downloadArtwork()
         }
     }
     
@@ -26,7 +28,18 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
         collectionView.registerCell(HomeCollectionViewCell.self)
     }
     
-    private func loadArtwork() {
+    private func downloadArtwork() {
+        Firestore.firestore().collection("artwork").getDocuments() { [weak self] querySnapshot, error in
+            guard error == nil, let self = self else { print(error?.localizedDescription ?? ""); return }
+            for document in querySnapshot!.documents {
+                print("\(document.documentID) => \(document.data())")
+                let artwork = Artwork(with: document.data())
+                print(artwork)
+            }
+        }
+    }
+    
+    private func uploadArtwork() {
         
         let artPieceTitle = "Art1"
         
@@ -38,7 +51,7 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
         let metadata = StorageMetadata()
         metadata.contentType = "image/jpeg"
         
-        let photoData = UIImage(named: "holding-phone")!.jpegData(compressionQuality: 0.8)
+        let photoData = UIImage(named: "holding-phone")!.jpegData(compressionQuality: 0.9)
         
         fileRef.downloadURL { url, error in
             guard error == nil else { print (error?.localizedDescription ?? ""); return }
@@ -47,7 +60,11 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
                     print(error.localizedDescription)
                 } else {
                     let collection = Firestore.firestore().collection("artwork")
-                    let artPiece = Artwork(title: artPieceTitle, height: 20, width: 10, depth: 2, imageURLString: url?.absoluteString ?? "")
+                    let artPiece = Artwork(title: artPieceTitle,
+                                           height: 20,
+                                           width: 10,
+                                           depth: 2,
+                                           imageURLString: url?.absoluteString ?? "")
                     collection.addDocument(data: artPiece.dictionary)
                 }
             }
@@ -99,34 +116,5 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
-
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
-    
-    }
-    */
     
 }
