@@ -13,7 +13,8 @@ import ARKit
 class ARViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
-    
+    @IBOutlet weak var buyNowButton: UIButton!
+
     let artwork: Artwork
     var artworkNode = SCNNode()
     
@@ -32,6 +33,7 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUpUI()
         setUpSceneView()
     }
     
@@ -47,6 +49,10 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     }
     
     // MARK: - Setup
+    
+    func setUpUI() {
+        buyNowButton.isHidden = true
+    }
     
     func setUpSceneView() {
         sceneView.delegate = self
@@ -126,10 +132,19 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         
     }
     
+    // MARK: - Helpers
+    
+    func showBuyButton() {
+        buyNowButton.isHidden = false
+    }
+    
     // MARK: - Actions
     
     @IBAction func backButtonTapped() {
         RootViewController.shared.popViewController()
     }
     
+    @IBAction func buyNowButtonTapped() {
+        
+    }
 }

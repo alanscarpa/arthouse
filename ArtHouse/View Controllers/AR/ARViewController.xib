@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_5" orientation="portrait">
+    <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -11,16 +11,17 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="ArtHouse" customModuleProvider="target">
             <connections>
+                <outlet property="buyNowButton" destination="kxn-mj-Qr3" id="qAL-f8-rvO"/>
                 <outlet property="sceneView" destination="NiV-2t-u0H" id="o91-Sb-a2j"/>
                 <outlet property="view" destination="JJl-3l-0Aj" id="2LN-gb-kk1"/>
             </connections>
         </placeholder>
         <view contentMode="scaleToFill" id="JJl-3l-0Aj">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NiV-2t-u0H">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                 </arscnView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="viM-n3-pht">
                     <rect key="frame" x="12" y="56" width="52" height="49"/>
@@ -34,6 +35,21 @@
                         <action selector="backButtonTapped" destination="-1" eventType="touchUpInside" id="et8-tE-515"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kxn-mj-Qr3">
+                    <rect key="frame" x="62.666666666666657" y="717" width="249.99999999999997" height="49"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="250" id="3qO-gr-A4O"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="24"/>
+                    <inset key="contentEdgeInsets" minX="0.0" minY="8" maxX="0.0" maxY="8"/>
+                    <state key="normal" title="BUY NOW">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="buyNowButtonTapped" destination="-1" eventType="touchUpInside" id="3Kc-A9-pRT"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
@@ -43,6 +59,8 @@
                 <constraint firstItem="NiV-2t-u0H" firstAttribute="leading" secondItem="JJl-3l-0Aj" secondAttribute="leading" id="UKP-MH-mug"/>
                 <constraint firstAttribute="trailing" secondItem="NiV-2t-u0H" secondAttribute="trailing" id="WdP-EB-V62"/>
                 <constraint firstItem="NiV-2t-u0H" firstAttribute="top" secondItem="JJl-3l-0Aj" secondAttribute="top" id="auL-e6-Rd4"/>
+                <constraint firstItem="kxn-mj-Qr3" firstAttribute="centerX" secondItem="NiV-2t-u0H" secondAttribute="centerX" id="dYC-cK-ECq"/>
+                <constraint firstItem="kxn-mj-Qr3" firstAttribute="bottom" secondItem="x1h-s1-6GN" secondAttribute="bottom" constant="-12" id="dyr-tT-cqJ"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="x1h-s1-6GN"/>
             <point key="canvasLocation" x="137.68115942028987" y="111.83035714285714"/>
