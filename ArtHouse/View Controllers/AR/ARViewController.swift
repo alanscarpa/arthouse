@@ -26,6 +26,8 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     
     let artwork: Artwork
     
+    // MARK: - Init
+    
     init(_ artwork: Artwork) {
         self.artwork = artwork
         super.init(nibName: nil, bundle: nil)
@@ -34,6 +36,8 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: - View Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,7 +68,7 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     }
     
     func paintingCube() -> SCNNode {
-        let boxGeometry = SCNBox(width: 10 * 0.0254, height: 12 * 0.0254, length: 0.02, chamferRadius: 0.0)
+        let boxGeometry = SCNBox(width: artwork.width * 0.0254, height: artwork.height * 0.0254, length: 0.02, chamferRadius: 0.0)
         let imageMaterial = SCNMaterial()
         imageMaterial.diffuse.contents = UIImage(named: "framed-print-sample")
         let blackFrameMaterial = SCNMaterial()

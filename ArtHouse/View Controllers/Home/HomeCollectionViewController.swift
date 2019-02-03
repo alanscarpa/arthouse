@@ -11,7 +11,7 @@ import FirebaseFirestore
 import FirebaseAuthUI
 import FirebaseStorage
 
-class HomeCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class HomeCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, HomeCollectionViewCellDelegate {
     
     private var artworks = [Artwork]()
     
@@ -55,12 +55,14 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(with: HomeCollectionViewCell.self, for: indexPath)
         cell.setUpWithArtwork(artworks[indexPath.row])
+        cell.delegate = self
         return cell
     }
     
     // MARK: UICollectionViewDelegate
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard artworks[indexPath.row].image != nil else { return }
         RootViewController.shared.presentARVCWithArtwork(artworks[indexPath.row])
     }
     
@@ -76,6 +78,13 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
+    }
+    
+    // MARK: - HomeCollectionViewCellDelegate
+    
+    func artworkImageDidLoad(image: UIImage, sender: HomeCollectionViewCell) {
+        guard let indexPath = collectionView.indexPath(for: sender) else { return }
+        artworks[indexPath.row].image = image
     }
     
 }

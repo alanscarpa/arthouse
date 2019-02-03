@@ -10,11 +10,12 @@ import UIKit
 
 struct Artwork {
     let title: String
-    let height: Double
-    let width: Double
-    let depth: Double
-    let price: Double
+    let height: CGFloat
+    let width: CGFloat
+    let depth: CGFloat
+    let price: CGFloat
     let imageURLString: String
+    var image: UIImage?
     
     private enum Keys: String {
         case title
@@ -36,7 +37,7 @@ struct Artwork {
         ]
     }
 
-    init(title: String, height: Double, width: Double, depth: Double, price: Double, imageURLString: String ) {
+    init(title: String, height: CGFloat, width: CGFloat, depth: CGFloat, price: CGFloat, imageURLString: String ) {
         self.title = title
         self.height = height
         self.width = width
@@ -47,10 +48,10 @@ struct Artwork {
     
     init(with dictionary: Dictionary<String, Any>) {
         title = dictionary[Keys.title.rawValue] as? String ?? ""
-        height = dictionary[Keys.height.rawValue] as? Double ?? 0
-        width = dictionary[Keys.width.rawValue] as? Double ?? 0
-        depth = dictionary[Keys.depth.rawValue] as? Double ?? 0
-        price = dictionary[Keys.price.rawValue] as? Double ?? 0
+        height = dictionary[Keys.height.rawValue] as? CGFloat ?? 0
+        width = dictionary[Keys.width.rawValue] as? CGFloat ?? 0
+        depth = dictionary[Keys.depth.rawValue] as? CGFloat ?? 0
+        price = dictionary[Keys.price.rawValue] as? CGFloat ?? 0
         imageURLString = dictionary[Keys.imageURLString.rawValue] as? String ?? ""
     }
 }
