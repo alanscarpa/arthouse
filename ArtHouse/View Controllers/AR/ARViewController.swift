@@ -13,18 +13,9 @@ import ARKit
 class ARViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
-//    var paintingPlane: SCNPlane {
-//        // 1 in = 0.0254 m
-//        let height: CGFloat = 8 // inches
-//        let width: CGFloat = 11.5 // inches
-//        let plane = SCNPlane(width: width * 0.0254, height: height * 0.0254)
-//        let imageMaterial = SCNMaterial()
-//        imageMaterial.diffuse.contents = UIImage(named: "framed-print-sample")
-//        plane.materials = [imageMaterial]
-//        return plane
-//    }
     
     let artwork: Artwork
+    var artworkNode = SCNNode()
     
     // MARK: - Init
     
@@ -59,6 +50,7 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     func setUpSceneView() {
         sceneView.delegate = self
         sceneView.scene = SCNScene()
+        sceneView.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(panGesture(_:))))
     }
     
     func setUpARWorldTrackingConfiguration() {
@@ -67,19 +59,22 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         sceneView.session.run(configuration)
     }
     
-    func paintingCube() -> SCNNode {
+    func artworkNode(position: SCNVector3) -> SCNNode {
         let boxGeometry = SCNBox(width: artwork.width * 0.0254, height: artwork.height * 0.0254, length: 0.02, chamferRadius: 0.0)
         let imageMaterial = SCNMaterial()
-        imageMaterial.diffuse.contents = UIImage(named: "framed-print-sample")
+        imageMaterial.diffuse.contents = artwork.image
         let blackFrameMaterial = SCNMaterial()
         blackFrameMaterial.diffuse.contents = UIColor.black
         boxGeometry.materials = [imageMaterial, blackFrameMaterial, blackFrameMaterial, blackFrameMaterial, blackFrameMaterial, blackFrameMaterial]
-        return SCNNode(geometry: boxGeometry)
+        let node = SCNNode(geometry: boxGeometry)
+        node.position = position
+        return node
     }
     
     // MARK: - UIEvents
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard artworkNode.parent == nil else { return }
         guard touches.first!.tapCount == 1 else { return }
         guard let touchPoint = touches.first?.location(in: sceneView) else { return }
         guard let cameraTransform = sceneView.session.currentFrame?.camera.transform else { return }
@@ -87,19 +82,30 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         var translation = matrix_identity_float4x4
         translation.columns.3.z = -1.0
         let pointTransform = matrix_multiply(cameraTransform, translation)
-        let normalizedZValue = sceneView.projectPoint(SCNVector3Make(pointTransform.columns.3.x, pointTransform.columns.3.y, pointTransform.columns.3.z)).z
+        let normalizedZValue = sceneView.projectPoint(SCNVector3Make(
+            pointTransform.columns.3.x,
+            pointTransform.columns.3.y,
+            pointTransform.columns.3.z)).z
         let position = sceneView.unprojectPoint(SCNVector3Make(Float(touchPoint.x), Float(touchPoint.y), normalizedZValue))
         
-        let paintingNode = paintingCube()
-        paintingNode.position = position
+        artworkNode = self.artworkNode(position: position)
 
         let pitch: Float = 0
         let yaw = sceneView.session.currentFrame?.camera.eulerAngles.y
         let orientationCompensation = sceneView.session.currentFrame!.camera.eulerAngles.z < -0.5 ? Float.pi/2 : 0
         let roll = sceneView.session.currentFrame!.camera.eulerAngles.z + orientationCompensation
         let newRotation = SCNVector3Make(pitch, yaw!, roll)
-        paintingNode.eulerAngles = newRotation
-        sceneView.scene.rootNode.addChildNode(paintingNode)
+        artworkNode.eulerAngles = newRotation
+        sceneView.scene.rootNode.addChildNode(artworkNode)
+    }
+    
+    @objc func panGesture(_ gesture: UIPanGestureRecognizer) {
+        gesture.minimumNumberOfTouches = 1
+        let hits = self.sceneView.hitTest(gesture.location(in: gesture.view), options: nil)
+        if let tappednode = hits.first?.node, let result = hits.first {
+            let position = SCNVector3Make(result.worldCoordinates.x, result.worldCoordinates.y, artworkNode.position.z)
+            tappednode.position = position
+        }
     }
 
     // MARK: - ARSCNViewDelegate
