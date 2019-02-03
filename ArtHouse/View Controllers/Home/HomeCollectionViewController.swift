@@ -28,6 +28,7 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
     
     private func setUpCollectionView() {
         collectionView.registerCell(HomeCollectionViewCell.self)
+        collectionView.backgroundColor = .white
     }
     
     private func downloadArtwork() {
@@ -60,7 +61,7 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
     // MARK: UICollectionViewDelegate
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        RootViewController.shared.presentARVC()
+        RootViewController.shared.presentARVCWithArtwork(artworks[indexPath.row])
     }
     
     // MARK: UICollectionViewDelegateFlowLayout
