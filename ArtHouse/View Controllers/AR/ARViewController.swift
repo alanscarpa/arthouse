@@ -37,6 +37,7 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        RootViewController.shared.showNavigationBar = false
         setUpARWorldTrackingConfiguration()
     }
     
@@ -124,4 +125,11 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         // Reset tracking and/or remove existing anchors if consistent tracking is required
         
     }
+    
+    // MARK: - Actions
+    
+    @IBAction func backButtonTapped() {
+        RootViewController.shared.popViewController()
+    }
+    
 }

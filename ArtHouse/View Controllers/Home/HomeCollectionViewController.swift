@@ -24,6 +24,15 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
             // Uploader.uploadArtwork()
             self.downloadArtwork()
         }
+        navigationItem.setHidesBackButton(true, animated: false)
+        let imageView = UIImageView(image: UIImage(named: "title-image"))
+        imageView.contentMode = .scaleAspectFit
+        navigationItem.titleView = imageView
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        RootViewController.shared.showNavigationBar = true
     }
     
     private func setUpCollectionView() {
