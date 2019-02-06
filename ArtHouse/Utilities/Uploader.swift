@@ -26,6 +26,8 @@ class Uploader {
         
         let photoData = UIImage(named: "lawn")!.jpegData(compressionQuality: 0.9)
         
+        let category = Artwork.Category.framedPrint
+        
         fileRef.putData(photoData!, metadata: metadata) { metadata, error in
             guard error == nil else { print (error?.localizedDescription ?? ""); return }
             fileRef.downloadURL { url, error in
@@ -37,7 +39,8 @@ class Uploader {
                                        depth: 2,
                                        price: 99.95,
                                        buyURLString: "google.com",
-                                       imageURLString: url?.absoluteString ?? "")
+                                       imageURLString: url?.absoluteString ?? "",
+                                       category: category)
                 collection.addDocument(data: artPiece.dictionary)
             }
         }

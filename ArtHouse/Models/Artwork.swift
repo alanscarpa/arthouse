@@ -17,6 +17,17 @@ struct Artwork {
     let imageURLString: String
     let buyURLString: String
     var image: UIImage?
+    var category: Category
+    
+    enum Category: String {
+        case print
+        case framedPrint = "framed-print"
+        case wallTapestry = "wall-tapestry"
+        case wallHanging = "wall-hanging"
+        case wallMural = "wall-mural"
+        case woodWallArt = "wood-wall-art"
+        case poster
+    }
     
     private enum Keys: String {
         case title
@@ -26,6 +37,7 @@ struct Artwork {
         case price
         case buyURLString = "buy-URL-string"
         case imageURLString = "image-URL-string"
+        case category
     }
     
     var dictionary: [String: Any] {
@@ -36,11 +48,12 @@ struct Artwork {
             Keys.depth.rawValue: depth,
             Keys.price.rawValue: price,
             Keys.buyURLString.rawValue: buyURLString,
-            Keys.imageURLString.rawValue: imageURLString
+            Keys.imageURLString.rawValue: imageURLString,
+            Keys.category.rawValue: category,
         ]
     }
 
-    init(title: String, height: CGFloat, width: CGFloat, depth: CGFloat, price: CGFloat, buyURLString: String, imageURLString: String ) {
+    init(title: String, height: CGFloat, width: CGFloat, depth: CGFloat, price: CGFloat, buyURLString: String, imageURLString: String, category: Category) {
         self.title = title
         self.height = height
         self.width = width
@@ -48,6 +61,7 @@ struct Artwork {
         self.price = price
         self.buyURLString = buyURLString
         self.imageURLString = imageURLString
+        self.category = category
     }
     
     init(with dictionary: Dictionary<String, Any>) {
@@ -58,5 +72,6 @@ struct Artwork {
         price = dictionary[Keys.price.rawValue] as? CGFloat ?? 0
         buyURLString = dictionary[Keys.buyURLString.rawValue] as? String ?? ""
         imageURLString = dictionary[Keys.imageURLString.rawValue] as? String ?? ""
+        category = Category(rawValue: dictionary[Keys.category.rawValue] as? String ?? "") ?? .print
     }
 }
