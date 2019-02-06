@@ -9,6 +9,7 @@
 import UIKit
 import SceneKit
 import ARKit
+import SafariServices
 
 class ARViewController: UIViewController, ARSCNViewDelegate {
 
@@ -103,7 +104,9 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         let roll = sceneView.session.currentFrame!.camera.eulerAngles.z + orientationCompensation
         let newRotation = SCNVector3Make(pitch, yaw!, roll)
         artworkNode.eulerAngles = newRotation
+        
         sceneView.scene.rootNode.addChildNode(artworkNode)
+        showBuyButton()
     }
     
     @objc func panGesture(_ gesture: UIPanGestureRecognizer) {
@@ -145,6 +148,9 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     }
     
     @IBAction func buyNowButtonTapped() {
-        
+        guard let buyNowURL = URL(string: artwork.buyURLString) else { return }
+        let safariVC = SFSafariViewController(url: buyNowURL)
+        safariVC.modalPresentationStyle = .popover
+        present(safariVC, animated: true)
     }
 }

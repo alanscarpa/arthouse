@@ -36,6 +36,7 @@ class Uploader {
                                        width: 10,
                                        depth: 2,
                                        price: 99.95,
+                                       buyURLString: "google.com",
                                        imageURLString: url?.absoluteString ?? "")
                 collection.addDocument(data: artPiece.dictionary)
             }
