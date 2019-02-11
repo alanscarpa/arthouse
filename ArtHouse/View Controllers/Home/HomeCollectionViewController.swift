@@ -21,7 +21,7 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
         Auth.auth().signInAnonymously() { [weak self] user, error in
             guard user != nil, let self = self else { print(error?.localizedDescription ?? ""); return }
             // TODO: RUN AN UPLOAD FOR ARTWORK THEN COMMENT OUT
-            // Uploader.uploadArtwork()
+            //Uploader.uploadArtwork()
             self.downloadArtwork()
         }
         navigationItem.setHidesBackButton(true, animated: false)
@@ -41,7 +41,7 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
     }
     
     private func downloadArtwork() {
-        Firestore.firestore().collection("artwork").getDocuments() { [weak self] querySnapshot, error in
+        Firestore.firestore().collection("prints").getDocuments() { [weak self] querySnapshot, error in
             guard error == nil, let self = self, let snapshot = querySnapshot else { print(error?.localizedDescription ?? "Something went wrong. :("); return }
             for document in snapshot.documents {
                 self.artworks.append(Artwork(with: document.data()))

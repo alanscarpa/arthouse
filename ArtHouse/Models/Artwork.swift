@@ -14,7 +14,7 @@ struct Artwork {
     let width: CGFloat
     let depth: CGFloat
     let price: CGFloat
-    let imageURLString: String
+    var imageURLString: String
     let buyURLString: String
     var image: UIImage?
     var category: Category
@@ -49,7 +49,7 @@ struct Artwork {
             Keys.price.rawValue: price,
             Keys.buyURLString.rawValue: buyURLString,
             Keys.imageURLString.rawValue: imageURLString,
-            Keys.category.rawValue: category,
+            Keys.category.rawValue: category.rawValue,
         ]
     }
 
