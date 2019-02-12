@@ -46,6 +46,7 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
             for document in snapshot.documents {
                 self.artworks.append(Artwork(with: document.data()))
             }
+            self.artworks.sort(by: { $0.popularity < $1.popularity })
             self.collectionView.reloadData()
         }
     }

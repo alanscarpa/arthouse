@@ -18,6 +18,7 @@ struct Artwork {
     let buyURLString: String
     var image: UIImage?
     var category: Category
+    let popularity: CGFloat
     
     enum Category: String {
         case print
@@ -38,6 +39,7 @@ struct Artwork {
         case buyURLString = "buy-URL-string"
         case imageURLString = "image-URL-string"
         case category
+        case popularity
     }
     
     var dictionary: [String: Any] {
@@ -50,10 +52,11 @@ struct Artwork {
             Keys.buyURLString.rawValue: buyURLString,
             Keys.imageURLString.rawValue: imageURLString,
             Keys.category.rawValue: category.rawValue,
+            Keys.popularity.rawValue: popularity
         ]
     }
 
-    init(title: String, height: CGFloat, width: CGFloat, depth: CGFloat, price: CGFloat, buyURLString: String, imageURLString: String, category: Category) {
+    init(title: String, height: CGFloat, width: CGFloat, depth: CGFloat, price: CGFloat, buyURLString: String, imageURLString: String, category: Category, popularity: CGFloat) {
         self.title = title
         self.height = height
         self.width = width
@@ -62,6 +65,7 @@ struct Artwork {
         self.buyURLString = buyURLString
         self.imageURLString = imageURLString
         self.category = category
+        self.popularity = popularity
     }
     
     init(with dictionary: Dictionary<String, Any>) {
@@ -73,5 +77,6 @@ struct Artwork {
         buyURLString = dictionary[Keys.buyURLString.rawValue] as? String ?? ""
         imageURLString = dictionary[Keys.imageURLString.rawValue] as? String ?? ""
         category = Category(rawValue: dictionary[Keys.category.rawValue] as? String ?? "") ?? .print
+        popularity = dictionary[Keys.popularity.rawValue] as? CGFloat ?? 0
     }
 }
