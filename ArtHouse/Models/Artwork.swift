@@ -8,6 +8,8 @@
 
 import UIKit
 
+extension Artwork.Category: CaseIterable {}
+
 struct Artwork {
     let title: String
     let height: CGFloat
@@ -21,13 +23,13 @@ struct Artwork {
     let popularity: CGFloat
     
     enum Category: String {
-        case print
-        case framedPrint = "framed-print"
+        case prints
+        case framedPrints = "framed-prints"
         case wallTapestry = "wall-tapestry"
-        case wallHanging = "wall-hanging"
-        case wallMural = "wall-mural"
+        case wallHanging = "wall-hangings"
+        case wallMurals = "wall-murals"
         case woodWallArt = "wood-wall-art"
-        case poster
+        case posters
     }
     
     private enum Keys: String {
@@ -76,7 +78,7 @@ struct Artwork {
         price = dictionary[Keys.price.rawValue] as? CGFloat ?? 0
         buyURLString = dictionary[Keys.buyURLString.rawValue] as? String ?? ""
         imageURLString = dictionary[Keys.imageURLString.rawValue] as? String ?? ""
-        category = Category(rawValue: dictionary[Keys.category.rawValue] as? String ?? "") ?? .print
+        category = Category(rawValue: dictionary[Keys.category.rawValue] as? String ?? "") ?? .prints
         popularity = dictionary[Keys.popularity.rawValue] as? CGFloat ?? 0
     }
 }

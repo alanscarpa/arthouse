@@ -92,7 +92,7 @@ class Uploader {
         
         /// Most popular = 0
         let arts: [Artwork] = [
-            Artwork(title: "butts", height: 8, width: 8, depth: 2, price: 30.99, buyURLString: "https://society6.com/product/butts-e5e_print?curator=thescarpagroup", imageURLString: "https://firebasestorage.googleapis.com/v0/b/arthouse-571c6.appspot.com/o/art-images%2F3.png?alt=media&token=a2957999-a957-4642-a505-a700c1cbcc69", category: .print, popularity: 1)]
+            Artwork(title: "butts", height: 8, width: 8, depth: 2, price: 30.99, buyURLString: "https://society6.com/product/butts-e5e_print?curator=thescarpagroup", imageURLString: "https://firebasestorage.googleapis.com/v0/b/arthouse-571c6.appspot.com/o/art-images%2F3.png?alt=media&token=a2957999-a957-4642-a505-a700c1cbcc69", category: .prints, popularity: 1)]
         
         for art in arts {
             let collection = Firestore.firestore().collection("prints")

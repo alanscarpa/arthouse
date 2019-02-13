@@ -11,21 +11,19 @@ import FirebaseFirestore
 import FirebaseAuthUI
 import FirebaseStorage
 
-class HomeCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class ArtworkCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, ArtworkCollectionViewCellDelegate {
+    
+    var category: Artwork.Category?
+    private var artworks = [Artwork]()
+    
+    // MARK: - View Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpCollectionView()
-        // TODO: add progress hud - you can't proceed in app if you have not signed in yet
-        Auth.auth().signInAnonymously() { [weak self] user, error in
-            guard user != nil, let self = self else { print(error?.localizedDescription ?? ""); return }
-            // TODO: RUN AN UPLOAD FOR ARTWORK THEN COMMENT OUT
-            // Uploader.uploadArtwork()
-        }
-        navigationItem.setHidesBackButton(true, animated: false)
-        let imageView = UIImageView(image: UIImage(named: "title-image"))
-        imageView.contentMode = .scaleAspectFit
-        navigationItem.titleView = imageView
+        downloadArtwork()
+        title = category?.rawValue.capitalized
+        navigationItem.setHidesBackButton(false, animated: false)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -34,31 +32,45 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
     }
     
     private func setUpCollectionView() {
-        collectionView.registerCell(HomeCollectionViewCell.self)
+        collectionView.registerCell(ArtworkCollectionViewCell.self)
         collectionView.backgroundColor = .white
     }
-
+    
+    private func downloadArtwork() {
+        guard let category = category?.rawValue else { return }
+        Firestore.firestore().collection(category).getDocuments() { [weak self] querySnapshot, error in
+            guard error == nil, let self = self, let snapshot = querySnapshot else { print(error?.localizedDescription ?? "Something went wrong. :("); return }
+            for document in snapshot.documents {
+                self.artworks.append(Artwork(with: document.data()))
+            }
+            self.artworks.sort(by: { $0.popularity < $1.popularity })
+            self.collectionView.reloadData()
+        }
+    }
+    
     // MARK: UICollectionViewDataSource
-
+    
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
-
-
+    
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return Artwork.Category.allCases.count
+        return artworks.count
     }
-
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(with: HomeCollectionViewCell.self, for: indexPath)
-        cell.setUpForCategory(Artwork.Category.allCases[indexPath.row])
+        let cell = collectionView.dequeueReusableCell(with: ArtworkCollectionViewCell.self, for: indexPath)
+        cell.setUpWithArtwork(artworks[indexPath.row])
+        cell.delegate = self
         return cell
     }
     
     // MARK: UICollectionViewDelegate
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        RootViewController.shared.presentArtworkVCWithCategory(Artwork.Category.allCases[indexPath.row])
+        guard artworks[indexPath.row].image != nil else { return }
+        RootViewController.shared.presentARVCWithArtwork(artworks[indexPath.row])
     }
     
     // MARK: UICollectionViewDelegateFlowLayout
@@ -70,9 +82,16 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
-
+    
+    // MARK: - HomeCollectionViewCellDelegate
+    
+    func artworkImageDidLoad(image: UIImage, sender: ArtworkCollectionViewCell) {
+        guard let indexPath = collectionView.indexPath(for: sender) else { return }
+        artworks[indexPath.row].image = image
+    }
+    
 }

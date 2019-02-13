@@ -10,8 +10,8 @@
 		4505BBA221B47CC100336295 /* Artwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4505BBA121B47CC100336295 /* Artwork.swift */; };
 		4505BBAB21D05D5900336295 /* HomeCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4505BBA921D05D5900336295 /* HomeCollectionViewController.swift */; };
 		4505BBAC21D05D5900336295 /* HomeCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4505BBAA21D05D5900336295 /* HomeCollectionViewController.xib */; };
-		4505BBAF21D05EA700336295 /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4505BBAD21D05EA700336295 /* HomeCollectionViewCell.swift */; };
-		4505BBB021D05EA700336295 /* HomeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4505BBAE21D05EA700336295 /* HomeCollectionViewCell.xib */; };
+		4505BBAF21D05EA700336295 /* ArtworkCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4505BBAD21D05EA700336295 /* ArtworkCollectionViewCell.swift */; };
+		4505BBB021D05EA700336295 /* ArtworkCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4505BBAE21D05EA700336295 /* ArtworkCollectionViewCell.xib */; };
 		4505BBB221D05F5500336295 /* UICollectionViewCell+AH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4505BBB121D05F5500336295 /* UICollectionViewCell+AH.swift */; };
 		4505BBB421D061EF00336295 /* NSObject+AH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4505BBB321D061EF00336295 /* NSObject+AH.swift */; };
 		455BDE872062ED7A009CA00A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455BDE862062ED7A009CA00A /* AppDelegate.swift */; };
@@ -25,6 +25,10 @@
 		45751AA0206C158A0022D594 /* UIImage+AH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45751A9F206C158A0022D594 /* UIImage+AH.swift */; };
 		45814960207C525C005AE1DE /* ARViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4581495F207C525C005AE1DE /* ARViewController.xib */; };
 		45B1CAB921FEAD960015A6CC /* Uploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B1CAB821FEAD960015A6CC /* Uploader.swift */; };
+		45B1CABD2213A6840015A6CC /* ArtworkCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B1CABB2213A6830015A6CC /* ArtworkCollectionViewController.swift */; };
+		45B1CABE2213A6840015A6CC /* ArtworkCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45B1CABC2213A6840015A6CC /* ArtworkCollectionViewController.xib */; };
+		45B1CAC12213A9DD0015A6CC /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B1CABF2213A9DD0015A6CC /* HomeCollectionViewCell.swift */; };
+		45B1CAC22213A9DD0015A6CC /* HomeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45B1CAC02213A9DD0015A6CC /* HomeCollectionViewCell.xib */; };
 		45C0D61E207927BE00CBBA44 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C0D61C207927BE00CBBA44 /* OnboardingViewController.swift */; };
 		45C0D6222079295300CBBA44 /* EnableCameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C0D6202079295300CBBA44 /* EnableCameraViewController.swift */; };
 		45C0D6232079295300CBBA44 /* EnableCameraViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45C0D6212079295300CBBA44 /* EnableCameraViewController.xib */; };
@@ -46,8 +50,8 @@
 		4505BBA121B47CC100336295 /* Artwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artwork.swift; sourceTree = "<group>"; };
 		4505BBA921D05D5900336295 /* HomeCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewController.swift; sourceTree = "<group>"; };
 		4505BBAA21D05D5900336295 /* HomeCollectionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeCollectionViewController.xib; sourceTree = "<group>"; };
-		4505BBAD21D05EA700336295 /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
-		4505BBAE21D05EA700336295 /* HomeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeCollectionViewCell.xib; sourceTree = "<group>"; };
+		4505BBAD21D05EA700336295 /* ArtworkCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworkCollectionViewCell.swift; sourceTree = "<group>"; };
+		4505BBAE21D05EA700336295 /* ArtworkCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArtworkCollectionViewCell.xib; sourceTree = "<group>"; };
 		4505BBB121D05F5500336295 /* UICollectionViewCell+AH.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+AH.swift"; sourceTree = "<group>"; };
 		4505BBB321D061EF00336295 /* NSObject+AH.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+AH.swift"; sourceTree = "<group>"; };
 		455BDE832062ED7A009CA00A /* ArtHouse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArtHouse.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -63,6 +67,10 @@
 		45751A9F206C158A0022D594 /* UIImage+AH.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+AH.swift"; sourceTree = "<group>"; };
 		4581495F207C525C005AE1DE /* ARViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ARViewController.xib; sourceTree = "<group>"; };
 		45B1CAB821FEAD960015A6CC /* Uploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Uploader.swift; sourceTree = "<group>"; };
+		45B1CABB2213A6830015A6CC /* ArtworkCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworkCollectionViewController.swift; sourceTree = "<group>"; };
+		45B1CABC2213A6840015A6CC /* ArtworkCollectionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArtworkCollectionViewController.xib; sourceTree = "<group>"; };
+		45B1CABF2213A9DD0015A6CC /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
+		45B1CAC02213A9DD0015A6CC /* HomeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeCollectionViewCell.xib; sourceTree = "<group>"; };
 		45C0D61C207927BE00CBBA44 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		45C0D6202079295300CBBA44 /* EnableCameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnableCameraViewController.swift; sourceTree = "<group>"; };
 		45C0D6212079295300CBBA44 /* EnableCameraViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EnableCameraViewController.xib; sourceTree = "<group>"; };
@@ -113,8 +121,8 @@
 			children = (
 				4505BBA921D05D5900336295 /* HomeCollectionViewController.swift */,
 				4505BBAA21D05D5900336295 /* HomeCollectionViewController.xib */,
-				4505BBAD21D05EA700336295 /* HomeCollectionViewCell.swift */,
-				4505BBAE21D05EA700336295 /* HomeCollectionViewCell.xib */,
+				45B1CABF2213A9DD0015A6CC /* HomeCollectionViewCell.swift */,
+				45B1CAC02213A9DD0015A6CC /* HomeCollectionViewCell.xib */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -178,6 +186,17 @@
 			path = AR;
 			sourceTree = "<group>";
 		};
+		45B1CABA2213A62B0015A6CC /* Artwork */ = {
+			isa = PBXGroup;
+			children = (
+				45B1CABB2213A6830015A6CC /* ArtworkCollectionViewController.swift */,
+				45B1CABC2213A6840015A6CC /* ArtworkCollectionViewController.xib */,
+				4505BBAD21D05EA700336295 /* ArtworkCollectionViewCell.swift */,
+				4505BBAE21D05EA700336295 /* ArtworkCollectionViewCell.xib */,
+			);
+			path = Artwork;
+			sourceTree = "<group>";
+		};
 		45C2B4E32151871D00F562D3 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -190,6 +209,7 @@
 		45F7E21F207448AB00C7228E /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				45B1CABA2213A62B0015A6CC /* Artwork */,
 				4505BBA821D05D3200336295 /* Home */,
 				4581495E207C5198005AE1DE /* AR */,
 				45F7E2282074524C00C7228E /* Onboarding */,
@@ -308,10 +328,12 @@
 				455BDE902062ED7A009CA00A /* Assets.xcassets in Resources */,
 				4505BBAC21D05D5900336295 /* HomeCollectionViewController.xib in Resources */,
 				45C0D6232079295300CBBA44 /* EnableCameraViewController.xib in Resources */,
-				4505BBB021D05EA700336295 /* HomeCollectionViewCell.xib in Resources */,
+				4505BBB021D05EA700336295 /* ArtworkCollectionViewCell.xib in Resources */,
 				455BDE8E2062ED7A009CA00A /* Main.storyboard in Resources */,
 				45E4B4BF209BD20D00A286E4 /* GoogleService-Info.plist in Resources */,
 				45C0D6272079297B00CBBA44 /* ChooseArtworkViewController.xib in Resources */,
+				45B1CAC22213A9DD0015A6CC /* HomeCollectionViewCell.xib in Resources */,
+				45B1CABE2213A6840015A6CC /* ArtworkCollectionViewController.xib in Resources */,
 				45814960207C525C005AE1DE /* ARViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -427,6 +449,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				45751AA0206C158A0022D594 /* UIImage+AH.swift in Sources */,
+				45B1CABD2213A6840015A6CC /* ArtworkCollectionViewController.swift in Sources */,
 				455BDE8B2062ED7A009CA00A /* ARViewController.swift in Sources */,
 				4505BBA221B47CC100336295 /* Artwork.swift in Sources */,
 				4505BBAB21D05D5900336295 /* HomeCollectionViewController.swift in Sources */,
@@ -435,10 +458,11 @@
 				45C0D6262079297B00CBBA44 /* ChooseArtworkViewController.swift in Sources */,
 				45C2B4E52151872D00F562D3 /* UserDefaultsManager.swift in Sources */,
 				45B1CAB921FEAD960015A6CC /* Uploader.swift in Sources */,
-				4505BBAF21D05EA700336295 /* HomeCollectionViewCell.swift in Sources */,
+				4505BBAF21D05EA700336295 /* ArtworkCollectionViewCell.swift in Sources */,
 				45F7E222207448CE00C7228E /* RootViewController.swift in Sources */,
 				45C0D61E207927BE00CBBA44 /* OnboardingViewController.swift in Sources */,
 				45F7E22720744D1300C7228E /* UIViewController+AH.swift in Sources */,
+				45B1CAC12213A9DD0015A6CC /* HomeCollectionViewCell.swift in Sources */,
 				45C0D6222079295300CBBA44 /* EnableCameraViewController.swift in Sources */,
 				455BDE872062ED7A009CA00A /* AppDelegate.swift in Sources */,
 				45F7E22520744C9E00C7228E /* UIColor+AH.swift in Sources */,

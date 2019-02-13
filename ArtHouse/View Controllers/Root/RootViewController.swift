@@ -62,6 +62,12 @@ class RootViewController: UIViewController, UINavigationControllerDelegate {
         rootNavigationController.setViewControllers([HomeCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())], animated: true)
     }
     
+    func presentArtworkVCWithCategory(_ category: Artwork.Category) {
+        let artworkCollectionVC = ArtworkCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())
+        artworkCollectionVC.category = category
+        rootNavigationController.pushViewController(artworkCollectionVC, animated: true)
+    }
+    
     func presentARVCWithArtwork(_ artwork: Artwork) {
         rootNavigationController.pushViewController(ARViewController(artwork), animated: true)
     }
