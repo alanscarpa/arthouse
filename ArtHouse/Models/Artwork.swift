@@ -8,7 +8,46 @@
 
 import UIKit
 
-extension Artwork.Category: CaseIterable {}
+extension Artwork.Category: CaseIterable {
+    
+    var title: String {
+        switch self {
+        case .framedPrints:
+            return "Framed Prints"
+        case .posters:
+            return "Posters"
+        case .prints:
+            return "Prints"
+        case .wallHanging:
+            return "Wall Hangings"
+        case .wallMurals:
+            return "Murals"
+        case .wallTapestry:
+            return "Tapestry"
+        case .woodWallArt:
+            return "Wood Wall Art"
+        }
+    }
+    
+    var image: UIImage? {
+        switch self {
+        case .framedPrints:
+            return UIImage(named: "framed")
+        case .posters:
+            return UIImage(named: "poster")
+        case .prints:
+            return UIImage(named: "prints")
+        case .wallHanging:
+            return UIImage(named: "wall-hanging")
+        case .wallMurals:
+            return UIImage(named: "mural")
+        case .wallTapestry:
+            return UIImage(named: "wall-tapestry")
+        case .woodWallArt:
+            return UIImage(named: "wood")
+        }
+    }
+}
 
 struct Artwork {
     let title: String

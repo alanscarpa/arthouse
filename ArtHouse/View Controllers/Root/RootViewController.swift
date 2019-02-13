@@ -42,10 +42,8 @@ class RootViewController: UIViewController, UINavigationControllerDelegate {
     
     private func setUpAppearances() {
         UINavigationBar.appearance().isTranslucent = false
-        UINavigationBar.appearance().barTintColor = .white
         UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
         UINavigationBar.appearance().shadowImage = UIImage()
-        UINavigationBar.appearance().tintColor = .white
     }
     
     // MARK: - Navigation

@@ -11,9 +11,16 @@ import UIKit
 class HomeCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var categoryTitleLabel: UILabel!
+    @IBOutlet weak var categoryImageView: UIImageView!
+    
+    override func prepareForReuse() {
+        categoryTitleLabel.text = nil
+        categoryImageView.image = nil
+    }
     
     func setUpForCategory(_ category: Artwork.Category) {
-        categoryTitleLabel.text = category.rawValue
+        categoryTitleLabel.text = category.title
+        categoryImageView.image = category.image
     }
 
 }

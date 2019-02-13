@@ -22,15 +22,20 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
             // TODO: RUN AN UPLOAD FOR ARTWORK THEN COMMENT OUT
             // Uploader.uploadArtwork()
         }
-        navigationItem.setHidesBackButton(true, animated: false)
-        let imageView = UIImageView(image: UIImage(named: "title-image"))
-        imageView.contentMode = .scaleAspectFit
-        navigationItem.titleView = imageView
+        setTitleImage()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         RootViewController.shared.showNavigationBar = true
+    }
+    
+    // MARK: - Setup
+    
+    private func setTitleImage() {
+        let imageView = UIImageView(image: UIImage(named: "title-image"))
+        imageView.contentMode = .scaleAspectFit
+        navigationItem.titleView = imageView
     }
     
     private func setUpCollectionView() {
@@ -64,7 +69,7 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
     // MARK: UICollectionViewDelegateFlowLayout
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.size.width / 3, height: 250)
+        return CGSize(width: view.frame.size.width / 3, height: 300)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {

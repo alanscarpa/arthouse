@@ -22,7 +22,7 @@ class ArtworkCollectionViewController: UICollectionViewController, UICollectionV
         super.viewDidLoad()
         setUpCollectionView()
         downloadArtwork()
-        title = category?.rawValue.capitalized
+        title = category?.title.capitalized
         navigationItem.setHidesBackButton(false, animated: false)
     }
     
