@@ -49,7 +49,8 @@ extension Artwork.Category: CaseIterable {
     }
 }
 
-struct Artwork {
+class Artwork {
+    let id: String
     let title: String
     let height: CGFloat
     let width: CGFloat
@@ -97,7 +98,8 @@ struct Artwork {
         ]
     }
 
-    init(title: String, height: CGFloat, width: CGFloat, depth: CGFloat, price: CGFloat, buyURLString: String, imageURLString: String, category: Category, popularity: CGFloat) {
+    init(id: String, title: String, height: CGFloat, width: CGFloat, depth: CGFloat, price: CGFloat, buyURLString: String, imageURLString: String, category: Category, popularity: CGFloat) {
+        self.id = id
         self.title = title
         self.height = height
         self.width = width
@@ -109,7 +111,8 @@ struct Artwork {
         self.popularity = popularity
     }
     
-    init(with dictionary: Dictionary<String, Any>) {
+    init(with dictionary: Dictionary<String, Any>, id: String) {
+        self.id = id
         title = dictionary[Keys.title.rawValue] as? String ?? ""
         height = dictionary[Keys.height.rawValue] as? CGFloat ?? 0
         width = dictionary[Keys.width.rawValue] as? CGFloat ?? 0

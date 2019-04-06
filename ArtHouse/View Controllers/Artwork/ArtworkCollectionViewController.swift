@@ -41,7 +41,7 @@ class ArtworkCollectionViewController: UICollectionViewController, UICollectionV
         Firestore.firestore().collection(category).getDocuments() { [weak self] querySnapshot, error in
             guard error == nil, let self = self, let snapshot = querySnapshot else { print(error?.localizedDescription ?? "Something went wrong. :("); return }
             for document in snapshot.documents {
-                self.artworks.append(Artwork(with: document.data()))
+                self.artworks.append(Artwork(with: document.data(), id: document.documentID))
             }
             self.artworks.sort(by: { $0.popularity < $1.popularity })
             self.collectionView.reloadData()
@@ -61,8 +61,7 @@ class ArtworkCollectionViewController: UICollectionViewController, UICollectionV
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(with: ArtworkCollectionViewCell.self, for: indexPath)
-        cell.setUpWithArtwork(artworks[indexPath.row])
-        cell.delegate = self
+        cell.setUpWithArtwork(artworks[indexPath.row], delegate: self)
         return cell
     }
     
@@ -89,9 +88,8 @@ class ArtworkCollectionViewController: UICollectionViewController, UICollectionV
     
     // MARK: - HomeCollectionViewCellDelegate
     
-    func artworkImageDidLoad(image: UIImage, sender: ArtworkCollectionViewCell) {
-        guard let indexPath = collectionView.indexPath(for: sender) else { return }
-        artworks[indexPath.row].image = image
+    func imageDidLoad(image: UIImage, for artworkId: String) {
+        artworks.first(where: { $0.id == artworkId })?.image = image
     }
     
 }

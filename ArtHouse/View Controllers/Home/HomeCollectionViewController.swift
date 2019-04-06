@@ -17,8 +17,8 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
         super.viewDidLoad()
         setUpCollectionView()
         // TODO: add progress hud - you can't proceed in app if you have not signed in yet
-        Auth.auth().signInAnonymously() { [weak self] user, error in
-            guard user != nil, let self = self else { print(error?.localizedDescription ?? ""); return }
+        Auth.auth().signInAnonymously() { user, error in
+            guard user != nil else { print(error?.localizedDescription ?? ""); return }
             // TODO: RUN AN UPLOAD FOR ARTWORK THEN COMMENT OUT
             // Uploader.uploadArtwork()
         }
