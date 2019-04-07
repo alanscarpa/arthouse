@@ -20,8 +20,6 @@ extension Artwork.Category: CaseIterable {
             return "Prints"
         case .wallHanging:
             return "Wall Hangings"
-        case .wallMurals:
-            return "Murals"
         case .wallTapestry:
             return "Tapestry"
         case .woodWallArt:
@@ -39,8 +37,6 @@ extension Artwork.Category: CaseIterable {
             return UIImage(named: "prints")
         case .wallHanging:
             return UIImage(named: "wall-hanging")
-        case .wallMurals:
-            return UIImage(named: "mural")
         case .wallTapestry:
             return UIImage(named: "wall-tapestry")
         case .woodWallArt:
@@ -66,10 +62,9 @@ class Artwork {
         case prints
         case framedPrints = "framed-prints"
         case wallTapestry = "wall-tapestry"
-        case wallHanging = "wall-hangings"
-        case wallMurals = "wall-murals"
-        case woodWallArt = "wood-wall-art"
         case posters
+        case woodWallArt = "wood-wall-art"
+        case wallHanging = "wall-hangings"
     }
     
     private enum Keys: String {
