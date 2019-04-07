@@ -21,7 +21,7 @@ extension Artwork.Category: CaseIterable {
         case .wallHanging:
             return "Wall Hangings"
         case .wallTapestry:
-            return "Tapestry"
+            return "Tapestries"
         case .woodWallArt:
             return "Wood Wall Art"
         }
