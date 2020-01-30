@@ -8,5 +8,5 @@ target 'ArtHouse' do
   pod 'Firebase/Auth'
   pod 'FirebaseUI'
   pod 'FirebaseStorage'
-  pod 'Kingfisher', '~> 5.0'
+  pod 'Kingfisher'
 end
