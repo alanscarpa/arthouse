@@ -10,13 +10,13 @@ import Foundation
 import UIKit
 
 public extension UICollectionView {
-    public func registerCell<T: UICollectionViewCell>(_ cellType: T.Type, bundle: Bundle? = nil) {
+    func registerCell<T: UICollectionViewCell>(_ cellType: T.Type, bundle: Bundle? = nil) {
         let className = cellType.className
         let nib = UINib(nibName: className, bundle: bundle)
         register(nib, forCellWithReuseIdentifier: className)
     }
     
-    public func dequeueReusableCell<T: UICollectionViewCell>(with type: T.Type, for indexPath: IndexPath) -> T {
+    func dequeueReusableCell<T: UICollectionViewCell>(with type: T.Type, for indexPath: IndexPath) -> T {
         return self.dequeueReusableCell(withReuseIdentifier: type.className, for: indexPath) as! T
     }
 }

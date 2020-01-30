@@ -38,7 +38,12 @@ class ArtworkCollectionViewController: UICollectionViewController, UICollectionV
     
     private func downloadArtwork() {
         guard let category = category?.rawValue else { return }
-        Firestore.firestore().collection(category).getDocuments() { [weak self] querySnapshot, error in
+        let db = Firestore.firestore()
+        let settings = db.settings
+        settings.areTimestampsInSnapshotsEnabled = true
+        db.settings = settings
+
+        db.collection(category).getDocuments() { [weak self] querySnapshot, error in
             guard error == nil, let self = self, let snapshot = querySnapshot else { print(error?.localizedDescription ?? "Something went wrong. :("); return }
             for document in snapshot.documents {
                 self.artworks.append(Artwork(with: document.data(), id: document.documentID))

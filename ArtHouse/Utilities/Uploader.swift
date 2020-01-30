@@ -24,7 +24,11 @@ class Uploader {
         let arts: [Artwork] = [
             ]
         for art in arts {
-            let collection = Firestore.firestore().collection(category.rawValue)
+            let db = Firestore.firestore()
+            let settings = db.settings
+            settings.areTimestampsInSnapshotsEnabled = true
+            db.settings = settings
+            let collection = db.collection(category.rawValue)
             collection.addDocument(data: art.dictionary)
         }
     }
