@@ -71,7 +71,7 @@ class OnboardingViewController: UIPageViewController, UIPageViewControllerDataSo
     // MARK: - Helpers
     
     private func indexOfViewController(_ viewController: UIViewController) -> Int? {
-        guard let viewControllerIndex = allViewControllers.index(of: viewController) else { return nil }
+        guard let viewControllerIndex = allViewControllers.firstIndex(of: viewController) else { return nil }
         return viewControllerIndex
     }
     
