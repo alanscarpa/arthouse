@@ -54,6 +54,19 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     
     func setUpUI() {
         buyNowButton.isHidden = true
+
+        // Set up button animation
+        let scaleDelta = CGFloat(0.15)
+        let wiggleOutHorizontally = CGAffineTransform(scaleX: 1.0 + scaleDelta, y: 1.0)
+        let wiggleOutVertically = CGAffineTransform(scaleX: 1.0, y: 1.0 + scaleDelta)
+        UIView.animateKeyframes(withDuration: 1.0, delay: 0.0, options: [.autoreverse, .repeat, .allowUserInteraction], animations: {
+            UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 0.5, animations: {
+                self.buyNowButton.transform = wiggleOutHorizontally
+            })
+            UIView.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0.5, animations: {
+                self.buyNowButton.transform = wiggleOutVertically
+            })
+        })
     }
     
     func setUpSceneView() {
