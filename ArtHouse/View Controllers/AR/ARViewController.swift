@@ -15,6 +15,7 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
     @IBOutlet weak var buyNowButton: UIButton!
+    @IBOutlet weak var instructionsLabel: UILabel!
 
     let artwork: Artwork
     var artworkNode = SCNNode()
@@ -107,6 +108,7 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         
         sceneView.scene.rootNode.addChildNode(artworkNode)
         showBuyButton()
+        hideInstructions()
     }
     
     @objc func panGesture(_ gesture: UIPanGestureRecognizer) {
@@ -137,8 +139,12 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     
     // MARK: - Helpers
     
-    func showBuyButton() {
+    private func showBuyButton() {
         buyNowButton.isHidden = false
+    }
+
+    private func hideInstructions() {
+        instructionsLabel.isHidden = true
     }
     
     // MARK: - Actions

@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina5_9" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -12,6 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="ArtHouse" customModuleProvider="target">
             <connections>
                 <outlet property="buyNowButton" destination="kxn-mj-Qr3" id="qAL-f8-rvO"/>
+                <outlet property="instructionsLabel" destination="iml-yP-4EY" id="QGi-iF-gIE"/>
                 <outlet property="sceneView" destination="NiV-2t-u0H" id="o91-Sb-a2j"/>
                 <outlet property="view" destination="JJl-3l-0Aj" id="2LN-gb-kk1"/>
             </connections>
@@ -50,20 +50,35 @@
                         <action selector="buyNowButtonTapped" destination="-1" eventType="touchUpInside" id="3Kc-A9-pRT"/>
                     </connections>
                 </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iml-yP-4EY">
+                    <rect key="frame" x="16" y="147.33333333333334" width="343" height="116.33333333333334"/>
+                    <string key="text">INSTRUCTIONS:
+
+1) Stand about 3 feet away from your wall.
+2) Tap your screen to place your artwork.
+3) Drag your artwork around to reposition.</string>
+                    <fontDescription key="fontDescription" name="AvenirNext-DemiBoldItalic" family="Avenir Next" pointSize="17"/>
+                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="viM-n3-pht" firstAttribute="leading" secondItem="x1h-s1-6GN" secondAttribute="leading" constant="12" id="Is0-Y2-rzJ"/>
                 <constraint firstAttribute="bottom" secondItem="NiV-2t-u0H" secondAttribute="bottom" id="K9Z-xb-clP"/>
                 <constraint firstItem="viM-n3-pht" firstAttribute="top" secondItem="x1h-s1-6GN" secondAttribute="top" constant="12" id="Oqd-3L-8ml"/>
+                <constraint firstItem="iml-yP-4EY" firstAttribute="centerY" secondItem="x1h-s1-6GN" secondAttribute="centerY" multiplier="0.5" id="RWS-9b-pZl"/>
                 <constraint firstItem="NiV-2t-u0H" firstAttribute="leading" secondItem="JJl-3l-0Aj" secondAttribute="leading" id="UKP-MH-mug"/>
+                <constraint firstItem="iml-yP-4EY" firstAttribute="leading" secondItem="x1h-s1-6GN" secondAttribute="leading" constant="16" id="WER-A5-S9I"/>
                 <constraint firstAttribute="trailing" secondItem="NiV-2t-u0H" secondAttribute="trailing" id="WdP-EB-V62"/>
                 <constraint firstItem="NiV-2t-u0H" firstAttribute="top" secondItem="JJl-3l-0Aj" secondAttribute="top" id="auL-e6-Rd4"/>
                 <constraint firstItem="kxn-mj-Qr3" firstAttribute="centerX" secondItem="NiV-2t-u0H" secondAttribute="centerX" id="dYC-cK-ECq"/>
+                <constraint firstItem="x1h-s1-6GN" firstAttribute="trailing" secondItem="iml-yP-4EY" secondAttribute="trailing" constant="16" id="dee-Ja-n30"/>
                 <constraint firstItem="kxn-mj-Qr3" firstAttribute="bottom" secondItem="x1h-s1-6GN" secondAttribute="bottom" constant="-12" id="dyr-tT-cqJ"/>
+                <constraint firstItem="iml-yP-4EY" firstAttribute="centerX" secondItem="x1h-s1-6GN" secondAttribute="centerX" id="iNv-Vf-AWf"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="x1h-s1-6GN"/>
-            <point key="canvasLocation" x="137.68115942028987" y="111.83035714285714"/>
+            <point key="canvasLocation" x="136.80000000000001" y="111.57635467980296"/>
         </view>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
     </objects>
