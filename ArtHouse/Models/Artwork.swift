@@ -59,10 +59,10 @@ class Artwork {
     let popularity: CGFloat
     
     enum Category: String {
+        case posters
         case prints
         case framedPrints = "framed-prints"
         case wallTapestry = "wall-tapestry"
-        case posters
         case woodWallArt = "wood-wall-art"
         case wallHanging = "wall-hangings"
     }

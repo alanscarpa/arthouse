@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="ArtHouse" customModuleProvider="target">
             <connections>
+                <outlet property="artworkDetailsLabel" destination="Ieu-PI-waG" id="1P9-7a-Jkh"/>
                 <outlet property="buyNowButton" destination="kxn-mj-Qr3" id="qAL-f8-rvO"/>
                 <outlet property="instructionsLabel" destination="iml-yP-4EY" id="QGi-iF-gIE"/>
                 <outlet property="sceneView" destination="NiV-2t-u0H" id="o91-Sb-a2j"/>
@@ -36,7 +37,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kxn-mj-Qr3">
-                    <rect key="frame" x="62.666666666666657" y="717" width="249.99999999999997" height="49"/>
+                    <rect key="frame" x="62.666666666666657" y="705" width="249.99999999999997" height="49"/>
                     <color key="backgroundColor" red="0.4431372549" green="0.75686274509999996" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="250" id="3qO-gr-A4O"/>
@@ -62,9 +63,20 @@
                     <nil key="highlightedColor"/>
                     <size key="shadowOffset" width="0.0" height="1"/>
                 </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ieu-PI-waG" userLabel="Artwork Details Label">
+                    <rect key="frame" x="62.666666666666657" y="645.33333333333337" width="249.99999999999997" height="35.666666666666629"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <string key="text">Artwork Title
+Size: 10x10 in.</string>
+                    <fontDescription key="fontDescription" name="AvenirNext-DemiBoldItalic" family="Avenir Next" pointSize="13"/>
+                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                    <size key="shadowOffset" width="0.0" height="1"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstItem="kxn-mj-Qr3" firstAttribute="top" secondItem="Ieu-PI-waG" secondAttribute="bottom" constant="24" id="Ati-xm-T5f"/>
                 <constraint firstItem="viM-n3-pht" firstAttribute="leading" secondItem="x1h-s1-6GN" secondAttribute="leading" constant="12" id="Is0-Y2-rzJ"/>
                 <constraint firstAttribute="bottom" secondItem="NiV-2t-u0H" secondAttribute="bottom" id="K9Z-xb-clP"/>
                 <constraint firstItem="viM-n3-pht" firstAttribute="top" secondItem="x1h-s1-6GN" secondAttribute="top" constant="12" id="Oqd-3L-8ml"/>
@@ -73,10 +85,12 @@
                 <constraint firstItem="iml-yP-4EY" firstAttribute="leading" secondItem="x1h-s1-6GN" secondAttribute="leading" constant="16" id="WER-A5-S9I"/>
                 <constraint firstAttribute="trailing" secondItem="NiV-2t-u0H" secondAttribute="trailing" id="WdP-EB-V62"/>
                 <constraint firstItem="NiV-2t-u0H" firstAttribute="top" secondItem="JJl-3l-0Aj" secondAttribute="top" id="auL-e6-Rd4"/>
+                <constraint firstItem="Ieu-PI-waG" firstAttribute="centerX" secondItem="kxn-mj-Qr3" secondAttribute="centerX" id="cEj-bd-ezD"/>
                 <constraint firstItem="kxn-mj-Qr3" firstAttribute="centerX" secondItem="NiV-2t-u0H" secondAttribute="centerX" id="dYC-cK-ECq"/>
                 <constraint firstItem="x1h-s1-6GN" firstAttribute="trailing" secondItem="iml-yP-4EY" secondAttribute="trailing" constant="16" id="dee-Ja-n30"/>
-                <constraint firstItem="kxn-mj-Qr3" firstAttribute="bottom" secondItem="x1h-s1-6GN" secondAttribute="bottom" constant="-12" id="dyr-tT-cqJ"/>
+                <constraint firstItem="kxn-mj-Qr3" firstAttribute="bottom" secondItem="x1h-s1-6GN" secondAttribute="bottom" constant="-24" id="dyr-tT-cqJ"/>
                 <constraint firstItem="iml-yP-4EY" firstAttribute="centerX" secondItem="x1h-s1-6GN" secondAttribute="centerX" id="iNv-Vf-AWf"/>
+                <constraint firstItem="Ieu-PI-waG" firstAttribute="width" secondItem="kxn-mj-Qr3" secondAttribute="width" id="y4o-Di-c5m"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="x1h-s1-6GN"/>
             <point key="canvasLocation" x="136.80000000000001" y="111.57635467980296"/>

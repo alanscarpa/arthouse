@@ -16,6 +16,7 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     @IBOutlet var sceneView: ARSCNView!
     @IBOutlet weak var buyNowButton: UIButton!
     @IBOutlet weak var instructionsLabel: UILabel!
+    @IBOutlet weak var artworkDetailsLabel: UILabel!
 
     let artwork: Artwork
     var artworkNode = SCNNode()
@@ -54,6 +55,7 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     
     func setUpUI() {
         buyNowButton.isHidden = true
+        artworkDetailsLabel.isHidden = true
 
         // Set up button animation
         let scaleDelta = CGFloat(0.15)
@@ -120,6 +122,7 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         artworkNode.eulerAngles = newRotation
         
         sceneView.scene.rootNode.addChildNode(artworkNode)
+        showArtworkDetails()
         showBuyButton()
         hideInstructions()
     }
@@ -151,6 +154,15 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     }
     
     // MARK: - Helpers
+
+    private func showArtworkDetails() {
+        artworkDetailsLabel.isHidden = false
+        artworkDetailsLabel.text =
+        """
+        \(artwork.title)
+        Size: \(artwork.width)" W x \(artwork.height)" H
+        """
+    }
     
     private func showBuyButton() {
         buyNowButton.isHidden = false
