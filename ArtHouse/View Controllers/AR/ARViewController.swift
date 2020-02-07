@@ -145,7 +145,8 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         guard artworkNode.parent == nil else { return }
         guard touches.first!.tapCount == 1 else { return }
         guard let touchPoint = touches.first?.location(in: sceneView) else { return }
-        guard let cameraTransform = sceneView.session.currentFrame?.camera.transform else { return }
+        guard let currentFrame = sceneView.session.currentFrame else { return }
+        let cameraTransform = currentFrame.camera.transform
         print(sceneView.session.currentFrame!.camera.eulerAngles.z)
         var translation = matrix_identity_float4x4
         translation.columns.3.z = -1.0
@@ -159,10 +160,10 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         artworkNode = self.artworkNode(position: position)
 
         let pitch: Float = 0
-        let yaw = sceneView.session.currentFrame?.camera.eulerAngles.y
-        let orientationCompensation = sceneView.session.currentFrame!.camera.eulerAngles.z < -0.5 ? Float.pi/2 : 0
+        let yaw = currentFrame.camera.eulerAngles.y
+        let orientationCompensation = currentFrame.camera.eulerAngles.z < -0.5 ? Float.pi/2 : 0
         let roll = sceneView.session.currentFrame!.camera.eulerAngles.z + orientationCompensation
-        let newRotation = SCNVector3Make(pitch, yaw!, roll)
+        let newRotation = SCNVector3Make(pitch, yaw, roll)
         artworkNode.eulerAngles = newRotation
         
         sceneView.scene.rootNode.addChildNode(artworkNode)
