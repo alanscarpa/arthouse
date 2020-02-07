@@ -15,11 +15,8 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
     @IBOutlet weak var buyNowButton: UIButton!
-
     @IBOutlet weak var tutorialLabel: UILabel!
-
     @IBOutlet weak var tutorialButton: UIButton!
-
     @IBOutlet weak var artworkDetailsLabel: UILabel!
 
     let artwork: Artwork
@@ -89,7 +86,7 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         case .standThreeFeet:
             tutorialLabel.text =  """
             STEP \(step.rawValue):
-            Stand 3 feet (0.91 meters) away from the wall.  This is important. The closer to 3 feet from the wall you are, the more accurate the artwork size will be!
+            Stand 3 feet (0.91 meters) away from your wall.  This is will ensure accurate artwork size!
             """
             tutorialButton.titleLabel?.text = "I'm 3 feet from my wall. NEXT!"
             tutorialLabel.isHidden = false
@@ -97,20 +94,16 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         case .tapToPlace:
             tutorialLabel.text =  """
             STEP \(step.rawValue):
-            Now hang your artwork! Just tap a spot on your wall to see the magic.
-
-            If you're 3 feet from your wall, you'll see an accurate size of the artwork. Now you know how it will look in your home before ordering.
+            Now tap a spot on the wall to hang your artwork!
             """
             tutorialLabel.isHidden = false
             tutorialButton.isHidden = true
         case .touchAndDrag:
             tutorialLabel.text = """
             STEP \(step.rawValue):
-            Good job!
+            Use 1 finger to move your artwork.
 
-            Now you can reposition your artwork simply by dragging it. Give it a try.
-
-            NOTE: You can't change the size because this is a real world representation of how it will look on your wall. Feel free to walk around and watch it stay in place!
+            NOTE: You can't resize the artwork. This is a real world representation of how it will look on your wall.
             """
             tutorialLabel.isHidden = false
             tutorialButton.isHidden = true

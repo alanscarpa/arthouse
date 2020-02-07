@@ -54,6 +54,7 @@
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iml-yP-4EY" userLabel="Tutorial Label">
                     <rect key="frame" x="16" y="124.33333333333333" width="343" height="162.66666666666669"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <string key="text">STEP 1:
 Stand 3 feet (0.91 meters) away from the wall.  This is important. The closer to 3 feet from the wall you are, the more accurate the artwork size will be!</string>
                     <fontDescription key="fontDescription" name="AvenirNext-DemiBoldItalic" family="Avenir Next" pointSize="17"/>
