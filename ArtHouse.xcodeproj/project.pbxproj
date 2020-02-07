@@ -24,6 +24,7 @@
 		456CC2D2207C5C610010676C /* UIAlertController+AH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456CC2D1207C5C610010676C /* UIAlertController+AH.swift */; };
 		45751AA0206C158A0022D594 /* UIImage+AH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45751A9F206C158A0022D594 /* UIImage+AH.swift */; };
 		45814960207C525C005AE1DE /* ARViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4581495F207C525C005AE1DE /* ARViewController.xib */; };
+		45AE658323ED9BC0007BE694 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AE658223ED9BC0007BE694 /* SessionManager.swift */; };
 		45B1CAB921FEAD960015A6CC /* Uploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B1CAB821FEAD960015A6CC /* Uploader.swift */; };
 		45B1CABD2213A6840015A6CC /* ArtworkCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B1CABB2213A6830015A6CC /* ArtworkCollectionViewController.swift */; };
 		45B1CABE2213A6840015A6CC /* ArtworkCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45B1CABC2213A6840015A6CC /* ArtworkCollectionViewController.xib */; };
@@ -66,6 +67,7 @@
 		456CC2D1207C5C610010676C /* UIAlertController+AH.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+AH.swift"; sourceTree = "<group>"; };
 		45751A9F206C158A0022D594 /* UIImage+AH.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+AH.swift"; sourceTree = "<group>"; };
 		4581495F207C525C005AE1DE /* ARViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ARViewController.xib; sourceTree = "<group>"; };
+		45AE658223ED9BC0007BE694 /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
 		45B1CAB821FEAD960015A6CC /* Uploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Uploader.swift; sourceTree = "<group>"; };
 		45B1CABB2213A6830015A6CC /* ArtworkCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworkCollectionViewController.swift; sourceTree = "<group>"; };
 		45B1CABC2213A6840015A6CC /* ArtworkCollectionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArtworkCollectionViewController.xib; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 			children = (
 				45C2B4E42151872D00F562D3 /* UserDefaultsManager.swift */,
 				45B1CAB821FEAD960015A6CC /* Uploader.swift */,
+				45AE658223ED9BC0007BE694 /* SessionManager.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -458,6 +461,7 @@
 				45C0D6262079297B00CBBA44 /* ChooseArtworkViewController.swift in Sources */,
 				45C2B4E52151872D00F562D3 /* UserDefaultsManager.swift in Sources */,
 				45B1CAB921FEAD960015A6CC /* Uploader.swift in Sources */,
+				45AE658323ED9BC0007BE694 /* SessionManager.swift in Sources */,
 				4505BBAF21D05EA700336295 /* ArtworkCollectionViewCell.swift in Sources */,
 				45F7E222207448CE00C7228E /* RootViewController.swift in Sources */,
 				45C0D61E207927BE00CBBA44 /* OnboardingViewController.swift in Sources */,

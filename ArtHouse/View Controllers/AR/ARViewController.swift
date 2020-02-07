@@ -15,12 +15,18 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
     @IBOutlet weak var buyNowButton: UIButton!
-    @IBOutlet weak var instructionsLabel: UILabel!
+
+    @IBOutlet weak var tutorialLabel: UILabel!
+
+    @IBOutlet weak var tutorialButton: UIButton!
+
     @IBOutlet weak var artworkDetailsLabel: UILabel!
 
     let artwork: Artwork
     var artworkNode = SCNNode()
-    
+
+    var currentStep = SessionManager.sharedSession.didCompleteArtworkTutorial ? Step.none : Step.standThreeFeet
+
     // MARK: - Init
     
     init(_ artwork: Artwork) {
@@ -53,9 +59,11 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     
     // MARK: - Setup
     
-    func setUpUI() {
+    private func setUpUI() {
         buyNowButton.isHidden = true
         artworkDetailsLabel.isHidden = true
+
+        configureUIForStep(currentStep)
 
         // Set up button animation
         let scaleDelta = CGFloat(0.15)
@@ -69,6 +77,49 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
                 self.buyNowButton.transform = wiggleOutVertically
             })
         })
+    }
+
+    private func configureUIForStep(_ step: Step) {
+        switch step {
+        case .none:
+            [tutorialLabel,
+            tutorialButton,
+            buyNowButton,
+            artworkDetailsLabel].forEach({ $0.isHidden = true})
+        case .standThreeFeet:
+            tutorialLabel.text =  """
+            STEP \(step.rawValue):
+            Stand 3 feet (0.91 meters) away from the wall.  This is important. The closer to 3 feet from the wall you are, the more accurate the artwork size will be!
+            """
+            tutorialButton.titleLabel?.text = "I'm 3 feet from my wall. NEXT!"
+            tutorialLabel.isHidden = false
+            tutorialButton.isHidden = false
+        case .tapToPlace:
+            tutorialLabel.text =  """
+            STEP \(step.rawValue):
+            Now hang your artwork! Just tap a spot on your wall to see the magic.
+
+            If you're 3 feet from your wall, you'll see an accurate size of the artwork. Now you know how it will look in your home before ordering.
+            """
+            tutorialLabel.isHidden = false
+            tutorialButton.isHidden = true
+        case .touchAndDrag:
+            tutorialLabel.text = """
+            STEP \(step.rawValue):
+            Good job!
+
+            Now you can reposition your artwork simply by dragging it. Give it a try.
+
+            NOTE: You can't change the size because this is a real world representation of how it will look on your wall. Feel free to walk around and watch it stay in place!
+            """
+            tutorialLabel.isHidden = false
+            tutorialButton.isHidden = true
+        case .done:
+            tutorialLabel.isHidden = true
+            tutorialButton.isHidden = true
+            showArtworkDetails()
+            showBuyButton()
+        }
     }
     
     func setUpSceneView() {
@@ -122,9 +173,13 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         artworkNode.eulerAngles = newRotation
         
         sceneView.scene.rootNode.addChildNode(artworkNode)
-        showArtworkDetails()
-        showBuyButton()
-        hideInstructions()
+
+        if SessionManager.sharedSession.didCompleteArtworkTutorial {
+            showArtworkDetails()
+            showBuyButton()
+        } else {
+            goToNextStep(from: currentStep)
+        }
     }
     
     @objc func panGesture(_ gesture: UIPanGestureRecognizer) {
@@ -133,6 +188,9 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         if let tappednode = hits.first?.node, let result = hits.first {
             let position = SCNVector3Make(result.worldCoordinates.x, result.worldCoordinates.y, artworkNode.position.z)
             tappednode.position = position
+            if !SessionManager.sharedSession.didCompleteArtworkTutorial {
+                goToNextStep(from: currentStep)
+            }
         }
     }
 
@@ -167,21 +225,63 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     private func showBuyButton() {
         buyNowButton.isHidden = false
     }
-
-    private func hideInstructions() {
-        instructionsLabel.isHidden = true
-    }
     
     // MARK: - Actions
     
     @IBAction func backButtonTapped() {
         RootViewController.shared.popViewController()
     }
-    
+
+    @IBAction func tutorialButtonTapped(_ sender: Any) {
+        goToNextStep(from: currentStep)
+    }
+
     @IBAction func buyNowButtonTapped() {
         guard let buyNowURL = URL(string: artwork.buyURLString) else { return }
         let safariVC = SFSafariViewController(url: buyNowURL)
         safariVC.modalPresentationStyle = .popover
         present(safariVC, animated: true)
+    }
+}
+
+// Step Machine (aka StairMaster)
+
+extension ARViewController {
+    enum Step: Int {
+        // `none` is used when there will be no tutorial flow required.
+        case none
+        case standThreeFeet
+        case tapToPlace
+        case touchAndDrag
+        case done
+    }
+
+    func nextStep(from currentStep: Step) -> Step {
+        switch currentStep {
+        case .standThreeFeet:
+            return .tapToPlace
+        case .tapToPlace:
+            return .touchAndDrag
+        case .touchAndDrag:
+            return .done
+        case .done:
+            // If we get here, then there has been some weird programmer error. But it
+            // won't break the app.
+            return .done
+        case .none:
+            // If we are in a `none` step, then that means there is no tutorial
+            // required and therefore no next steps.
+            return .none
+        }
+    }
+
+    private func goToNextStep(from step: Step) {
+        // We shouldn't be going to a next step if we are done or in a none state.
+        guard currentStep != .done, currentStep != .none else { return }
+        currentStep = nextStep(from: step)
+        configureUIForStep(currentStep)
+        if currentStep == .done {
+            SessionManager.sharedSession.didCompleteArtworkTutorial = true
+        }
     }
 }

@@ -11,6 +11,12 @@ import FirebaseStorage
 import FirebaseFirestore
 import UIKit
 
+//Indigo Mountains
+//https://society6.com/product/indigo-mountains894310_framed-print?curator=thescarpagroup
+//10x12
+//44.99
+
+
 class Uploader {
     static func uploadArtwork() {
         
@@ -21,8 +27,8 @@ class Uploader {
         /// Most popular = 0
         
         /// STEP 3 - CAN ENTER THE SAME ID, IT IS NOT UPLOAD, ONLY CREATED WHEN DOWNLOADED
-        let arts: [Artwork] = [
-            ]
+        let arts: [Artwork] = [Artwork]()
+
         for art in arts {
             let db = Firestore.firestore()
             let settings = db.settings
