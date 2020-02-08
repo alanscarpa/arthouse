@@ -11,7 +11,6 @@ import ARKit
 
 struct ArtworkState {
     enum TutorialProgress {
-        case unstarted
         case standThreeFeetAway
         case tapToPlace
         case touchAndDrag
@@ -42,15 +41,13 @@ struct ArtworkState {
         switch tutorialProgress {
         case .finishedInThisSession, .finishedInAnotherSession:
             return true
-        case .unstarted, .standThreeFeetAway, .tapToPlace, .touchAndDrag:
+        case .standThreeFeetAway, .tapToPlace, .touchAndDrag:
             return false
         }
     }
 
     mutating func updateTutorialProgress() {
         switch tutorialProgress {
-        case .unstarted:
-            tutorialProgress = .standThreeFeetAway
         case .standThreeFeetAway:
             tutorialProgress = .tapToPlace
         case .tapToPlace:
@@ -63,12 +60,12 @@ struct ArtworkState {
     }
 
     mutating func restartTutorial() {
-        tutorialProgress = .unstarted
+        tutorialProgress = .standThreeFeetAway
     }
 
     var tutorialText: String? {
         switch tutorialProgress {
-        case .finishedInAnotherSession, .finishedInThisSession, .unstarted:
+        case .finishedInAnotherSession, .finishedInThisSession:
             return nil
         case .standThreeFeetAway:
             return """
@@ -91,7 +88,7 @@ struct ArtworkState {
 
     var tutorialButtonText: String? {
         switch tutorialProgress {
-        case .finishedInAnotherSession, .finishedInThisSession, .unstarted, .tapToPlace, .touchAndDrag:
+        case .finishedInAnotherSession, .finishedInThisSession, .tapToPlace, .touchAndDrag:
             return nil
         case .standThreeFeetAway:
             return "I'm 3 feet from my wall. NEXT!"
@@ -100,8 +97,7 @@ struct ArtworkState {
 
     var shouldShowPurchaseButton: Bool {
         switch (tutorialProgress, hasMovedFromInitialPosition, realWorldPosition)  {
-        case (.unstarted, _, _),
-             (.standThreeFeetAway, _, _),
+        case (.standThreeFeetAway, _, _),
              (.tapToPlace, _, _),
              (.touchAndDrag, _, _):
             return false

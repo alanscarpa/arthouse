@@ -34,9 +34,8 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     
     init(_ artwork: Artwork) {
         self.artwork = artwork
-        let tutorialProgress: ArtworkState.TutorialProgress  = SessionManager.sharedSession.didCompleteArtworkTutorial ? .finishedInAnotherSession : .unstarted
+        let tutorialProgress: ArtworkState.TutorialProgress  = SessionManager.sharedSession.didCompleteArtworkTutorial ? .finishedInAnotherSession : .standThreeFeetAway
         artworkState = ArtworkState(tutorialProgress: tutorialProgress)
-        artworkState.updateTutorialProgress()
         super.init(nibName: nil, bundle: nil)
     }
     
