@@ -27,10 +27,13 @@ struct ArtworkState {
         }
     }
 
+    var detailsText: String
+
     private(set) var hasMovedFromInitialPosition = false
 
-    init(tutorialProgress: TutorialProgress) {
+    init(tutorialProgress: TutorialProgress, artwork: Artwork) {
         self.tutorialProgress = tutorialProgress
+        self.detailsText = "\(artwork.title)\nSize: \(artwork.width) W x \(artwork.height) H in."
     }
 
     mutating func updateArtworkPosition(_ position: SCNVector3) {

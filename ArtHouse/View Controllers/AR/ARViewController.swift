@@ -35,7 +35,7 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     init(_ artwork: Artwork) {
         self.artwork = artwork
         let tutorialProgress: ArtworkState.TutorialProgress  = SessionManager.sharedSession.didCompleteArtworkTutorial ? .finishedInAnotherSession : .standThreeFeetAway
-        artworkState = ArtworkState(tutorialProgress: tutorialProgress)
+        artworkState = ArtworkState(tutorialProgress: tutorialProgress, artwork: artwork)
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -68,8 +68,9 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         tutorialLabel.isHidden = artworkState.tutorialText == nil
         tutorialButton.titleLabel?.text = artworkState.tutorialButtonText
         tutorialButton.isHidden = artworkState.tutorialButtonText == nil
-        buyNowButton.isHidden = !artworkState.shouldShowPurchaseButton
+        artworkDetailsLabel.text = artworkState.detailsText
         artworkDetailsLabel.isHidden = !artworkState.shouldShowArtDetails
+        buyNowButton.isHidden = !artworkState.shouldShowPurchaseButton
     }
     
     // MARK: - Setup
