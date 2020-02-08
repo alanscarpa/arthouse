@@ -8,43 +8,6 @@
 
 import UIKit
 
-extension Artwork.Category: CaseIterable {
-    
-    var title: String {
-        switch self {
-        case .framedPrints:
-            return "Framed Prints"
-        case .posters:
-            return "Posters"
-        case .prints:
-            return "Prints"
-        case .wallHanging:
-            return "Wall Hangings"
-        case .wallTapestry:
-            return "Tapestries"
-        case .woodWallArt:
-            return "Wood Wall Art"
-        }
-    }
-    
-    var image: UIImage? {
-        switch self {
-        case .framedPrints:
-            return UIImage(named: "framed")
-        case .posters:
-            return UIImage(named: "poster")
-        case .prints:
-            return UIImage(named: "prints")
-        case .wallHanging:
-            return UIImage(named: "wall-hanging")
-        case .wallTapestry:
-            return UIImage(named: "wall-tapestry")
-        case .woodWallArt:
-            return UIImage(named: "wood")
-        }
-    }
-}
-
 class Artwork {
     let id: String
     let title: String
@@ -117,5 +80,41 @@ class Artwork {
         imageURLString = dictionary[Keys.imageURLString.rawValue] as? String ?? ""
         category = Category(rawValue: dictionary[Keys.category.rawValue] as? String ?? "") ?? .prints
         popularity = dictionary[Keys.popularity.rawValue] as? CGFloat ?? 0
+    }
+}
+
+extension Artwork.Category: CaseIterable {
+    var title: String {
+        switch self {
+        case .framedPrints:
+            return "Framed Prints"
+        case .posters:
+            return "Posters"
+        case .prints:
+            return "Prints"
+        case .wallHanging:
+            return "Wall Hangings"
+        case .wallTapestry:
+            return "Tapestries"
+        case .woodWallArt:
+            return "Wood Wall Art"
+        }
+    }
+
+    var image: UIImage? {
+        switch self {
+        case .framedPrints:
+            return UIImage(named: "framed")
+        case .posters:
+            return UIImage(named: "poster")
+        case .prints:
+            return UIImage(named: "prints")
+        case .wallHanging:
+            return UIImage(named: "wall-hanging")
+        case .wallTapestry:
+            return UIImage(named: "wall-tapestry")
+        case .woodWallArt:
+            return UIImage(named: "wood")
+        }
     }
 }

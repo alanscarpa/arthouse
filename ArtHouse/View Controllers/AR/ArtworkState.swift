@@ -9,12 +9,6 @@
 import Foundation
 import ARKit
 
-struct ArtworkSize {
-    typealias Inches = CGFloat
-    let width: Inches
-    let height: Inches
-}
-
 struct ArtworkState {
     enum TutorialProgress {
         case unstarted
@@ -27,8 +21,6 @@ struct ArtworkState {
 
     private(set) var tutorialProgress: TutorialProgress
 
-    var size: ArtworkSize
-
     var realWorldPosition: SCNVector3? {
         didSet {
             guard oldValue != nil else { return }
@@ -38,9 +30,8 @@ struct ArtworkState {
 
     private(set) var hasMovedFromInitialPosition = false
 
-    init(tutorialProgress: TutorialProgress, size: ArtworkSize) {
+    init(tutorialProgress: TutorialProgress) {
         self.tutorialProgress = tutorialProgress
-        self.size = size
     }
 
     mutating func updateArtworkPosition(_ position: SCNVector3) {

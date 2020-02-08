@@ -35,8 +35,7 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     init(_ artwork: Artwork) {
         self.artwork = artwork
         let tutorialProgress: ArtworkState.TutorialProgress  = SessionManager.sharedSession.didCompleteArtworkTutorial ? .finishedInAnotherSession : .unstarted
-        let artworkSize = ArtworkSize(width: artwork.width, height: artwork.height)
-        artworkState = ArtworkState(tutorialProgress: tutorialProgress, size: artworkSize)
+        artworkState = ArtworkState(tutorialProgress: tutorialProgress)
         artworkState.updateTutorialProgress()
         super.init(nibName: nil, bundle: nil)
     }
@@ -120,12 +119,12 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard artworkNode.parent == nil else { return }
-        guard touches.first!.tapCount == 1 else { return }
+        guard touches.first?.tapCount == 1 else { return }
         guard let touchPoint = touches.first?.location(in: sceneView) else { return }
         guard let currentFrame = sceneView.session.currentFrame else { return }
 
         let cameraTransform = currentFrame.camera.transform
-        print(sceneView.session.currentFrame!.camera.eulerAngles.z)
+        print(sceneView.session.currentFrame?.camera.eulerAngles.z ?? "No camera transform frame")
         var translation = matrix_identity_float4x4
         translation.columns.3.z = -1.0
         let pointTransform = matrix_multiply(cameraTransform, translation)
