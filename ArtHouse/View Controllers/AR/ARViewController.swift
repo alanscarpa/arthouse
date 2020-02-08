@@ -23,10 +23,10 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     var artworkNode = SCNNode()
 
     // This is the value that will determine our UI state
-    var artworkState: ArtworkState {
+    var viewModel: ARViewControllerViewModel {
         didSet {
             configureUI()
-            SessionManager.sharedSession.didCompleteArtworkTutorial = artworkState.didCompleteTutorial
+            SessionManager.sharedSession.didCompleteArtworkTutorial = viewModel.didCompleteTutorial
         }
     }
 
@@ -34,8 +34,8 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     
     init(_ artwork: Artwork) {
         self.artwork = artwork
-        let tutorialProgress: ArtworkState.TutorialProgress  = SessionManager.sharedSession.didCompleteArtworkTutorial ? .finishedInAnotherSession : .standThreeFeetAway
-        artworkState = ArtworkState(tutorialProgress: tutorialProgress, artwork: artwork)
+        let tutorialProgress: ARViewControllerViewModel.TutorialProgress  = SessionManager.sharedSession.didCompleteArtworkTutorial ? .finishedInAnotherSession : .standThreeFeetAway
+        viewModel = ARViewControllerViewModel(tutorialProgress: tutorialProgress, artwork: artwork)
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -64,13 +64,13 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     }
 
     private func configureUI() {
-        tutorialLabel.text = artworkState.tutorialText
-        tutorialLabel.isHidden = artworkState.tutorialText == nil
-        tutorialButton.titleLabel?.text = artworkState.tutorialButtonText
-        tutorialButton.isHidden = artworkState.tutorialButtonText == nil
-        artworkDetailsLabel.text = artworkState.detailsText
-        artworkDetailsLabel.isHidden = !artworkState.shouldShowArtDetails
-        buyNowButton.isHidden = !artworkState.shouldShowPurchaseButton
+        tutorialLabel.text = viewModel.tutorialText
+        tutorialLabel.isHidden = viewModel.tutorialText == nil
+        tutorialButton.titleLabel?.text = viewModel.tutorialButtonText
+        tutorialButton.isHidden = viewModel.tutorialButtonText == nil
+        artworkDetailsLabel.text = viewModel.detailsText
+        artworkDetailsLabel.isHidden = !viewModel.shouldShowArtDetails
+        buyNowButton.isHidden = !viewModel.shouldShowPurchaseButton
     }
     
     // MARK: - Setup
@@ -143,8 +143,8 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         artworkNode.eulerAngles = newRotation
         sceneView.scene.rootNode.addChildNode(artworkNode)
 
-        artworkState.updateArtworkPosition(position)
-        artworkState.updateTutorialProgress()
+        viewModel.updateArtworkPosition(position)
+        viewModel.updateTutorialProgress()
     }
     
     @objc func panGesture(_ gesture: UIPanGestureRecognizer) {
@@ -152,8 +152,8 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         if let tappednode = hits.first?.node, let result = hits.first {
             let position = SCNVector3Make(result.worldCoordinates.x, result.worldCoordinates.y, artworkNode.position.z)
             tappednode.position = position
-            artworkState.updateArtworkPosition(position)
-            artworkState.updateTutorialProgress()
+            viewModel.updateArtworkPosition(position)
+            viewModel.updateTutorialProgress()
         }
     }
 
@@ -181,7 +181,7 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     }
 
     @IBAction func tutorialButtonTapped(_ sender: Any) {
-        artworkState.updateTutorialProgress()
+        viewModel.updateTutorialProgress()
     }
 
     @IBAction func buyNowButtonTapped() {

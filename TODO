@@ -2,4 +2,5 @@
 - Add option to change sizes
 	- Add sizes
 - Scrape hundreds of items
-- Make the instructions progressive, first time every session
+- [x] Make the instructions progressive, first time every session
+	- Make tutorial prettier

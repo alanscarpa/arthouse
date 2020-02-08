@@ -25,7 +25,7 @@
 		45751AA0206C158A0022D594 /* UIImage+AH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45751A9F206C158A0022D594 /* UIImage+AH.swift */; };
 		45814960207C525C005AE1DE /* ARViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4581495F207C525C005AE1DE /* ARViewController.xib */; };
 		45AE658323ED9BC0007BE694 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AE658223ED9BC0007BE694 /* SessionManager.swift */; };
-		45AE658523EE0D89007BE694 /* ArtworkState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AE658423EE0D89007BE694 /* ArtworkState.swift */; };
+		45AE658523EE0D89007BE694 /* ARViewControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AE658423EE0D89007BE694 /* ARViewControllerViewModel.swift */; };
 		45B1CAB921FEAD960015A6CC /* Uploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B1CAB821FEAD960015A6CC /* Uploader.swift */; };
 		45B1CABD2213A6840015A6CC /* ArtworkCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B1CABB2213A6830015A6CC /* ArtworkCollectionViewController.swift */; };
 		45B1CABE2213A6840015A6CC /* ArtworkCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45B1CABC2213A6840015A6CC /* ArtworkCollectionViewController.xib */; };
@@ -69,7 +69,7 @@
 		45751A9F206C158A0022D594 /* UIImage+AH.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+AH.swift"; sourceTree = "<group>"; };
 		4581495F207C525C005AE1DE /* ARViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ARViewController.xib; sourceTree = "<group>"; };
 		45AE658223ED9BC0007BE694 /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
-		45AE658423EE0D89007BE694 /* ArtworkState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworkState.swift; sourceTree = "<group>"; };
+		45AE658423EE0D89007BE694 /* ARViewControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewControllerViewModel.swift; sourceTree = "<group>"; };
 		45B1CAB821FEAD960015A6CC /* Uploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Uploader.swift; sourceTree = "<group>"; };
 		45B1CABB2213A6830015A6CC /* ArtworkCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworkCollectionViewController.swift; sourceTree = "<group>"; };
 		45B1CABC2213A6840015A6CC /* ArtworkCollectionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArtworkCollectionViewController.xib; sourceTree = "<group>"; };
@@ -186,7 +186,7 @@
 			children = (
 				455BDE8A2062ED7A009CA00A /* ARViewController.swift */,
 				4581495F207C525C005AE1DE /* ARViewController.xib */,
-				45AE658423EE0D89007BE694 /* ArtworkState.swift */,
+				45AE658423EE0D89007BE694 /* ARViewControllerViewModel.swift */,
 			);
 			path = AR;
 			sourceTree = "<group>";
@@ -474,7 +474,7 @@
 				455BDE872062ED7A009CA00A /* AppDelegate.swift in Sources */,
 				45F7E22520744C9E00C7228E /* UIColor+AH.swift in Sources */,
 				45C0D62A2079299000CBBA44 /* PositionYourselfViewController.swift in Sources */,
-				45AE658523EE0D89007BE694 /* ArtworkState.swift in Sources */,
+				45AE658523EE0D89007BE694 /* ARViewControllerViewModel.swift in Sources */,
 				4505BBB421D061EF00336295 /* NSObject+AH.swift in Sources */,
 				456CC2D2207C5C610010676C /* UIAlertController+AH.swift in Sources */,
 			);

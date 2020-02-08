@@ -1,5 +1,5 @@
 //
-//  something.swift
+//  ARViewControllerViewModel.swift
 //  ArtHouse
 //
 //  Created by Alan Scarpa on 2/7/20.
@@ -9,7 +9,8 @@
 import Foundation
 import ARKit
 
-struct ArtworkState {
+struct ARViewControllerViewModel {
+
     enum TutorialProgress {
         case standThreeFeetAway
         case tapToPlace
