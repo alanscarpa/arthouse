@@ -53,7 +53,7 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iml-yP-4EY" userLabel="Tutorial Label">
-                    <rect key="frame" x="16" y="124.33333333333333" width="343" height="162.66666666666669"/>
+                    <rect key="frame" x="16" y="129" width="343" height="162.66666666666663"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <string key="text">STEP 1:
 Stand 3 feet (0.91 meters) away from the wall.  This is important. The closer to 3 feet from the wall you are, the more accurate the artwork size will be!</string>
@@ -73,7 +73,7 @@ Size: 10x10 in.</string>
                     <size key="shadowOffset" width="0.0" height="1"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fUh-zE-7dT" userLabel="Tutorial Button">
-                    <rect key="frame" x="76" y="321" width="223" height="49"/>
+                    <rect key="frame" x="76" y="325.66666666666669" width="223" height="49"/>
                     <color key="backgroundColor" red="0.4431372549" green="0.75686274509999996" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
                     <state key="normal" title="I'm 3 feet from my wall. NEXT!">
@@ -91,7 +91,6 @@ Size: 10x10 in.</string>
                 <constraint firstAttribute="bottom" secondItem="NiV-2t-u0H" secondAttribute="bottom" id="K9Z-xb-clP"/>
                 <constraint firstItem="fUh-zE-7dT" firstAttribute="top" secondItem="iml-yP-4EY" secondAttribute="bottom" constant="34" id="KYC-L8-R9F"/>
                 <constraint firstItem="viM-n3-pht" firstAttribute="top" secondItem="x1h-s1-6GN" secondAttribute="top" constant="12" id="Oqd-3L-8ml"/>
-                <constraint firstItem="iml-yP-4EY" firstAttribute="centerY" secondItem="x1h-s1-6GN" secondAttribute="centerY" multiplier="0.5" id="RWS-9b-pZl"/>
                 <constraint firstItem="NiV-2t-u0H" firstAttribute="leading" secondItem="JJl-3l-0Aj" secondAttribute="leading" id="UKP-MH-mug"/>
                 <constraint firstItem="iml-yP-4EY" firstAttribute="leading" secondItem="x1h-s1-6GN" secondAttribute="leading" constant="16" id="WER-A5-S9I"/>
                 <constraint firstAttribute="trailing" secondItem="NiV-2t-u0H" secondAttribute="trailing" id="WdP-EB-V62"/>
@@ -99,6 +98,7 @@ Size: 10x10 in.</string>
                 <constraint firstItem="Ieu-PI-waG" firstAttribute="centerX" secondItem="kxn-mj-Qr3" secondAttribute="centerX" id="cEj-bd-ezD"/>
                 <constraint firstItem="kxn-mj-Qr3" firstAttribute="centerX" secondItem="NiV-2t-u0H" secondAttribute="centerX" id="dYC-cK-ECq"/>
                 <constraint firstItem="x1h-s1-6GN" firstAttribute="trailing" secondItem="iml-yP-4EY" secondAttribute="trailing" constant="16" id="dee-Ja-n30"/>
+                <constraint firstItem="iml-yP-4EY" firstAttribute="top" secondItem="viM-n3-pht" secondAttribute="bottom" constant="24" id="dnC-GU-94w"/>
                 <constraint firstItem="fUh-zE-7dT" firstAttribute="height" secondItem="kxn-mj-Qr3" secondAttribute="height" id="dwA-db-eti"/>
                 <constraint firstItem="kxn-mj-Qr3" firstAttribute="bottom" secondItem="x1h-s1-6GN" secondAttribute="bottom" constant="-24" id="dyr-tT-cqJ"/>
                 <constraint firstItem="fUh-zE-7dT" firstAttribute="centerX" secondItem="iml-yP-4EY" secondAttribute="centerX" id="eBx-O9-OzH"/>

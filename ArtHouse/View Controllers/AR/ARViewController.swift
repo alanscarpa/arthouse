@@ -22,12 +22,22 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     let artwork: Artwork
     var artworkNode = SCNNode()
 
-    var currentStep = SessionManager.sharedSession.didCompleteArtworkTutorial ? Step.none : Step.standThreeFeet
+    // This is the value that will determine our UI state
+    var artworkState: ArtworkState {
+        didSet {
+            configureUI()
+            SessionManager.sharedSession.didCompleteArtworkTutorial = artworkState.didCompleteTutorial
+        }
+    }
 
     // MARK: - Init
     
     init(_ artwork: Artwork) {
         self.artwork = artwork
+        let tutorialProgress: ArtworkState.TutorialProgress  = SessionManager.sharedSession.didCompleteArtworkTutorial ? .finishedInAnotherSession : .unstarted
+        let artworkSize = ArtworkSize(width: artwork.width, height: artwork.height)
+        artworkState = ArtworkState(tutorialProgress: tutorialProgress, size: artworkSize)
+        artworkState.updateTutorialProgress()
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -39,7 +49,8 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUpUI()
+        configureUI()
+        setUpBuyNowButtonAnimation()
         setUpSceneView()
     }
     
@@ -53,16 +64,19 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         super.viewWillDisappear(animated)
         sceneView.session.pause()
     }
+
+    private func configureUI() {
+        tutorialLabel.text = artworkState.tutorialText
+        tutorialLabel.isHidden = artworkState.tutorialText == nil
+        tutorialButton.titleLabel?.text = artworkState.tutorialButtonText
+        tutorialButton.isHidden = artworkState.tutorialButtonText == nil
+        buyNowButton.isHidden = !artworkState.shouldShowPurchaseButton
+        artworkDetailsLabel.isHidden = !artworkState.shouldShowArtDetails
+    }
     
     // MARK: - Setup
     
-    private func setUpUI() {
-        buyNowButton.isHidden = true
-        artworkDetailsLabel.isHidden = true
-
-        configureUIForStep(currentStep)
-
-        // Set up button animation
+    private func setUpBuyNowButtonAnimation() {
         let scaleDelta = CGFloat(0.15)
         let wiggleOutHorizontally = CGAffineTransform(scaleX: 1.0 + scaleDelta, y: 1.0)
         let wiggleOutVertically = CGAffineTransform(scaleX: 1.0, y: 1.0 + scaleDelta)
@@ -76,49 +90,12 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         })
     }
 
-    private func configureUIForStep(_ step: Step) {
-        switch step {
-        case .none:
-            [tutorialLabel,
-            tutorialButton,
-            buyNowButton,
-            artworkDetailsLabel].forEach({ $0.isHidden = true})
-        case .standThreeFeet:
-            tutorialLabel.text =  """
-            STEP \(step.rawValue):
-            Stand 3 feet (0.91 meters) away from your wall.  This is will ensure accurate artwork size!
-            """
-            tutorialButton.titleLabel?.text = "I'm 3 feet from my wall. NEXT!"
-            tutorialLabel.isHidden = false
-            tutorialButton.isHidden = false
-        case .tapToPlace:
-            tutorialLabel.text =  """
-            STEP \(step.rawValue):
-            Now tap a spot on the wall to hang your artwork!
-            """
-            tutorialLabel.isHidden = false
-            tutorialButton.isHidden = true
-        case .touchAndDrag:
-            tutorialLabel.text = """
-            STEP \(step.rawValue):
-            Use 1 finger to move your artwork.
-
-            NOTE: You can't resize the artwork. This is a real world representation of how it will look on your wall.
-            """
-            tutorialLabel.isHidden = false
-            tutorialButton.isHidden = true
-        case .done:
-            tutorialLabel.isHidden = true
-            tutorialButton.isHidden = true
-            showArtworkDetails()
-            showBuyButton()
-        }
-    }
-    
     func setUpSceneView() {
         sceneView.delegate = self
         sceneView.scene = SCNScene()
-        sceneView.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(panGesture(_:))))
+        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(panGesture(_:)))
+        panGestureRecognizer.minimumNumberOfTouches = 1
+        sceneView.addGestureRecognizer(panGestureRecognizer)
     }
     
     func setUpARWorldTrackingConfiguration() {
@@ -146,6 +123,7 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         guard touches.first!.tapCount == 1 else { return }
         guard let touchPoint = touches.first?.location(in: sceneView) else { return }
         guard let currentFrame = sceneView.session.currentFrame else { return }
+
         let cameraTransform = currentFrame.camera.transform
         print(sceneView.session.currentFrame!.camera.eulerAngles.z)
         var translation = matrix_identity_float4x4
@@ -156,7 +134,6 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
             pointTransform.columns.3.y,
             pointTransform.columns.3.z)).z
         let position = sceneView.unprojectPoint(SCNVector3Make(Float(touchPoint.x), Float(touchPoint.y), normalizedZValue))
-        
         artworkNode = self.artworkNode(position: position)
 
         let pitch: Float = 0
@@ -165,26 +142,19 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         let roll = sceneView.session.currentFrame!.camera.eulerAngles.z + orientationCompensation
         let newRotation = SCNVector3Make(pitch, yaw, roll)
         artworkNode.eulerAngles = newRotation
-        
         sceneView.scene.rootNode.addChildNode(artworkNode)
 
-        if SessionManager.sharedSession.didCompleteArtworkTutorial {
-            showArtworkDetails()
-            showBuyButton()
-        } else {
-            goToNextStep(from: currentStep)
-        }
+        artworkState.updateArtworkPosition(position)
+        artworkState.updateTutorialProgress()
     }
     
     @objc func panGesture(_ gesture: UIPanGestureRecognizer) {
-        gesture.minimumNumberOfTouches = 1
         let hits = self.sceneView.hitTest(gesture.location(in: gesture.view), options: nil)
         if let tappednode = hits.first?.node, let result = hits.first {
             let position = SCNVector3Make(result.worldCoordinates.x, result.worldCoordinates.y, artworkNode.position.z)
             tappednode.position = position
-            if !SessionManager.sharedSession.didCompleteArtworkTutorial {
-                goToNextStep(from: currentStep)
-            }
+            artworkState.updateArtworkPosition(position)
+            artworkState.updateTutorialProgress()
         }
     }
 
@@ -205,21 +175,6 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         
     }
     
-    // MARK: - Helpers
-
-    private func showArtworkDetails() {
-        artworkDetailsLabel.isHidden = false
-        artworkDetailsLabel.text =
-        """
-        \(artwork.title)
-        Size: \(artwork.width)" W x \(artwork.height)" H
-        """
-    }
-    
-    private func showBuyButton() {
-        buyNowButton.isHidden = false
-    }
-    
     // MARK: - Actions
     
     @IBAction func backButtonTapped() {
@@ -227,7 +182,7 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     }
 
     @IBAction func tutorialButtonTapped(_ sender: Any) {
-        goToNextStep(from: currentStep)
+        artworkState.updateTutorialProgress()
     }
 
     @IBAction func buyNowButtonTapped() {
@@ -235,47 +190,5 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         let safariVC = SFSafariViewController(url: buyNowURL)
         safariVC.modalPresentationStyle = .popover
         present(safariVC, animated: true)
-    }
-}
-
-// Step Machine (aka StairMaster)
-
-extension ARViewController {
-    enum Step: Int {
-        // `none` is used when there will be no tutorial flow required.
-        case none
-        case standThreeFeet
-        case tapToPlace
-        case touchAndDrag
-        case done
-    }
-
-    func nextStep(from currentStep: Step) -> Step {
-        switch currentStep {
-        case .standThreeFeet:
-            return .tapToPlace
-        case .tapToPlace:
-            return .touchAndDrag
-        case .touchAndDrag:
-            return .done
-        case .done:
-            // If we get here, then there has been some weird programmer error. But it
-            // won't break the app.
-            return .done
-        case .none:
-            // If we are in a `none` step, then that means there is no tutorial
-            // required and therefore no next steps.
-            return .none
-        }
-    }
-
-    private func goToNextStep(from step: Step) {
-        // We shouldn't be going to a next step if we are done or in a none state.
-        guard currentStep != .done, currentStep != .none else { return }
-        currentStep = nextStep(from: step)
-        configureUIForStep(currentStep)
-        if currentStep == .done {
-            SessionManager.sharedSession.didCompleteArtworkTutorial = true
-        }
     }
 }
