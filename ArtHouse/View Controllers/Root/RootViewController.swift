@@ -12,6 +12,7 @@ class RootViewController: UIViewController, UINavigationControllerDelegate {
     
     static let shared = RootViewController()
     private let rootNavigationController = UINavigationController()
+
     var showNavigationBar = true {
         didSet {
             rootNavigationController.setNavigationBarHidden(!showNavigationBar, animated: true)
@@ -53,7 +54,7 @@ class RootViewController: UIViewController, UINavigationControllerDelegate {
     }
     
     func goToOnboardingVC() {
-        rootNavigationController.setViewControllers([OnboardingViewController()], animated: true)
+        rootNavigationController.setViewControllers([OnboardingPageViewController()], animated: true)
     }
     
     func goToHomeVC() {

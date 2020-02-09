@@ -9,7 +9,5 @@
 import UIKit
 
 class OnboardingChildViewController: UIViewController {
-
     weak var delegate: OnboardingDelegate?
-
 }

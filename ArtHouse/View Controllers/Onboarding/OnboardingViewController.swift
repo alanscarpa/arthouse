@@ -7,10 +7,12 @@
 //
 
 import UIKit
+
 protocol OnboardingDelegate: class {
     func nextButtonTapped()
 }
-class OnboardingViewController: UIPageViewController, UIPageViewControllerDataSource, OnboardingDelegate {
+
+class OnboardingPageViewController: UIPageViewController, UIPageViewControllerDataSource, OnboardingDelegate {
     
     lazy var allViewControllers: [UIViewController] = {
         let enableVC = EnableCameraViewController()
