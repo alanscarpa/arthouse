@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14111" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -21,20 +19,20 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="holding-phone" translatesAutoresizingMaskIntoConstraints="NO" id="HUq-KM-dOs">
-                    <rect key="frame" x="41.5" y="54" width="292" height="300"/>
+                    <rect key="frame" x="41.5" y="34" width="292" height="300"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="300" id="2o0-3g-LBI"/>
                         <constraint firstAttribute="width" constant="292" id="Zds-av-eyb"/>
                     </constraints>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stand 3 - 5 feet from your wall to get an accurate relative size of your art." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n27-di-kTW">
-                    <rect key="frame" x="41.5" y="378" width="292" height="82"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stand 3 feet from your wall to get an accurate relative size of your art." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n27-di-kTW">
+                    <rect key="frame" x="41.5" y="358" width="292" height="82"/>
                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="20"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1jr-P6-zR7">
-                    <rect key="frame" x="41" y="484" width="292" height="48"/>
+                    <rect key="frame" x="41.5" y="464" width="292" height="48"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="48" id="k1P-8Z-cnf"/>
                     </constraints>
@@ -61,6 +59,6 @@
         </view>
     </objects>
     <resources>
-        <image name="holding-phone" width="2453" height="1637"/>
+        <image name="holding-phone" width="2453.333251953125" height="1637.3333740234375"/>
     </resources>
 </document>

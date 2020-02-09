@@ -11,17 +11,28 @@ import Photos
 
 class EnableCameraViewController: OnboardingChildViewController {
     
+    @IBOutlet weak var enableCameraButton: UIButton!
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        enableCameraButton.roundCorners()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if AVCaptureDevice.authorizationStatus(for: .video) == .authorized {
+            self.delegate?.nextButtonTapped()
+        }
+    }
+    
     @IBAction func nextButtonTapped() {
-        // TODO: PRESENT CAMERA PERMISSION,
-            // IF ACCEPTED, TRIGGER DELEGATE
-            // IF DENIED, CHANGE TEXT, AND PREVENT MOVING FORWARD, THEN CHECK FOR CAMERA PERMISSIONS ON VIEWWILLAPPEAR
         guard UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.camera) else {
             let alertVC = UIAlertController.simpleAlert(withTitle: "No Camera", message: "You are unable to use ArtHouse because your phone does not have a camera.")
             present(alertVC, animated: true, completion: nil)
             return
         }
-        AVCaptureDevice.requestAccess(for: AVMediaType.video) { [weak self] response in
-            if response {
+        AVCaptureDevice.requestAccess(for: .video) { [weak self] granted in
+            if granted {
                 DispatchQueue.main.async {
                     self?.delegate?.nextButtonTapped()
                 }

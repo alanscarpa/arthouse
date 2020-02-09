@@ -29,8 +29,6 @@ class Uploader {
         /// STEP 3 - CAN ENTER THE SAME ID, IT IS NOT UPLOAD, ONLY CREATED WHEN DOWNLOADED
         let arts: [Artwork] = [Artwork]()
 
-        Artwork(with: Dictionary<String, Any>, id: <#T##String#>)
-
         for art in arts {
             let db = Firestore.firestore()
             let settings = db.settings

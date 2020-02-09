@@ -14,6 +14,7 @@
 		4505BBB021D05EA700336295 /* ArtworkCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4505BBAE21D05EA700336295 /* ArtworkCollectionViewCell.xib */; };
 		4505BBB221D05F5500336295 /* UICollectionViewCell+AH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4505BBB121D05F5500336295 /* UICollectionViewCell+AH.swift */; };
 		4505BBB421D061EF00336295 /* NSObject+AH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4505BBB321D061EF00336295 /* NSObject+AH.swift */; };
+		453583EC23EF89FB00AE7704 /* UIView+AH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453583EB23EF89FB00AE7704 /* UIView+AH.swift */; };
 		455BDE872062ED7A009CA00A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455BDE862062ED7A009CA00A /* AppDelegate.swift */; };
 		455BDE892062ED7A009CA00A /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 455BDE882062ED7A009CA00A /* art.scnassets */; };
 		455BDE8B2062ED7A009CA00A /* ARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455BDE8A2062ED7A009CA00A /* ARViewController.swift */; };
@@ -55,6 +56,7 @@
 		4505BBAE21D05EA700336295 /* ArtworkCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArtworkCollectionViewCell.xib; sourceTree = "<group>"; };
 		4505BBB121D05F5500336295 /* UICollectionViewCell+AH.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+AH.swift"; sourceTree = "<group>"; };
 		4505BBB321D061EF00336295 /* NSObject+AH.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+AH.swift"; sourceTree = "<group>"; };
+		453583EB23EF89FB00AE7704 /* UIView+AH.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+AH.swift"; sourceTree = "<group>"; };
 		455BDE832062ED7A009CA00A /* ArtHouse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArtHouse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		455BDE862062ED7A009CA00A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		455BDE882062ED7A009CA00A /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 				456CC2D1207C5C610010676C /* UIAlertController+AH.swift */,
 				4505BBB121D05F5500336295 /* UICollectionViewCell+AH.swift */,
 				4505BBB321D061EF00336295 /* NSObject+AH.swift */,
+				453583EB23EF89FB00AE7704 /* UIView+AH.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -449,6 +452,7 @@
 				4505BBAB21D05D5900336295 /* HomeCollectionViewController.swift in Sources */,
 				4505BBB221D05F5500336295 /* UICollectionViewCell+AH.swift in Sources */,
 				456CC2CF207C59680010676C /* OnboardingChildViewController.swift in Sources */,
+				453583EC23EF89FB00AE7704 /* UIView+AH.swift in Sources */,
 				45C0D6262079297B00CBBA44 /* ChooseArtworkViewController.swift in Sources */,
 				45C2B4E52151872D00F562D3 /* UserDefaultsManager.swift in Sources */,
 				45B1CAB921FEAD960015A6CC /* Uploader.swift in Sources */,
