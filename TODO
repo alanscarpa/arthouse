@@ -1,6 +1,9 @@
 - Update for dark mode
 - Add option to change sizes
 	- Add sizes
-- Scrape hundreds of items
+- [x] Scrape hundreds of items
+	- Leave good review for scraper
+	- Remove backgroudn for all images
+	- Upload all images with some sort of traceable ID to connect DB image with DB artwork item
 - [x] Make the instructions progressive, first time every session
 	- Make tutorial prettier

@@ -21,13 +21,15 @@ class Uploader {
     static func uploadArtwork() {
         
         /// STEP 1 - CHANGE THIS
-        let category = Artwork.Category.wallHanging
+        let category = Artwork.Category.posters
         
         /// STEP 2 - ADD ALL ARTWORK HERE
         /// Most popular = 0
         
         /// STEP 3 - CAN ENTER THE SAME ID, IT IS NOT UPLOAD, ONLY CREATED WHEN DOWNLOADED
         let arts: [Artwork] = [Artwork]()
+
+        Artwork(with: Dictionary<String, Any>, id: <#T##String#>)
 
         for art in arts {
             let db = Firestore.firestore()

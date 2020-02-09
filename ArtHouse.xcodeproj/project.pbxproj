@@ -43,7 +43,6 @@
 		45F7E222207448CE00C7228E /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F7E221207448CE00C7228E /* RootViewController.swift */; };
 		45F7E22520744C9E00C7228E /* UIColor+AH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F7E22420744C9E00C7228E /* UIColor+AH.swift */; };
 		45F7E22720744D1300C7228E /* UIViewController+AH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F7E22620744D1300C7228E /* UIViewController+AH.swift */; };
-		45F7E22D2074550A00C7228E /* sampleVideo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 45F7E22C2074550A00C7228E /* sampleVideo.mp4 */; };
 		74361FA7D72BDBB27EF2416F /* Pods_ArtHouse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACA4959C78D9864E9507AABC /* Pods_ArtHouse.framework */; };
 /* End PBXBuildFile section */
 
@@ -87,7 +86,6 @@
 		45F7E221207448CE00C7228E /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		45F7E22420744C9E00C7228E /* UIColor+AH.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+AH.swift"; sourceTree = "<group>"; };
 		45F7E22620744D1300C7228E /* UIViewController+AH.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+AH.swift"; sourceTree = "<group>"; };
-		45F7E22C2074550A00C7228E /* sampleVideo.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sampleVideo.mp4; sourceTree = "<group>"; };
 		ACA4959C78D9864E9507AABC /* Pods_ArtHouse.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ArtHouse.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAA1D58C247DE2B8A264EC8E /* Pods-ArtHouse.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArtHouse.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ArtHouse/Pods-ArtHouse.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -160,7 +158,6 @@
 				455BDE8C2062ED7A009CA00A /* Main.storyboard */,
 				455BDE882062ED7A009CA00A /* art.scnassets */,
 				455BDE8F2062ED7A009CA00A /* Assets.xcassets */,
-				45F7E22B207454F100C7228E /* Videos */,
 				455BDE912062ED7A009CA00A /* LaunchScreen.storyboard */,
 				45E4B4BE209BD20C00A286E4 /* GoogleService-Info.plist */,
 				455BDE942062ED7A009CA00A /* Info.plist */,
@@ -247,14 +244,6 @@
 			path = Onboarding;
 			sourceTree = "<group>";
 		};
-		45F7E22B207454F100C7228E /* Videos */ = {
-			isa = PBXGroup;
-			children = (
-				45F7E22C2074550A00C7228E /* sampleVideo.mp4 */,
-			);
-			path = Videos;
-			sourceTree = "<group>";
-		};
 		E086F570BB8CBE83B3E8E737 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -329,7 +318,6 @@
 			files = (
 				45C0D62B2079299000CBBA44 /* PositionYourselfViewController.xib in Resources */,
 				455BDE892062ED7A009CA00A /* art.scnassets in Resources */,
-				45F7E22D2074550A00C7228E /* sampleVideo.mp4 in Resources */,
 				455BDE932062ED7A009CA00A /* LaunchScreen.storyboard in Resources */,
 				455BDE902062ED7A009CA00A /* Assets.xcassets in Resources */,
 				4505BBAC21D05D5900336295 /* HomeCollectionViewController.xib in Resources */,
