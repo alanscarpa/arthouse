@@ -18,6 +18,7 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     @IBOutlet weak var tutorialLabel: UILabel!
     @IBOutlet weak var tutorialButton: UIButton!
     @IBOutlet weak var artworkDetailsLabel: UILabel!
+    @IBOutlet weak var backButton: UIButton!
 
     let artwork: Artwork
     var artworkNode = SCNNode()
@@ -47,7 +48,14 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        // We only want to set up our UI one time.
+        setUpUI()
+
+        // We can configure our UI multiplee times based on
+        // changes in state.
         configureUI()
+
         setUpBuyNowButtonAnimation()
         setUpSceneView()
     }
@@ -61,6 +69,14 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         sceneView.session.pause()
+    }
+
+    private func setUpUI() {
+        backButton.roundCorners()
+        tutorialLabel.roundCorners()
+        artworkDetailsLabel.roundCorners()
+        buyNowButton.roundCorners()
+        tutorialButton.roundCorners()
     }
 
     private func configureUI() {

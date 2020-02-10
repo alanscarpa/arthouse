@@ -19,6 +19,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
     }
     
     func setUpForCategory(_ category: Artwork.Category) {
+        categoryTitleLabel.roundCorners()
         categoryTitleLabel.text = category.title
         categoryImageView.image = category.image
     }

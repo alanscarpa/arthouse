@@ -3,6 +3,10 @@
 - Update onboarding chooseartwork image
 - Update onboarding 3 feet from wall image
 - Go through onboarding and QA all scenarios (including turning off camera permissions later)
+- Make text blue throughout
+- Change screen titles in nav bar to blue
+- change arrow to blue
+- Put tutorial in view for padding
 - Add option to change sizes
 	- Add sizes
 - [x] Scrape hundreds of items
