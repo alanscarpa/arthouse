@@ -10,6 +10,13 @@ import UIKit
 
 class ChooseArtworkViewController: OnboardingChildViewController {
 
+    @IBOutlet weak var nextButton: UIButton!
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        nextButton.roundCorners()
+    }
+
     @IBAction func nextButtonTapped() {
         delegate?.nextButtonTapped()
     }
