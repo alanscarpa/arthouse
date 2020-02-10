@@ -17,7 +17,7 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <imageView clipsSubviews="YES" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="framed" translatesAutoresizingMaskIntoConstraints="NO" id="1eR-be-KlV" userLabel="Category Image View">
-                        <rect key="frame" x="8" y="8" width="149" height="284.00000000000006"/>
+                        <rect key="frame" x="8" y="8" width="149" height="284"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Iau-40-vo7">
                         <rect key="frame" x="16" y="243.5" width="133" height="36"/>
