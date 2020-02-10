@@ -50,6 +50,19 @@ struct ARViewControllerViewModel {
         }
     }
 
+    var canPlaceArtwork: Bool {
+        if didCompleteTutorial {
+            return true
+        } else {
+            switch tutorialProgress {
+            case .standThreeFeetAway:
+                return false
+            case .tapToPlace, .touchAndDrag, .finishedInThisSession, .finishedInAnotherSession:
+                return true
+            }
+        }
+    }
+
     mutating func updateTutorialProgress() {
         switch tutorialProgress {
         case .standThreeFeetAway:

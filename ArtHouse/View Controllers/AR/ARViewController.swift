@@ -134,6 +134,7 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     // MARK: - UIEvents
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard viewModel.canPlaceArtwork else { return }
         guard artworkNode.parent == nil else { return }
         guard touches.first?.tapCount == 1 else { return }
         guard let touchPoint = touches.first?.location(in: sceneView) else { return }
