@@ -19,6 +19,8 @@ import UIKit
 
 class Uploader {
     static func uploadArtwork() {
+
+        /// STEP 0 - Get .csv sheet for category and remove all duplicates!
         
         /// STEP 1 - CHANGE THIS
         let category = Artwork.Category.posters

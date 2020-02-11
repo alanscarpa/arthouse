@@ -1,0 +1,11 @@
+- Get CSV from fiverr
+- Remove all rows with duplicate names
+- Download all images from image column to a folder
+- Run "Crop it" on all images in photoshop and save to separate, edited folder
+- Remove all instances of " copy.jpg" and replace with ".jpg" in filenames in edited folder
+- In CSV, Replace image column with:
+	="gs://arthouse-571c6.appspot.com/art-images/posters/" & (LOWER(SUBSTITUTE(A2," ","-")) & ".jpg")
+- Export spreadsheet and create a JSON file with:
+	https://www.convertcsv.com/csv-to-json.htm
+- Import JSON file into Xcode and turn into Artwork objects and upload to Firebase
+
