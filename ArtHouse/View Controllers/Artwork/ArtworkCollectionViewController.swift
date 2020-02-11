@@ -10,6 +10,7 @@ import UIKit
 import FirebaseFirestore
 import FirebaseAuthUI
 import FirebaseStorage
+import Photos
 
 class ArtworkCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, ArtworkCollectionViewCellDelegate {
     
@@ -74,7 +75,12 @@ class ArtworkCollectionViewController: UICollectionViewController, UICollectionV
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard artworks[indexPath.row].image != nil else { return }
-        RootViewController.shared.presentARVCWithArtwork(artworks[indexPath.row])
+        if AVCaptureDevice.authorizationStatus(for: .video) == .authorized {
+            RootViewController.shared.presentARVCWithArtwork(artworks[indexPath.row])
+        } else {
+            let alertVC = UIAlertController.simpleAlert(withTitle: "Please enable camera access", message: "Go to settings and allow camera access in order to use ArtHouse.")
+            present(alertVC, animated: true, completion: nil)
+        }
     }
     
     // MARK: UICollectionViewDelegateFlowLayout
