@@ -75,7 +75,7 @@ class ArtworkCollectionViewController: UICollectionViewController, UICollectionV
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard artworks[indexPath.row].image != nil else { return }
-        if AVCaptureDevice.authorizationStatus(for: .video) == .authorized {
+        if AVCaptureDevice.authorizationStatus(for: .video) == .authorized || AVCaptureDevice.authorizationStatus(for: .video) == .notDetermined {
             RootViewController.shared.presentARVCWithArtwork(artworks[indexPath.row])
         } else {
             let alertVC = UIAlertController.simpleAlert(withTitle: "Please enable camera access", message: "Go to settings and allow camera access in order to use ArtHouse.")
