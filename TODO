@@ -1,5 +1,6 @@
 - Update for dark mode
 - [x] Remove prices from homepage
+- [x] Remove length for tapestries and hangings
 - Update onboarding chooseartwork image
 - Update onboarding 3 feet from wall image
 - Go through onboarding and QA all scenarios (including turning off camera permissions later)
