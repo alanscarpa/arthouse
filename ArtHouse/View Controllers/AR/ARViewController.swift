@@ -120,7 +120,14 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     }
     
     func artworkNode(position: SCNVector3) -> SCNNode {
-        let boxGeometry = SCNBox(width: artwork.width * 0.0254, height: artwork.height * 0.0254, length: 0.02, chamferRadius: 0.0)
+        let length: CGFloat
+        switch artwork.category {
+        case .framedPrints, .posters, .prints, .woodWallArt:
+            length = 0.02
+        case .wallHanging, .wallTapestry:
+            length = 0
+        }
+        let boxGeometry = SCNBox(width: artwork.width * 0.0254, height: artwork.height * 0.0254, length: length, chamferRadius: 0.0)
         let imageMaterial = SCNMaterial()
         imageMaterial.diffuse.contents = artwork.image
         let blackFrameMaterial = SCNMaterial()

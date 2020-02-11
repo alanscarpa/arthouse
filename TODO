@@ -1,17 +1,16 @@
 - Update for dark mode
-- Remove prices from homepage
+- [x] Remove prices from homepage
 - Update onboarding chooseartwork image
 - Update onboarding 3 feet from wall image
 - Go through onboarding and QA all scenarios (including turning off camera permissions later)
-- Make text blue throughout
 - Change screen titles in nav bar to blue
 - change arrow to blue
 - Put tutorial in view for padding
-- Add option to change sizes
+- Add option to change artwork sizes
 	- Add sizes
 - [x] Scrape hundreds of items
-	- Leave good review for scraper
-	- Remove backgroudn for all images
+	- [x] Leave good review for scraper
+	- Remove background for all images
 	- Upload all images with some sort of traceable ID to connect DB image with DB artwork item
 - [x] Make the instructions progressive, first time every session
 	- Make tutorial prettier
