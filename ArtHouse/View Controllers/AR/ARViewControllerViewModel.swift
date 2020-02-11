@@ -112,6 +112,15 @@ struct ARViewControllerViewModel {
         }
     }
 
+    var shouldShowTutorialButton: Bool {
+        switch tutorialProgress {
+        case .standThreeFeetAway:
+            return true
+        case .finishedInAnotherSession, .finishedInThisSession, .tapToPlace, .touchAndDrag:
+        return false
+        }
+    }
+
     var shouldShowPurchaseButton: Bool {
         switch (tutorialProgress, hasMovedFromInitialPosition, realWorldPosition)  {
         case (.standThreeFeetAway, _, _),

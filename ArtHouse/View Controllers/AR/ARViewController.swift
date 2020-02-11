@@ -83,7 +83,7 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         tutorialLabelContainerView.isHidden = viewModel.didCompleteTutorial
         tutorialLabel.text = viewModel.tutorialText
         tutorialButton.titleLabel?.text = viewModel.tutorialButtonText
-        tutorialButton.isHidden = viewModel.tutorialButtonText == nil
+        tutorialButton.isHidden = !viewModel.shouldShowTutorialButton
         artworkDetailsLabel.text = viewModel.detailsText
         artworkDetailsLabel.isHidden = !viewModel.shouldShowArtDetails
         buyNowButton.isHidden = !viewModel.shouldShowPurchaseButton
