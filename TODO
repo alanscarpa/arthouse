@@ -3,10 +3,11 @@
 - [x] Remove length for tapestries and hangings
 - Update onboarding chooseartwork image
 - Update onboarding 3 feet from wall image
-- Go through onboarding and QA all scenarios (including turning off camera permissions later)
-- Change screen titles in nav bar to blue
-- change arrow to blue
-- Put tutorial in view for padding
+	- Make onboarding and tutorial say "camera should be 3 feet from wall"
+- [x] Go through onboarding and QA all scenarios (including turning off camera permissions later)
+- [x] Change screen titles in nav bar to blue
+- [x] change arrow to blue
+- [x] Put tutorial in view for padding
 - Add option to change artwork sizes
 	- Add sizes
 - [x] Scrape hundreds of items

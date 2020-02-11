@@ -15,6 +15,7 @@
                 <outlet property="sceneView" destination="NiV-2t-u0H" id="o91-Sb-a2j"/>
                 <outlet property="tutorialButton" destination="fUh-zE-7dT" id="dUP-F6-Rqd"/>
                 <outlet property="tutorialLabel" destination="iml-yP-4EY" id="ziw-kU-zpc"/>
+                <outlet property="tutorialLabelContainerView" destination="X9t-yz-CME" id="tp1-0B-7NV"/>
                 <outlet property="view" destination="JJl-3l-0Aj" id="2LN-gb-kk1"/>
             </connections>
         </placeholder>
@@ -52,16 +53,6 @@
                         <action selector="buyNowButtonTapped" destination="-1" eventType="touchUpInside" id="3Kc-A9-pRT"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iml-yP-4EY" userLabel="Tutorial Label">
-                    <rect key="frame" x="16" y="132" width="343" height="182"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <string key="text">STEP 1:
-Stand 3 feet (0.91 meters) away from the wall.  This is important. The closer to 3 feet from the wall you are, the more accurate the artwork size will be!</string>
-                    <fontDescription key="fontDescription" name="AvenirNext-DemiBoldItalic" family="Avenir Next" pointSize="19"/>
-                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <nil key="highlightedColor"/>
-                    <size key="shadowOffset" width="0.0" height="1"/>
-                </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ieu-PI-waG" userLabel="Artwork Details Label">
                     <rect key="frame" x="62.666666666666657" y="645.33333333333337" width="249.99999999999997" height="35.666666666666629"/>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -72,8 +63,30 @@ Size: 10x10 in.</string>
                     <nil key="highlightedColor"/>
                     <size key="shadowOffset" width="0.0" height="1"/>
                 </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X9t-yz-CME" userLabel="Tutorial Label Container View">
+                    <rect key="frame" x="16" y="148" width="343" height="214"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iml-yP-4EY" userLabel="Tutorial Label">
+                            <rect key="frame" x="16" y="16" width="311" height="182"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <string key="text">STEP 1:
+Stand 3 feet (0.91 meters) away from the wall.  This is important. The closer to 3 feet from the wall you are, the more accurate the artwork size will be!</string>
+                            <fontDescription key="fontDescription" name="AvenirNext-DemiBoldItalic" family="Avenir Next" pointSize="19"/>
+                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                            <size key="shadowOffset" width="0.0" height="1"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <constraints>
+                        <constraint firstItem="iml-yP-4EY" firstAttribute="leading" secondItem="X9t-yz-CME" secondAttribute="leading" constant="16" id="6XM-Rg-CDi"/>
+                        <constraint firstItem="iml-yP-4EY" firstAttribute="top" secondItem="X9t-yz-CME" secondAttribute="top" constant="16" id="asw-Af-e2p"/>
+                        <constraint firstAttribute="bottom" secondItem="iml-yP-4EY" secondAttribute="bottom" constant="16" id="oWI-1H-ihV"/>
+                        <constraint firstAttribute="trailing" secondItem="iml-yP-4EY" secondAttribute="trailing" constant="16" id="xZS-QE-FCT"/>
+                    </constraints>
+                </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fUh-zE-7dT" userLabel="Tutorial Button">
-                    <rect key="frame" x="54" y="348" width="267" height="49"/>
+                    <rect key="frame" x="54" y="386" width="267" height="49"/>
                     <color key="backgroundColor" red="0.4431372549" green="0.75686274509999996" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="17"/>
                     <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
@@ -88,22 +101,21 @@ Size: 10x10 in.</string>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="kxn-mj-Qr3" firstAttribute="top" secondItem="Ieu-PI-waG" secondAttribute="bottom" constant="24" id="Ati-xm-T5f"/>
+                <constraint firstItem="fUh-zE-7dT" firstAttribute="centerX" secondItem="iml-yP-4EY" secondAttribute="centerX" id="FVf-3C-nVG"/>
                 <constraint firstItem="viM-n3-pht" firstAttribute="leading" secondItem="x1h-s1-6GN" secondAttribute="leading" constant="12" id="Is0-Y2-rzJ"/>
                 <constraint firstAttribute="bottom" secondItem="NiV-2t-u0H" secondAttribute="bottom" id="K9Z-xb-clP"/>
-                <constraint firstItem="fUh-zE-7dT" firstAttribute="top" secondItem="iml-yP-4EY" secondAttribute="bottom" constant="34" id="KYC-L8-R9F"/>
+                <constraint firstItem="X9t-yz-CME" firstAttribute="leading" secondItem="x1h-s1-6GN" secondAttribute="leading" constant="16" id="NyD-zI-cgt"/>
                 <constraint firstItem="viM-n3-pht" firstAttribute="top" secondItem="x1h-s1-6GN" secondAttribute="top" constant="12" id="Oqd-3L-8ml"/>
                 <constraint firstItem="NiV-2t-u0H" firstAttribute="leading" secondItem="JJl-3l-0Aj" secondAttribute="leading" id="UKP-MH-mug"/>
-                <constraint firstItem="iml-yP-4EY" firstAttribute="leading" secondItem="x1h-s1-6GN" secondAttribute="leading" constant="16" id="WER-A5-S9I"/>
+                <constraint firstItem="fUh-zE-7dT" firstAttribute="top" secondItem="X9t-yz-CME" secondAttribute="bottom" constant="24" id="WdC-20-oA7"/>
                 <constraint firstAttribute="trailing" secondItem="NiV-2t-u0H" secondAttribute="trailing" id="WdP-EB-V62"/>
+                <constraint firstItem="X9t-yz-CME" firstAttribute="top" secondItem="viM-n3-pht" secondAttribute="bottom" constant="40" id="aMb-kk-63c"/>
                 <constraint firstItem="NiV-2t-u0H" firstAttribute="top" secondItem="JJl-3l-0Aj" secondAttribute="top" id="auL-e6-Rd4"/>
                 <constraint firstItem="Ieu-PI-waG" firstAttribute="centerX" secondItem="kxn-mj-Qr3" secondAttribute="centerX" id="cEj-bd-ezD"/>
                 <constraint firstItem="kxn-mj-Qr3" firstAttribute="centerX" secondItem="NiV-2t-u0H" secondAttribute="centerX" id="dYC-cK-ECq"/>
-                <constraint firstItem="x1h-s1-6GN" firstAttribute="trailing" secondItem="iml-yP-4EY" secondAttribute="trailing" constant="16" id="dee-Ja-n30"/>
-                <constraint firstItem="iml-yP-4EY" firstAttribute="top" secondItem="viM-n3-pht" secondAttribute="bottom" constant="24" id="dnC-GU-94w"/>
                 <constraint firstItem="fUh-zE-7dT" firstAttribute="height" secondItem="kxn-mj-Qr3" secondAttribute="height" id="dwA-db-eti"/>
                 <constraint firstItem="kxn-mj-Qr3" firstAttribute="bottom" secondItem="x1h-s1-6GN" secondAttribute="bottom" constant="-24" id="dyr-tT-cqJ"/>
-                <constraint firstItem="fUh-zE-7dT" firstAttribute="centerX" secondItem="iml-yP-4EY" secondAttribute="centerX" id="eBx-O9-OzH"/>
-                <constraint firstItem="iml-yP-4EY" firstAttribute="centerX" secondItem="x1h-s1-6GN" secondAttribute="centerX" id="iNv-Vf-AWf"/>
+                <constraint firstItem="x1h-s1-6GN" firstAttribute="trailing" secondItem="X9t-yz-CME" secondAttribute="trailing" constant="16" id="iHh-GL-9v3"/>
                 <constraint firstItem="Ieu-PI-waG" firstAttribute="width" secondItem="kxn-mj-Qr3" secondAttribute="width" id="y4o-Di-c5m"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="x1h-s1-6GN"/>

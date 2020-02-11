@@ -15,6 +15,7 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
     @IBOutlet weak var buyNowButton: UIButton!
+    @IBOutlet weak var tutorialLabelContainerView: UIView!
     @IBOutlet weak var tutorialLabel: UILabel!
     @IBOutlet weak var tutorialButton: UIButton!
     @IBOutlet weak var artworkDetailsLabel: UILabel!
@@ -73,15 +74,14 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
 
     private func setUpUI() {
         backButton.roundCorners()
-        tutorialLabel.roundCorners()
-        artworkDetailsLabel.roundCorners()
+        tutorialLabelContainerView.roundCorners()
         buyNowButton.roundCorners()
         tutorialButton.roundCorners()
     }
 
     private func configureUI() {
+        tutorialLabelContainerView.isHidden = viewModel.didCompleteTutorial
         tutorialLabel.text = viewModel.tutorialText
-        tutorialLabel.isHidden = viewModel.tutorialText == nil
         tutorialButton.titleLabel?.text = viewModel.tutorialButtonText
         tutorialButton.isHidden = viewModel.tutorialButtonText == nil
         artworkDetailsLabel.text = viewModel.detailsText
