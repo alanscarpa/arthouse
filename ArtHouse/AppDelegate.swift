@@ -21,7 +21,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window!.rootViewController = RootViewController.shared
         window!.makeKeyAndVisible()
         window!.backgroundColor = .white
-        
+
+        UINavigationBar.appearance().tintColor = UIColor.ahPrimaryBlue
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.ahPrimaryBlue]
+
+
         if UserDefaultsManager.shared.hasCompletedOnboarding {
             RootViewController.shared.goToHomeVC()
         } else {
