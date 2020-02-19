@@ -1,3 +1,9 @@
+- [x] Get info back from society 6 about curator string disappearing
+- [x] Log in to society 6 or make new account
+- [x] Decided how to append curator code, either in CSV or in app
+
+- Add search for tags - might have to reupload everything with tags array....
+
 - Update for dark mode
 - [x] Remove prices from homepage
 - [x] Remove length for tapestries and hangings
@@ -13,7 +19,15 @@
 	- Add sizes
 - [x] Scrape hundreds of items
 	- [x] Leave good review for scraper
-	- Remove background for all images
-	- Upload all images with some sort of traceable ID to connect DB image with DB artwork item
+	- [x] Remove background for all images
+	- Upload all images 
+	- Use JSON to create objects and upload to Firebase - test with small set first
 - [x] Make the instructions progressive, first time every session
 	- Make tutorial prettier
+
+
+
+
+	- remove all backgrounds
+	- upload all to art-images/posters
+	-

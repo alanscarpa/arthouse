@@ -1,10 +1,12 @@
 - Get CSV from fiverr
-- Remove all rows with duplicate names
 - Download all images from image column to a folder
 - Run "Crop it" on all images in photoshop and save to separate, edited folder
-- Remove all instances of " copy.jpg" and replace with ".jpg" in filenames in edited folder
-- In CSV, Replace image column with:
-	="gs://arthouse-571c6.appspot.com/art-images/posters/" & (LOWER(SUBSTITUTE(A2," ","-")) & ".jpg")
+- Remove all instances of "posters copy.jpg" and replace with "poster.jpg" in filenames in edited folder - ACTUALLY, CHANGEE TO posters.jpg 
+- In CSV, make new column, FIREBASE-STORAGE-URL column with and replace "posters" below with whatever the category is:
+	="gs://arthouse-571c6.appspot.com/art-images/posters/" & SUBSTITUTE((LOWER(SUBSTITUTE(SUBSTITUTE(RIGHT(REGEXEXTRACT(B2, "~\/.*\.jpg"),LEN(REGEXEXTRACT(B2, "~\/.*\.jpg"))-2)," ","-"),"--",""))), "posters.jpg", "poster.jpg")
+		- IF YOU RENAME FILES TO plural POSTERS.jpg THEN YOU DONT NEED THE OUTERMOST SUBSTITUTE, THIS WAS A MESS UP
+- In CSV, find and replace size to numberXnumber
+- In CSV, format price to number to remove $
 - Export spreadsheet and create a JSON file with:
 	https://www.convertcsv.com/csv-to-json.htm
 - Import JSON file into Xcode and turn into Artwork objects and upload to Firebase

@@ -16,11 +16,10 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpCollectionView()
-        // TODO: add progress hud - you can't proceed in app if you have not signed in yet
         Auth.auth().signInAnonymously() { user, error in
             guard user != nil else { print(error?.localizedDescription ?? ""); return }
-            // TODO: RUN AN UPLOAD FOR ARTWORK THEN COMMENT OUT
-            // Uploader.uploadArtwork()
+            // RUN AN UPLOAD FOR ARTWORK THEN COMMENT OUT
+             //Uploader.uploadArtwork()
         }
         setTitleImage()
     }

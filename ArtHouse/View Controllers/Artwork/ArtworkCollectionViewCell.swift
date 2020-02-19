@@ -31,6 +31,7 @@ class ArtworkCollectionViewCell: UICollectionViewCell {
         self.delegate = delegate
         artTitleLabel.text = artwork.title
         artImageView.kf.indicatorType = .activity
+
         artImageView.kf.setImage(with: URL(string: artwork.imageURLString), options: [.transition(.fade(0.3))]) { [weak self] result in
             guard let self = self else { return }
             switch result {

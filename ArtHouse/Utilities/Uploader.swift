@@ -29,15 +29,19 @@ class Uploader {
         /// Most popular = 0
         
         /// STEP 3 - CAN ENTER THE SAME ID, IT IS NOT UPLOAD, ONLY CREATED WHEN DOWNLOADED
-        let arts: [Artwork] = [Artwork]()
+
+        /// STEP 4 - CHANGE FILE NAME
+        let arts: [Artwork] = ArtworkFromJSON.artworkFromJSON(filename: "posters", category: .posters)
+
+        let db = Firestore.firestore()
+        let collection = db.collection(category.rawValue)
 
         for art in arts {
-            let db = Firestore.firestore()
-            let settings = db.settings
-            settings.areTimestampsInSnapshotsEnabled = true
-            db.settings = settings
-            let collection = db.collection(category.rawValue)
-            collection.addDocument(data: art.dictionary)
+            print(art.imageURLString)
+            Storage.storage().reference(forURL: art.imageURLString).downloadURL { (url, error) in
+                art.imageURLString = url?.absoluteString ?? ""
+                collection.addDocument(data: art.dictionary)
+            }
         }
     }
 }

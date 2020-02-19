@@ -16,7 +16,10 @@ class ArtworkCollectionViewController: UICollectionViewController, UICollectionV
     
     var category: Artwork.Category?
     private var artworks = [Artwork]()
-    
+    private var lastDocument: DocumentSnapshot?
+    private var isDownloadingArtwork = false
+    private var fetchLimit = 20
+
     // MARK: - View Lifecycle
     
     override func viewDidLoad() {
@@ -35,21 +38,38 @@ class ArtworkCollectionViewController: UICollectionViewController, UICollectionV
     private func setUpCollectionView() {
         collectionView.registerCell(ArtworkCollectionViewCell.self)
         collectionView.backgroundColor = .white
+        collectionView.showsVerticalScrollIndicator = false
     }
     
     private func downloadArtwork() {
+        guard isDownloadingArtwork == false else { return }
         guard let category = category?.rawValue else { return }
-        let db = Firestore.firestore()
-        let settings = db.settings
-        settings.areTimestampsInSnapshotsEnabled = true
-        db.settings = settings
 
-        db.collection(category).getDocuments() { [weak self] querySnapshot, error in
-            guard error == nil, let self = self, let snapshot = querySnapshot else { print(error?.localizedDescription ?? "Something went wrong. :("); return }
+        let db = Firestore.firestore()
+        var query = db.collection(category).limit(to: fetchLimit).order(by: "popularity")
+        if let lastDocument = lastDocument {
+            query = query.start(afterDocument: lastDocument)
+        }
+
+        isDownloadingArtwork = true
+        query.getDocuments { [weak self] querySnapshot, error in
+            defer { self?.isDownloadingArtwork = false }
+            guard error == nil, let self = self, let snapshot = querySnapshot else {
+                print(error?.localizedDescription ?? "Something went wrong. :(");
+                return
+            }
+            guard !snapshot.documents.isEmpty else {
+                print("No more additional documents!")
+                return
+            }
             for document in snapshot.documents {
-                self.artworks.append(Artwork(with: document.data(), id: document.documentID))
+                let artwork = Artwork(with: document.data(), id: document.documentID)
+                if !artwork.imageURLString.isEmpty {
+                    self.artworks.append(artwork)
+                }
             }
             self.artworks.sort(by: { $0.popularity < $1.popularity })
+            self.lastDocument = snapshot.documents.last
             self.collectionView.reloadData()
         }
     }
@@ -70,6 +90,12 @@ class ArtworkCollectionViewController: UICollectionViewController, UICollectionV
         cell.setUpWithArtwork(artworks[indexPath.row], delegate: self)
         return cell
     }
+
+    override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if indexPath.item == Int(Double(artworks.count) * 0.8) {
+            downloadArtwork()
+        }
+    }
     
     // MARK: UICollectionViewDelegate
     
@@ -86,7 +112,7 @@ class ArtworkCollectionViewController: UICollectionViewController, UICollectionV
     // MARK: UICollectionViewDelegateFlowLayout
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.size.width / 3, height: 250)
+        return CGSize(width: view.frame.size.width / 2, height: 250)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
