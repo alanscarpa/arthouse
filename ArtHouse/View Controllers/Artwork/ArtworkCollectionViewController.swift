@@ -34,12 +34,19 @@ class ArtworkCollectionViewController: UICollectionViewController, UICollectionV
         super.viewWillAppear(animated)
         RootViewController.shared.showNavigationBar = true
     }
+
+    // MARK: - Setup
     
     private func setUpCollectionView() {
         collectionView.registerCell(ArtworkCollectionViewCell.self)
+        collectionView.register(SearchBar.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "header")
         collectionView.backgroundColor = .white
         collectionView.showsVerticalScrollIndicator = false
+        let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout
+        layout?.sectionHeadersPinToVisibleBounds = true
     }
+
+    // MARK: - Get Data
     
     private func downloadArtwork() {
         guard isDownloadingArtwork == false else { return }
@@ -96,6 +103,12 @@ class ArtworkCollectionViewController: UICollectionViewController, UICollectionV
             downloadArtwork()
         }
     }
+
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        guard let searchBar = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "header", for: indexPath) as? SearchBar else { return UICollectionReusableView() }
+        searchBar.delegate = self
+        return searchBar
+    }
     
     // MARK: UICollectionViewDelegate
     
@@ -122,11 +135,20 @@ class ArtworkCollectionViewController: UICollectionViewController, UICollectionV
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
-    
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: self.view.frame.width, height: 65)
+    }
+
     // MARK: - HomeCollectionViewCellDelegate
     
     func imageDidLoad(image: UIImage, for artworkId: String) {
         artworks.first(where: { $0.id == artworkId })?.image = image
     }
-    
+
+    // MARK: - SearchBarDelegate
+
+    func didSearch(for query: String) {
+        print(query)
+    }
 }

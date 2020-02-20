@@ -2,7 +2,11 @@
 - [x] Log in to society 6 or make new account
 - [x] Decided how to append curator code, either in CSV or in app
 
-- Add search for tags - might have to reupload everything with tags array....
+- [x] Add tags - might have to reupload everything with tags array....
+- Make tags searchable
+- Prevent rotatingn of image when rotating phone
+- Maybe get rid of step 3 in tut
+- Web vc not going to top of screen
 
 - Update for dark mode
 - [x] Remove prices from homepage
