@@ -12,7 +12,7 @@ import FirebaseAuthUI
 import FirebaseStorage
 import Photos
 
-class ArtworkCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, ArtworkCollectionViewCellDelegate {
+class ArtworkCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, ArtworkCollectionViewCellDelegate, SearchBarDelegate {
     
     var category: Artwork.Category?
     private var artworks = [Artwork]()
@@ -80,6 +80,45 @@ class ArtworkCollectionViewController: UICollectionViewController, UICollectionV
             self.collectionView.reloadData()
         }
     }
+
+    private func searchForArtwork(with searchString: String) {
+        guard isDownloadingArtwork == false else { return }
+        guard let category = category?.rawValue else { return }
+
+        lastDocument = nil
+
+        let db = Firestore.firestore()
+        let ref = db.collection(category)
+        ref.whereField(field: "tags", arrayContains: searchString)
+        var query = db.collection(category).limit(to: fetchLimit).order(by: "popularity")
+        if let lastDocument = lastDocument {
+            query = query.start(afterDocument: lastDocument)
+        }
+
+
+
+        isDownloadingArtwork = true
+        query.getDocuments { [weak self] querySnapshot, error in
+            defer { self?.isDownloadingArtwork = false }
+            guard error == nil, let self = self, let snapshot = querySnapshot else {
+                print(error?.localizedDescription ?? "Something went wrong. :(");
+                return
+            }
+            guard !snapshot.documents.isEmpty else {
+                print("No more additional documents!")
+                return
+            }
+            for document in snapshot.documents {
+                let artwork = Artwork(with: document.data(), id: document.documentID)
+                if !artwork.imageURLString.isEmpty {
+                    self.artworks.append(artwork)
+                }
+            }
+            self.artworks.sort(by: { $0.popularity < $1.popularity })
+            self.lastDocument = snapshot.documents.last
+            self.collectionView.reloadData()
+        }
+    }
     
     // MARK: UICollectionViewDataSource
     
@@ -121,6 +160,12 @@ class ArtworkCollectionViewController: UICollectionViewController, UICollectionV
             present(alertVC, animated: true, completion: nil)
         }
     }
+
+    // MARK: UIScrollViewDelegate
+
+    override func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        view.endEditing(true)
+    }
     
     // MARK: UICollectionViewDelegateFlowLayout
     
@@ -149,6 +194,6 @@ class ArtworkCollectionViewController: UICollectionViewController, UICollectionV
     // MARK: - SearchBarDelegate
 
     func didSearch(for query: String) {
-        print(query)
+        searchForArtwork(with: query)
     }
 }
