@@ -1,12 +1,16 @@
 - [x] Get info back from society 6 about curator string disappearing
 - [x] Log in to society 6 or make new account
 - [x] Decided how to append curator code, either in CSV or in app
-
 - [x] Add tags - might have to reupload everything with tags array....
-- Make tags searchable
+- [x] Make tags searchable
+
+- either search while text or show possible tags while searching
+- if multiple sizes, show alert reminding user to select correct size on next page
 - Prevent rotatingn of image when rotating phone
 - Maybe get rid of step 3 in tut
 - Web vc not going to top of screen
+- Create index for each category (try search in each category to get easy link)
+- Make additional query to search by name, then consolidate results, and set tags doc as last
 
 - Update for dark mode
 - [x] Remove prices from homepage

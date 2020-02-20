@@ -18,6 +18,7 @@ class ArtworkCollectionViewController: UICollectionViewController, UICollectionV
     private var lastDocument: DocumentSnapshot?
     private var isDownloadingArtwork = false
     private var fetchLimit = 20
+    private weak var searchBar: UISearchBar?
 
     // MARK: - View Lifecycle
     
@@ -47,56 +48,31 @@ class ArtworkCollectionViewController: UICollectionViewController, UICollectionV
 
     // MARK: - Get Data
     
-    private func downloadArtwork() {
+    private func downloadArtwork(searchString: String? = nil, shouldEmptyCurrentResults: Bool = false) {
         guard isDownloadingArtwork == false else { return }
         guard let category = category?.rawValue else { return }
 
+        if shouldEmptyCurrentResults {
+            artworks = [Artwork]()
+            // TODO: Show loading spinner
+            lastDocument = nil
+            collectionView.reloadData()
+        }
+
         let db = Firestore.firestore()
+
         var query = db.collection(category).limit(to: fetchLimit).order(by: "popularity")
+
         if let lastDocument = lastDocument {
             query = query.start(afterDocument: lastDocument)
         }
 
-        isDownloadingArtwork = true
-        query.getDocuments { [weak self] querySnapshot, error in
-            defer { self?.isDownloadingArtwork = false }
-            guard error == nil, let self = self, let snapshot = querySnapshot else {
-                print(error?.localizedDescription ?? "Something went wrong. :(");
-                return
-            }
-            guard !snapshot.documents.isEmpty else {
-                print("No more additional documents!")
-                return
-            }
-            for document in snapshot.documents {
-                let artwork = Artwork(with: document.data(), id: document.documentID)
-                if !artwork.imageURLString.isEmpty {
-                    self.artworks.append(artwork)
-                }
-            }
-            self.artworks.sort(by: { $0.popularity < $1.popularity })
-            self.lastDocument = snapshot.documents.last
-            self.collectionView.reloadData()
+        if let searchString = searchString {
+            query = query.whereField("tags", arrayContains: searchString)
         }
-    }
 
-    private func searchForArtwork(with searchString: String) {
-        guard isDownloadingArtwork == false else { return }
-        guard let category = category?.rawValue else { return }
-
-        lastDocument = nil
-
-        let db = Firestore.firestore()
-        let ref = db.collection(category)
-        ref.whereField("tags", arrayContains: searchString)
-        var query = db.collection(category).limit(to: fetchLimit).order(by: "popularity")
-        if let lastDocument = lastDocument {
-            query = query.start(afterDocument: lastDocument)
-        }
         isDownloadingArtwork = true
 
-        // Empty artworks array
-        self.artworks = [Artwork]()
 
         query.getDocuments { [weak self] querySnapshot, error in
             defer { self?.isDownloadingArtwork = false }
@@ -125,8 +101,7 @@ class ArtworkCollectionViewController: UICollectionViewController, UICollectionV
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
-    
-    
+
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return artworks.count
     }
@@ -139,12 +114,13 @@ class ArtworkCollectionViewController: UICollectionViewController, UICollectionV
 
     override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if indexPath.item == Int(Double(artworks.count) * 0.8) {
-            downloadArtwork()
+            downloadArtwork(searchString: searchBar?.text)
         }
     }
 
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         guard let searchBar = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "header", for: indexPath) as? SearchBar else { return UICollectionReusableView() }
+        self.searchBar = searchBar.searchBar
         searchBar.delegate = self
         return searchBar
     }
@@ -194,6 +170,6 @@ class ArtworkCollectionViewController: UICollectionViewController, UICollectionV
     // MARK: - SearchBarDelegate
 
     func didSearch(for query: String) {
-        searchForArtwork(with: query)
+        downloadArtwork(searchString: query, shouldEmptyCurrentResults: true)
     }
 }
