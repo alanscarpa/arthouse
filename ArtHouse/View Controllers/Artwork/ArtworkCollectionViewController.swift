@@ -8,7 +8,6 @@
 
 import UIKit
 import FirebaseFirestore
-import FirebaseAuthUI
 import FirebaseStorage
 import Photos
 
@@ -89,15 +88,16 @@ class ArtworkCollectionViewController: UICollectionViewController, UICollectionV
 
         let db = Firestore.firestore()
         let ref = db.collection(category)
-        ref.whereField(field: "tags", arrayContains: searchString)
+        ref.whereField("tags", arrayContains: searchString)
         var query = db.collection(category).limit(to: fetchLimit).order(by: "popularity")
         if let lastDocument = lastDocument {
             query = query.start(afterDocument: lastDocument)
         }
-
-
-
         isDownloadingArtwork = true
+
+        // Empty artworks array
+        self.artworks = [Artwork]()
+
         query.getDocuments { [weak self] querySnapshot, error in
             defer { self?.isDownloadingArtwork = false }
             guard error == nil, let self = self, let snapshot = querySnapshot else {

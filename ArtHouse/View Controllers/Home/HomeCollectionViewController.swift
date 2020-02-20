@@ -8,7 +8,7 @@
 
 import UIKit
 import FirebaseFirestore
-import FirebaseAuthUI
+import FirebaseAuth
 import FirebaseStorage
 
 class HomeCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
