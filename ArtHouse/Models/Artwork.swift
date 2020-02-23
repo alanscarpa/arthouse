@@ -20,7 +20,7 @@ struct ArtworkFromJSON: Codable {
     enum CodingKeys: String, CodingKey {
         case name = "NAME"
         case image = "FIREBASE-STORAGE-URL"
-        case sizes = "SIZE"
+        case sizes = "SIZES"
         case price = "PRICE"
         case tags = "TAGS"
         case link = "LINK"
