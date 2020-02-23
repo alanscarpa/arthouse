@@ -78,8 +78,10 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         tutorialLabelContainerView.roundCorners()
         buyNowButton.roundCorners()
         tutorialButton.roundCorners()
-        addSizeButtons(viewModel.sizeButtons)
+        addSizeButtons(for: viewModel.sizes)
     }
+
+    // MARK: - Configuration
 
     // Called whenever our ViewModel updates.
     private func configureUI() {
@@ -90,18 +92,16 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         artworkDetailsLabel.text = viewModel.detailsText
         artworkDetailsLabel.isHidden = !viewModel.shouldShowArtDetails
         buyNowButton.isHidden = !viewModel.shouldShowPurchaseButton
-        shouldShowSizeButtons(viewModel.shouldShowSizeButtons)
+        showSizeButtons(viewModel.shouldShowSizeButtons)
         updateArtworkOnScreenSize(with: viewModel.currentSize)
-    }
-
-    private func shouldShowSizeButtons(_ shouldShow: Bool) {
-        sizeButtons.forEach({ $0.isHidden = !shouldShow })
     }
     
     // MARK: - Setup
 
-    private func addSizeButtons(_ buttons: [SizeButton]) {
-        for (index, button) in buttons.enumerated() {
+    private func addSizeButtons(for sizes: [String]) {
+        for (index, size) in sizes.enumerated() {
+            let button = SizeButton(size.artworkSize(), title: size)
+            button.isSelected = button.size == viewModel.currentSize
             button.addTarget(self, action: #selector(sizeButtonTapped(_:)), for: .touchUpInside)
             view.addSubview(button)
             button.translatesAutoresizingMaskIntoConstraints = false
@@ -109,8 +109,8 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
             button.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: CGFloat(10 + (index * 80))).isActive = true
             button.heightAnchor.constraint(equalToConstant: SizeButton.widthHeight).isActive = true
             button.widthAnchor.constraint(equalToConstant: SizeButton.widthHeight).isActive = true
+            sizeButtons.append(button)
         }
-        sizeButtons = buttons
     }
     
     private func setUpBuyNowButtonAnimation() {
@@ -232,6 +232,8 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     }
 
     @objc func sizeButtonTapped(_ sizeButton: SizeButton) {
+        sizeButtons.forEach({ $0.isSelected = false })
+        sizeButton.isSelected = true
         viewModel.sizeButtonTapped(sizeButton)
     }
 
@@ -243,5 +245,11 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         artworkNode = artworkNode(position: position, size: size)
         artworkNode.eulerAngles = eulerAngles
         sceneView.scene.rootNode.addChildNode(artworkNode)
+    }
+
+    // MARK: - Helpers
+
+    private func showSizeButtons(_ shouldShow: Bool) {
+        sizeButtons.forEach({ $0.isHidden = !shouldShow })
     }
 }

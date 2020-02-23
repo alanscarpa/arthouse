@@ -30,10 +30,8 @@ struct ARViewControllerViewModel {
     }
 
     var sizes: [String]
-
+    
     var artwork: Artwork
-
-    var shouldChangeSize = false
 
     // We are only concerned with width and height here.
     // Length is a hardcoded value.
@@ -172,36 +170,14 @@ struct ARViewControllerViewModel {
         return shouldShowPurchaseButton
     }
 
-    lazy var sizeButtons: [SizeButton] = {
-        return buildSizeButtons()
-    }()
-
     var shouldShowSizeButtons: Bool {
         // We only show the size buttons when we show the purchase button.
         // This could change in the future but for now, no need to duplicate the logic.
         return shouldShowPurchaseButton
     }
 
-    mutating private func buildSizeButtons() -> [SizeButton] {
-        var sizeButtons = [SizeButton]()
-        for size in sizes {
-            let button = SizeButton()
-            button.size = size.artworkSize()
-            if button.size == currentSize {
-                button.isSelected = true
-            }
-            button.setTitle(size, for: .normal)
-            button.isHidden = true
-            sizeButtons.append(button)
-        }
-        return sizeButtons
-    }
-
     mutating func sizeButtonTapped(_ button: SizeButton) {
-        sizeButtons.forEach({ $0.isSelected = false })
-        button.isSelected = true
         currentSize = button.size
-        shouldChangeSize = true
     }
 }
 
@@ -211,8 +187,10 @@ class SizeButton: UIButton {
 
     static let widthHeight: CGFloat = 60
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init(_ size: ARViewControllerViewModel.Size, title: String) {
+        super.init(frame: .zero)
+        self.size = size
+        setTitle(title, for: .normal)
         layer.cornerRadius =  SizeButton.widthHeight / 2
         layer.borderWidth = 2
         backgroundColor = .clear
