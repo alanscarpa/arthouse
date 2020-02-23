@@ -186,6 +186,25 @@ struct ARViewControllerViewModel {
         return shouldShowPurchaseButton
     }
 
+    lazy var sizeButtons: [SizeButton] = {
+        return buildSizeButtons()
+    }()
+
+    mutating private func buildSizeButtons() -> [SizeButton] {
+        var sizeButtons = [SizeButton]()
+        for size in sizes {
+            let button = SizeButton()
+            button.size = size.artworkSize()
+            if button.size == currentSize {
+                button.isSelected = true
+            }
+            button.setTitle(size, for: .normal)
+            sizeButtons.append(button)
+        }
+        shouldAddSizeButtons = false
+        return sizeButtons
+    }
+
     // We only want to add size buttons to the view once.
     // This will change to false by another function.
     private var shouldAddSizeButtons = true
@@ -194,11 +213,9 @@ struct ARViewControllerViewModel {
         return shouldShowPurchaseButton && shouldAddSizeButtons
     }
 
-    // The owner should call this method after
-    // adding the size buttons to the view.
-    // Otherwise, buttons will be added multiple times.
-    mutating func sizeButtonsHaveBeenAdded() {
-        shouldAddSizeButtons = false
+    mutating func sizeButtonTapped(_ button: SizeButton) {
+        sizeButtons.forEach({ $0.isSelected = false })
+        button.isSelected = true
     }
 }
 

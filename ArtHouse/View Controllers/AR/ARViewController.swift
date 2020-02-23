@@ -90,12 +90,7 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         buyNowButton.isHidden = !viewModel.shouldShowPurchaseButton
 
         if viewModel.shouldAddSizeButtonsToView {
-            addSizeButtons(for: viewModel.sizes)
-            
-            // This config func gets called multiple times,
-            // but we only want to add these size buttons once!
-            // This func mutates an internal flag that prevents multiple additions.
-            viewModel.sizeButtonsHaveBeenAdded()
+            addSizeButtons(viewModel.sizeButtons)
         }
 
         if viewModel.shouldChangeSize {
@@ -111,16 +106,8 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     
     // MARK: - Setup
 
-    var sizeButtons = [SizeButton]()
-
-    private func addSizeButtons(for sizes: [String]) {
-        for (index, size) in sizes.enumerated() {
-            let button = SizeButton()
-            button.size = size.artworkSize()
-            if button.size == viewModel.currentSize {
-                button.isSelected = true
-            }
-            button.setTitle(size, for: .normal)
+    private func addSizeButtons(_ buttons: [SizeButton]) {
+        for (index, button) in buttons.enumerated() {
             button.addTarget(self, action: #selector(sizeButtonTapped(_:)), for: .touchUpInside)
             view.addSubview(button)
             button.translatesAutoresizingMaskIntoConstraints = false
@@ -128,8 +115,6 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
             button.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: CGFloat(10 + (index * 80))).isActive = true
             button.heightAnchor.constraint(equalToConstant: SizeButton.widthHeight).isActive = true
             button.widthAnchor.constraint(equalToConstant: SizeButton.widthHeight).isActive = true
-
-            sizeButtons.append(button)
         }
     }
     
@@ -252,8 +237,7 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     }
 
     @objc func sizeButtonTapped(_ sizeButton: SizeButton) {
-        sizeButtons.forEach({ $0.isSelected = false })
-        sizeButton.isSelected = true
+        viewModel.sizeButtonTapped(sizeButton)
         viewModel.changeSize(sizeButton.size)
     }
 

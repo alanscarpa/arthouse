@@ -6,6 +6,8 @@
 
 - reupload all poster JSON with "sizes" array with X capital
 
+- Add camera button under size button and share screenshot
+
 - either search while text or show possible tags while searching
 - if multiple sizes, show alert reminding user to select correct size on next page
 - Prevent rotatingn of image when rotating phone
