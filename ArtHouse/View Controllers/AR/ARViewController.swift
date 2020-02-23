@@ -79,6 +79,7 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         tutorialButton.roundCorners()
     }
 
+    // Called whenever our viewModel updates.
     private func configureUI() {
         tutorialLabelContainerView.isHidden = viewModel.didCompleteTutorial
         tutorialLabel.text = viewModel.tutorialText
@@ -97,23 +98,18 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
             viewModel.sizeButtonsHaveBeenAdded()
         }
 
+        if viewModel.shouldChangeSize {
+            updateArtwork(with: viewModel.currentSize)
+
+            // We want to set it to false here so it won't change
+            // size unless explicity set to true by one of the
+            // size button taps.
+            viewModel.shouldChangeSize = false
+        }
 
     }
     
     // MARK: - Setup
-
-    @objc func buttonTapped(_ sizeButton: SizeButton) {
-        print(sizeButton.size)
-        //viewModel.currentSize = sizeButton.size
-        // Update artwork node size
-
-        let eulerAngles = artworkNode.eulerAngles
-        let position = artworkNode.position
-        artworkNode.removeFromParentNode()
-        artworkNode = artworkNode(position: position, size: sizeButton.size)
-        artworkNode.eulerAngles = eulerAngles
-        sceneView.scene.rootNode.addChildNode(artworkNode)
-    }
 
     private func addSizeButtons(for sizes: [String]) {
         for (index, size) in sizes.enumerated() {
@@ -121,7 +117,7 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
             button.size = size.artworkSize()
             button.backgroundColor = .blue
             button.setTitle(size, for: .normal)
-            button.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
+            button.addTarget(self, action: #selector(sizeButtonTapped(_:)), for: .touchUpInside)
             view.addSubview(button)
             button.translatesAutoresizingMaskIntoConstraints = false
             button.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -8).isActive = true
@@ -247,5 +243,18 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         let safariVC = SFSafariViewController(url: buyNowURL)
         safariVC.modalPresentationStyle = .popover
         present(safariVC, animated: true)
+    }
+
+    @objc func sizeButtonTapped(_ sizeButton: SizeButton) {
+        viewModel.changeSize(sizeButton.size)
+    }
+
+    private func updateArtwork(with size: (width: CGFloat, height: CGFloat)) {
+        let eulerAngles = artworkNode.eulerAngles
+        let position = artworkNode.position
+        artworkNode.removeFromParentNode()
+        artworkNode = artworkNode(position: position, size: size)
+        artworkNode.eulerAngles = eulerAngles
+        sceneView.scene.rootNode.addChildNode(artworkNode)
     }
 }

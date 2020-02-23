@@ -20,6 +20,8 @@ extension String {
 
 struct ARViewControllerViewModel {
 
+    typealias Size = (width: CGFloat, height: CGFloat)
+
     enum TutorialProgress {
         case standThreeFeetAway
         case tapToPlace
@@ -39,6 +41,26 @@ struct ARViewControllerViewModel {
     var sizes: [String]
 
     var artwork: Artwork
+
+    var shouldChangeSize = false
+
+    mutating func changeSize(_ size: Size) {
+        currentSize = size
+        shouldChangeSize = true
+    }
+
+    // We are only concerned with width and height here.
+    // Length is a hardcoded value.
+    private(set) var currentSize: Size = (0, 0)
+
+    var artworkLength: CGFloat {
+        switch artwork.category {
+        case .framedPrints, .posters, .prints, .woodWallArt:
+            return 0.02
+        case .wallHanging, .wallTapestry:
+            return 0
+        }
+    }
 
     private(set) var tutorialProgress: TutorialProgress
 
@@ -164,26 +186,20 @@ struct ARViewControllerViewModel {
         return shouldShowPurchaseButton
     }
 
+    // We only want to add size buttons to the view once.
+    // This will change to false by another function.
     private var shouldAddSizeButtons = true
 
     var shouldAddSizeButtonsToView: Bool {
         return shouldShowPurchaseButton && shouldAddSizeButtons
     }
 
+    // The owner should call this method after
+    // adding the size buttons to the view.
+    // Otherwise, buttons will be added multiple times.
     mutating func sizeButtonsHaveBeenAdded() {
         shouldAddSizeButtons = false
     }
-
-    var artworkLength: CGFloat {
-        switch artwork.category {
-        case .framedPrints, .posters, .prints, .woodWallArt:
-            return 0.02
-        case .wallHanging, .wallTapestry:
-            return 0
-        }
-    }
-
-    var currentSize: (width: CGFloat, height: CGFloat) = (0, 0)
 }
 
 class SizeButton: UIButton {
