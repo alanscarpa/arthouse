@@ -11,7 +11,7 @@ import UIKit
 struct ArtworkFromJSON: Codable {
     let name: String
     let image: String
-    let size: String
+    let sizes: String
     let price: CGFloat
     let tags: String
     let link: String
@@ -20,7 +20,7 @@ struct ArtworkFromJSON: Codable {
     enum CodingKeys: String, CodingKey {
         case name = "NAME"
         case image = "FIREBASE-STORAGE-URL"
-        case size = "SIZE"
+        case sizes = "SIZE"
         case price = "PRICE"
         case tags = "TAGS"
         case link = "LINK"
@@ -41,12 +41,10 @@ struct ArtworkFromJSON: Codable {
         var constructedArtworks = [Artwork]()
         for artwork in artworks {
             let buyURLString = artwork.link + "&curator=thescarpagroup"
-            let sizeArray = artwork.size.components(separatedBy: "X")
-            let width = CGFloat(exactly: NumberFormatter().number(from: sizeArray[0])!)!
-            let height = CGFloat(exactly: NumberFormatter().number(from: sizeArray[1])!)!
+            let sizeArray = artwork.sizes.components(separatedBy: ",")
             let tagsArray = artwork.tags.components(separatedBy: ",")
             
-            let constructedArtwork = Artwork(id: "0", title: artwork.name, height: height, width: width, depth: 1, price: artwork.price, buyURLString: buyURLString, imageURLString: artwork.image, category: category, popularity: artwork.popularity, tags: tagsArray)
+            let constructedArtwork = Artwork(id: "0", title: artwork.name, depth: 1, price: artwork.price, buyURLString: buyURLString, imageURLString: artwork.image, category: category, popularity: artwork.popularity, tags: tagsArray, sizes: sizeArray)
             constructedArtworks.append(constructedArtwork)
         }
         return constructedArtworks
@@ -56,8 +54,6 @@ struct ArtworkFromJSON: Codable {
 class Artwork {
     let id: String
     let title: String
-    let height: CGFloat
-    let width: CGFloat
     let depth: CGFloat
     let price: CGFloat
     var imageURLString: String
@@ -66,7 +62,8 @@ class Artwork {
     var category: Category
     let popularity: CGFloat
     let tags: [String]
-    
+    let sizes: [String]
+
     enum Category: String {
         case posters
         case prints
@@ -78,8 +75,6 @@ class Artwork {
     
     private enum Keys: String {
         case title
-        case height
-        case width
         case depth
         case price
         case buyURLString = "buy-URL-string"
@@ -87,28 +82,26 @@ class Artwork {
         case category
         case popularity
         case tags
+        case sizes
     }
     
     var dictionary: [String: Any] {
         return [
             Keys.title.rawValue: title,
-            Keys.height.rawValue: height,
-            Keys.width.rawValue: width,
             Keys.depth.rawValue: depth,
             Keys.price.rawValue: price,
             Keys.buyURLString.rawValue: buyURLString,
             Keys.imageURLString.rawValue: imageURLString,
             Keys.category.rawValue: category.rawValue,
             Keys.popularity.rawValue: popularity,
-            Keys.tags.rawValue: tags
+            Keys.tags.rawValue: tags,
+            Keys.sizes.rawValue: sizes
         ]
     }
 
-    init(id: String, title: String, height: CGFloat, width: CGFloat, depth: CGFloat, price: CGFloat, buyURLString: String, imageURLString: String, category: Category, popularity: CGFloat, tags: [String]) {
+    init(id: String, title: String, depth: CGFloat, price: CGFloat, buyURLString: String, imageURLString: String, category: Category, popularity: CGFloat, tags: [String], sizes: [String]) {
         self.id = id
         self.title = title
-        self.height = height
-        self.width = width
         self.depth = depth
         self.price = price
         self.buyURLString = buyURLString
@@ -116,13 +109,12 @@ class Artwork {
         self.category = category
         self.popularity = popularity
         self.tags = tags
+        self.sizes = sizes
     }
     
     init(with dictionary: Dictionary<String, Any>, id: String) {
         self.id = id
         title = dictionary[Keys.title.rawValue] as? String ?? ""
-        height = dictionary[Keys.height.rawValue] as? CGFloat ?? 0
-        width = dictionary[Keys.width.rawValue] as? CGFloat ?? 0
         depth = dictionary[Keys.depth.rawValue] as? CGFloat ?? 0
         price = dictionary[Keys.price.rawValue] as? CGFloat ?? 0
         buyURLString = dictionary[Keys.buyURLString.rawValue] as? String ?? ""
@@ -130,6 +122,7 @@ class Artwork {
         category = Category(rawValue: dictionary[Keys.category.rawValue] as? String ?? "") ?? .prints
         popularity = dictionary[Keys.popularity.rawValue] as? CGFloat ?? 0
         tags = dictionary[Keys.tags.rawValue] as? [String] ?? [String]()
+        sizes = dictionary[Keys.sizes.rawValue] as? [String] ?? [String]()
     }
 }
 

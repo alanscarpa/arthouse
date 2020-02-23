@@ -4,6 +4,8 @@
 - [x] Add tags - might have to reupload everything with tags array....
 - [x] Make tags searchable
 
+- reupload all poster JSON with "sizes" array with X capital
+
 - either search while text or show possible tags while searching
 - if multiple sizes, show alert reminding user to select correct size on next page
 - Prevent rotatingn of image when rotating phone

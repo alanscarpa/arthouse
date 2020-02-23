@@ -9,6 +9,15 @@
 import Foundation
 import ARKit
 
+extension String {
+    func artworkSize() -> (width: CGFloat, height: CGFloat) {
+        let sizeArray = components(separatedBy: "X")
+        let width = CGFloat(exactly: NumberFormatter().number(from: sizeArray[0])!)!
+        let height = CGFloat(exactly: NumberFormatter().number(from: sizeArray[1])!)!
+        return (width: width, height: height)
+    }
+}
+
 struct ARViewControllerViewModel {
 
     enum TutorialProgress {
@@ -18,6 +27,18 @@ struct ARViewControllerViewModel {
         case finishedInThisSession
         case finishedInAnotherSession
     }
+
+    init(tutorialProgress: TutorialProgress, artwork: Artwork) {
+        self.tutorialProgress = tutorialProgress
+        self.artwork = artwork
+        self.detailsText = "\(artwork.title)"
+        self.sizes = artwork.sizes
+        self.currentSize = artwork.sizes.first?.artworkSize() ?? (0, 0)
+    }
+
+    var sizes: [String]
+
+    var artwork: Artwork
 
     private(set) var tutorialProgress: TutorialProgress
 
@@ -31,11 +52,6 @@ struct ARViewControllerViewModel {
     var detailsText: String
 
     private(set) var hasMovedFromInitialPosition = false
-
-    init(tutorialProgress: TutorialProgress, artwork: Artwork) {
-        self.tutorialProgress = tutorialProgress
-        self.detailsText = "\(artwork.title)\nSize: \(artwork.width) W x \(artwork.height) H in."
-    }
 
     mutating func updateArtworkPosition(_ position: SCNVector3) {
         realWorldPosition = position
@@ -146,5 +162,35 @@ struct ARViewControllerViewModel {
         // We only show the art details when we show the purchase button.
         // This could change in the future but for now, no need to duplicate the logic.
         return shouldShowPurchaseButton
+    }
+
+    private var shouldAddSizeButtons = true
+
+    var shouldAddSizeButtonsToView: Bool {
+        return shouldShowPurchaseButton && shouldAddSizeButtons
+    }
+
+    mutating func sizeButtonsHaveBeenAdded() {
+        shouldAddSizeButtons = false
+    }
+
+    var artworkLength: CGFloat {
+        switch artwork.category {
+        case .framedPrints, .posters, .prints, .woodWallArt:
+            return 0.02
+        case .wallHanging, .wallTapestry:
+            return 0
+        }
+    }
+
+    var currentSize: (width: CGFloat, height: CGFloat) = (0, 0)
+}
+
+class SizeButton: UIButton {
+    var size: (width: CGFloat, height: CGFloat) = (0, 0)
+    var action: ((SizeButton) -> Void)?
+
+    func setAct(action: ((SizeButton) -> Void)?) {
+        self.action = action
     }
 }

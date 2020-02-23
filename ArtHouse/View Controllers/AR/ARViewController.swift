@@ -87,9 +87,49 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         artworkDetailsLabel.text = viewModel.detailsText
         artworkDetailsLabel.isHidden = !viewModel.shouldShowArtDetails
         buyNowButton.isHidden = !viewModel.shouldShowPurchaseButton
+
+        if viewModel.shouldAddSizeButtonsToView {
+            addSizeButtons(for: viewModel.sizes)
+            
+            // This config func gets called multiple times,
+            // but we only want to add these size buttons once!
+            // This func mutates an internal flag that prevents multiple additions.
+            viewModel.sizeButtonsHaveBeenAdded()
+        }
+
+
     }
     
     // MARK: - Setup
+
+    @objc func buttonTapped(_ sizeButton: SizeButton) {
+        print(sizeButton.size)
+        //viewModel.currentSize = sizeButton.size
+        // Update artwork node size
+
+        let eulerAngles = artworkNode.eulerAngles
+        let position = artworkNode.position
+        artworkNode.removeFromParentNode()
+        artworkNode = artworkNode(position: position, size: sizeButton.size)
+        artworkNode.eulerAngles = eulerAngles
+        sceneView.scene.rootNode.addChildNode(artworkNode)
+    }
+
+    private func addSizeButtons(for sizes: [String]) {
+        for (index, size) in sizes.enumerated() {
+            let button = SizeButton()
+            button.size = size.artworkSize()
+            button.backgroundColor = .blue
+            button.setTitle(size, for: .normal)
+            button.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
+            view.addSubview(button)
+            button.translatesAutoresizingMaskIntoConstraints = false
+            button.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -8).isActive = true
+            button.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: CGFloat(10 + (index * 100))).isActive = true
+            button.heightAnchor.constraint(equalToConstant: 80).isActive = true
+            button.widthAnchor.constraint(equalToConstant: 80).isActive = true
+        }
+    }
     
     private func setUpBuyNowButtonAnimation() {
         let scaleDelta = CGFloat(0.15)
@@ -119,15 +159,9 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         sceneView.session.run(configuration)
     }
     
-    func artworkNode(position: SCNVector3) -> SCNNode {
-        let length: CGFloat
-        switch artwork.category {
-        case .framedPrints, .posters, .prints, .woodWallArt:
-            length = 0.02
-        case .wallHanging, .wallTapestry:
-            length = 0
-        }
-        let boxGeometry = SCNBox(width: artwork.width * 0.0254, height: artwork.height * 0.0254, length: length, chamferRadius: 0.0)
+    func artworkNode(position: SCNVector3, size: (width: CGFloat, height: CGFloat)) -> SCNNode {
+        let length = viewModel.artworkLength
+        let boxGeometry = SCNBox(width: size.width * 0.0254, height: size.height * 0.0254, length: length, chamferRadius: 0.0)
         let imageMaterial = SCNMaterial()
         imageMaterial.diffuse.contents = artwork.image
         let blackFrameMaterial = SCNMaterial()
@@ -157,7 +191,7 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
             pointTransform.columns.3.y,
             pointTransform.columns.3.z)).z
         let position = sceneView.unprojectPoint(SCNVector3Make(Float(touchPoint.x), Float(touchPoint.y), normalizedZValue))
-        artworkNode = self.artworkNode(position: position)
+        artworkNode = self.artworkNode(position: position, size: viewModel.currentSize)
 
         let pitch: Float = 0
         let yaw = currentFrame.camera.eulerAngles.y
