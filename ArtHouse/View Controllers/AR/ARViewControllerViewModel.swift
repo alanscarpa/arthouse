@@ -9,15 +9,6 @@
 import Foundation
 import ARKit
 
-extension String {
-    func artworkSize() -> (width: CGFloat, height: CGFloat) {
-        let sizeArray = components(separatedBy: "X")
-        let width = CGFloat(exactly: NumberFormatter().number(from: sizeArray[0])!)!
-        let height = CGFloat(exactly: NumberFormatter().number(from: sizeArray[1])!)!
-        return (width: width, height: height)
-    }
-}
-
 struct ARViewControllerViewModel {
 
     typealias Size = (width: CGFloat, height: CGFloat)
@@ -43,11 +34,6 @@ struct ARViewControllerViewModel {
     var artwork: Artwork
 
     var shouldChangeSize = false
-
-    mutating func changeSize(_ size: Size) {
-        currentSize = size
-        shouldChangeSize = true
-    }
 
     // We are only concerned with width and height here.
     // Length is a hardcoded value.
@@ -190,6 +176,12 @@ struct ARViewControllerViewModel {
         return buildSizeButtons()
     }()
 
+    var shouldShowSizeButtons: Bool {
+        // We only show the size buttons when we show the purchase button.
+        // This could change in the future but for now, no need to duplicate the logic.
+        return shouldShowPurchaseButton
+    }
+
     mutating private func buildSizeButtons() -> [SizeButton] {
         var sizeButtons = [SizeButton]()
         for size in sizes {
@@ -199,23 +191,17 @@ struct ARViewControllerViewModel {
                 button.isSelected = true
             }
             button.setTitle(size, for: .normal)
+            button.isHidden = true
             sizeButtons.append(button)
         }
-        shouldAddSizeButtons = false
         return sizeButtons
-    }
-
-    // We only want to add size buttons to the view once.
-    // This will change to false by another function.
-    private var shouldAddSizeButtons = true
-
-    var shouldAddSizeButtonsToView: Bool {
-        return shouldShowPurchaseButton && shouldAddSizeButtons
     }
 
     mutating func sizeButtonTapped(_ button: SizeButton) {
         sizeButtons.forEach({ $0.isSelected = false })
         button.isSelected = true
+        currentSize = button.size
+        shouldChangeSize = true
     }
 }
 
@@ -240,10 +226,6 @@ class SizeButton: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func setAct(action: ((SizeButton) -> Void)?) {
-        self.action = action
-    }
-
     override open var isSelected: Bool {
         didSet {
             self.isSelected ? setSelectedUI() : setUnselectedUI()
@@ -257,5 +239,13 @@ class SizeButton: UIButton {
     private func setUnselectedUI() {
         layer.borderColor = CGColor(srgbRed: 255, green: 255, blue: 255, alpha: 1)
     }
-    
+}
+
+extension String {
+    func artworkSize() -> (width: CGFloat, height: CGFloat) {
+        let sizeArray = components(separatedBy: "X")
+        let width = CGFloat(exactly: NumberFormatter().number(from: sizeArray[0])!)!
+        let height = CGFloat(exactly: NumberFormatter().number(from: sizeArray[1])!)!
+        return (width: width, height: height)
+    }
 }

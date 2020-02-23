@@ -6,6 +6,7 @@
 
 - reupload all poster JSON with "sizes" array with X capital
 
+- Tap and drag should move from finger point, not move center to finger point
 - Add camera button under size button and share screenshot
 
 - either search while text or show possible tags while searching
