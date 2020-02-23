@@ -67,7 +67,7 @@ class ArtworkCollectionViewController: UICollectionViewController, UICollectionV
             query = query.start(afterDocument: lastDocument)
         }
 
-        if let searchString = searchString {
+        if let searchString = searchString, !searchString.isEmpty {
             query = query.whereField("tags", arrayContains: searchString)
         }
 
