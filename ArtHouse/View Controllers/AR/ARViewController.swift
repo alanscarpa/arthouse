@@ -111,19 +111,25 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     
     // MARK: - Setup
 
+    var sizeButtons = [SizeButton]()
+
     private func addSizeButtons(for sizes: [String]) {
         for (index, size) in sizes.enumerated() {
             let button = SizeButton()
             button.size = size.artworkSize()
-            button.backgroundColor = .blue
+            if button.size == viewModel.currentSize {
+                button.isSelected = true
+            }
             button.setTitle(size, for: .normal)
             button.addTarget(self, action: #selector(sizeButtonTapped(_:)), for: .touchUpInside)
             view.addSubview(button)
             button.translatesAutoresizingMaskIntoConstraints = false
             button.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -8).isActive = true
-            button.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: CGFloat(10 + (index * 100))).isActive = true
-            button.heightAnchor.constraint(equalToConstant: 80).isActive = true
-            button.widthAnchor.constraint(equalToConstant: 80).isActive = true
+            button.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: CGFloat(10 + (index * 80))).isActive = true
+            button.heightAnchor.constraint(equalToConstant: SizeButton.widthHeight).isActive = true
+            button.widthAnchor.constraint(equalToConstant: SizeButton.widthHeight).isActive = true
+
+            sizeButtons.append(button)
         }
     }
     
@@ -246,6 +252,8 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     }
 
     @objc func sizeButtonTapped(_ sizeButton: SizeButton) {
+        sizeButtons.forEach({ $0.isSelected = false })
+        sizeButton.isSelected = true
         viewModel.changeSize(sizeButton.size)
     }
 

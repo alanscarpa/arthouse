@@ -206,7 +206,39 @@ class SizeButton: UIButton {
     var size: (width: CGFloat, height: CGFloat) = (0, 0)
     var action: ((SizeButton) -> Void)?
 
+    static let widthHeight: CGFloat = 60
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        layer.cornerRadius =  SizeButton.widthHeight / 2
+        layer.borderWidth = 2
+        backgroundColor = .clear
+        setTitleColor(.ahPrimaryBlue, for: .selected)
+        setTitleColor(.white, for: .normal)
+        titleLabel?.font = UIFont(name: "Avenir Next", size: 14)
+        self.setUnselectedUI()
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     func setAct(action: ((SizeButton) -> Void)?) {
         self.action = action
     }
+
+    override open var isSelected: Bool {
+        didSet {
+            self.isSelected ? setSelectedUI() : setUnselectedUI()
+        }
+    }
+
+    private func setSelectedUI() {
+        layer.borderColor = CGColor(srgbRed: 113.0 / 255.0, green: 193.0 / 255.0, blue: 255.0 / 255.0, alpha: 1)
+    }
+
+    private func setUnselectedUI() {
+        layer.borderColor = CGColor(srgbRed: 255, green: 255, blue: 255, alpha: 1)
+    }
+    
 }
