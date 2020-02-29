@@ -118,7 +118,6 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         stackView.axis = .vertical
         stackView.spacing = 40
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.backgroundColor = .blue
         view.addSubview(stackView)
         NSLayoutConstraint.activate([
             stackView.trailingAnchor
