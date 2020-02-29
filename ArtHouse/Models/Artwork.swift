@@ -12,7 +12,7 @@ struct ArtworkFromJSON: Codable {
     let name: String
     let image: String
     let sizes: String
-    let price: CGFloat
+    let price: String
     let tags: String
     let link: String
     let popularity: CGFloat
@@ -43,8 +43,14 @@ struct ArtworkFromJSON: Codable {
             let buyURLString = artwork.link + "&curator=thescarpagroup"
             let sizeArray = artwork.sizes.components(separatedBy: ",")
             let tagsArray = artwork.tags.components(separatedBy: ",")
-            
-            let constructedArtwork = Artwork(id: "0", title: artwork.name, depth: 1, price: artwork.price, buyURLString: buyURLString, imageURLString: artwork.image, category: category, popularity: artwork.popularity, tags: tagsArray, sizes: sizeArray)
+
+            // For now, we will just take the first price because
+            // we aren't displaying price. Maybe in the future we will
+            // do something with the whole array.
+            let pricesArray = artwork.price.components(separatedBy: ",")
+            let price = CGFloat(exactly: NumberFormatter().number(from: pricesArray[0]) ?? 0) ?? 0
+
+            let constructedArtwork = Artwork(id: "0", title: artwork.name, depth: 1, price: price, buyURLString: buyURLString, imageURLString: artwork.image, category: category, popularity: artwork.popularity, tags: tagsArray, sizes: sizeArray)
             constructedArtworks.append(constructedArtwork)
         }
         return constructedArtworks

@@ -23,6 +23,7 @@
 		456CC2CF207C59680010676C /* OnboardingChildViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456CC2CE207C59680010676C /* OnboardingChildViewController.swift */; };
 		456CC2D2207C5C610010676C /* UIAlertController+AH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456CC2D1207C5C610010676C /* UIAlertController+AH.swift */; };
 		45751AA0206C158A0022D594 /* UIImage+AH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45751A9F206C158A0022D594 /* UIImage+AH.swift */; };
+		45768A6524034F1700AC8F33 /* prints.json in Resources */ = {isa = PBXBuildFile; fileRef = 45768A6424034F1700AC8F33 /* prints.json */; };
 		45814960207C525C005AE1DE /* ARViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4581495F207C525C005AE1DE /* ARViewController.xib */; };
 		45AE658323ED9BC0007BE694 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AE658223ED9BC0007BE694 /* SessionManager.swift */; };
 		45AE658523EE0D89007BE694 /* ARViewControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AE658423EE0D89007BE694 /* ARViewControllerViewModel.swift */; };
@@ -69,6 +70,7 @@
 		456CC2CE207C59680010676C /* OnboardingChildViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingChildViewController.swift; sourceTree = "<group>"; };
 		456CC2D1207C5C610010676C /* UIAlertController+AH.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+AH.swift"; sourceTree = "<group>"; };
 		45751A9F206C158A0022D594 /* UIImage+AH.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+AH.swift"; sourceTree = "<group>"; };
+		45768A6424034F1700AC8F33 /* prints.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = prints.json; sourceTree = "<group>"; };
 		4581495F207C525C005AE1DE /* ARViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ARViewController.xib; sourceTree = "<group>"; };
 		45AE658223ED9BC0007BE694 /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
 		45AE658423EE0D89007BE694 /* ARViewControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewControllerViewModel.swift; sourceTree = "<group>"; };
@@ -222,6 +224,7 @@
 			children = (
 				45F5676B23FD70D900166C0C /* test.json */,
 				45F5676D23FDAFBF00166C0C /* posters.json */,
+				45768A6424034F1700AC8F33 /* prints.json */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -337,6 +340,7 @@
 				45F5676C23FD70D900166C0C /* test.json in Resources */,
 				45F5676E23FDAFBF00166C0C /* posters.json in Resources */,
 				455BDE892062ED7A009CA00A /* art.scnassets in Resources */,
+				45768A6524034F1700AC8F33 /* prints.json in Resources */,
 				455BDE932062ED7A009CA00A /* LaunchScreen.storyboard in Resources */,
 				455BDE902062ED7A009CA00A /* Assets.xcassets in Resources */,
 				4505BBAC21D05D5900336295 /* HomeCollectionViewController.xib in Resources */,

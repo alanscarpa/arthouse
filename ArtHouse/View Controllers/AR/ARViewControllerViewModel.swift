@@ -26,7 +26,7 @@ struct ARViewControllerViewModel {
         self.artwork = artwork
         self.detailsText = "\(artwork.title)"
         self.sizes = artwork.sizes
-        self.currentSize = artwork.sizes.first?.artworkSize() ?? (0, 0)
+        self.currentSize = artwork.sizes.first!.artworkSize()
     }
 
     var sizes: [String]
@@ -35,7 +35,7 @@ struct ARViewControllerViewModel {
 
     // We are only concerned with width and height here.
     // Length is a hardcoded value.
-    private(set) var currentSize: Size = (0, 0)
+    private(set) var currentSize: Size
 
     var artworkLength: CGFloat {
         switch artwork.category {
@@ -176,20 +176,20 @@ struct ARViewControllerViewModel {
         return shouldShowPurchaseButton
     }
 
-    mutating func sizeButtonTapped(_ button: SizeButton) {
-        currentSize = button.size
+    var sizeButtonSelectedIndex: Int {
+        sizes.firstIndex { $0.artworkSize() == currentSize }!
+    }
+
+    mutating func sizeButtonTapped(at index: Int) {
+        currentSize = sizes[index].artworkSize()
     }
 }
 
 class SizeButton: UIButton {
-    var size: (width: CGFloat, height: CGFloat) = (0, 0)
-    var action: ((SizeButton) -> Void)?
-
     static let widthHeight: CGFloat = 60
 
-    init(_ size: ARViewControllerViewModel.Size, title: String) {
+    init(title: String) {
         super.init(frame: .zero)
-        self.size = size
         setTitle(title, for: .normal)
         layer.cornerRadius =  SizeButton.widthHeight / 2
         layer.borderWidth = 2

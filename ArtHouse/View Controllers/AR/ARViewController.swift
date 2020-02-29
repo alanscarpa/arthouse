@@ -93,24 +93,40 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         artworkDetailsLabel.isHidden = !viewModel.shouldShowArtDetails
         buyNowButton.isHidden = !viewModel.shouldShowPurchaseButton
         showSizeButtons(viewModel.shouldShowSizeButtons)
+
+        for (index, view) in stackView.arrangedSubviews.enumerated() {
+            let button = view as? SizeButton
+            button?.isSelected = index == viewModel.sizeButtonSelectedIndex
+        }
+
         updateArtworkOnScreenSize(with: viewModel.currentSize)
     }
     
     // MARK: - Setup
 
+    var stackView = UIStackView()
+
     private func addSizeButtons(for sizes: [String]) {
-        for (index, size) in sizes.enumerated() {
-            let button = SizeButton(size.artworkSize(), title: size)
-            button.isSelected = button.size == viewModel.currentSize
+        stackView = UIStackView(arrangedSubviews: sizes.map { size -> SizeButton in
+            let button = SizeButton(title: size)
             button.addTarget(self, action: #selector(sizeButtonTapped(_:)), for: .touchUpInside)
-            view.addSubview(button)
             button.translatesAutoresizingMaskIntoConstraints = false
-            button.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -8).isActive = true
-            button.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: CGFloat(10 + (index * 80))).isActive = true
             button.heightAnchor.constraint(equalToConstant: SizeButton.widthHeight).isActive = true
             button.widthAnchor.constraint(equalToConstant: SizeButton.widthHeight).isActive = true
-            sizeButtons.append(button)
-        }
+            return button
+        })
+        stackView.axis = .vertical
+        stackView.spacing = 40
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.backgroundColor = .blue
+        view.addSubview(stackView)
+        NSLayoutConstraint.activate([
+            stackView.trailingAnchor
+                .constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor,
+                            constant: -8),
+            stackView.topAnchor
+                .constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,
+                            constant: 10)])
     }
     
     private func setUpBuyNowButtonAnimation() {
@@ -232,9 +248,8 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     }
 
     @objc func sizeButtonTapped(_ sizeButton: SizeButton) {
-        sizeButtons.forEach({ $0.isSelected = false })
-        sizeButton.isSelected = true
-        viewModel.sizeButtonTapped(sizeButton)
+        let selectedIndex = stackView.arrangedSubviews.firstIndex(of: sizeButton)
+        viewModel.sizeButtonTapped(at: selectedIndex!)
     }
 
     private func updateArtworkOnScreenSize(with size: (width: CGFloat, height: CGFloat)) {
@@ -250,6 +265,6 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     // MARK: - Helpers
 
     private func showSizeButtons(_ shouldShow: Bool) {
-        sizeButtons.forEach({ $0.isHidden = !shouldShow })
+        stackView.isHidden = !shouldShow
     }
 }

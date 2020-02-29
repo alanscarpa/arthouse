@@ -5,7 +5,8 @@
 - [x] Make tags searchable
 
 - reupload all poster JSON with "sizes" array with X capital
-
+- Put most popular items first....right now popularity is random
+- Tap to place artwork instruction?
 - Tap and drag should move from finger point, not move center to finger point
 - Add camera button under size button and share screenshot
 
