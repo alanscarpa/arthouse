@@ -15,11 +15,14 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
     @IBOutlet weak var buyNowButton: UIButton!
-    @IBOutlet weak var tutorialLabelContainerView: UIView!
-    @IBOutlet weak var tutorialLabel: UILabel!
-    @IBOutlet weak var tutorialButton: UIButton!
-    @IBOutlet weak var artworkDetailsLabel: UILabel!
+    @IBOutlet weak var instructionsLabelContainerView: UIView!
+    @IBOutlet weak var instructionsLabel: UILabel!
+    @IBOutlet weak var instructionsButton: UIButton!
+    @IBOutlet weak var artworkTitleContainer: UIView!
+    @IBOutlet weak var artworkTitleLabel: UILabel!
     @IBOutlet weak var backButton: UIButton!
+
+    var stackView = UIStackView()
 
     let artwork: Artwork
     var artworkNode = SCNNode()
@@ -75,9 +78,10 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
 
     private func setUpUI() {
         backButton.roundCorners()
-        tutorialLabelContainerView.roundCorners()
+        instructionsLabelContainerView.roundCorners()
+        artworkTitleContainer.roundCorners()
         buyNowButton.roundCorners()
-        tutorialButton.roundCorners()
+        instructionsButton.roundCorners()
         addSizeButtons(for: viewModel.sizes)
     }
 
@@ -85,12 +89,12 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
 
     // Called whenever our ViewModel updates.
     private func configureUI() {
-        tutorialLabelContainerView.isHidden = viewModel.didCompleteTutorial
-        tutorialLabel.text = viewModel.tutorialText
-        tutorialButton.titleLabel?.text = viewModel.tutorialButtonText
-        tutorialButton.isHidden = !viewModel.shouldShowTutorialButton
-        artworkDetailsLabel.text = viewModel.detailsText
-        artworkDetailsLabel.isHidden = !viewModel.shouldShowArtDetails
+        instructionsLabelContainerView.isHidden = !viewModel.shouldShowInstructions
+        instructionsLabel.text = viewModel.instructionsText
+        instructionsButton.setTitle(viewModel.instructionsButtonText, for: .normal)
+        instructionsButton.isHidden = !viewModel.shouldShowInstructionsButton
+        artworkTitleContainer.isHidden = !viewModel.shouldShowArtDetails
+        artworkTitleLabel.text = viewModel.detailsText
         buyNowButton.isHidden = !viewModel.shouldShowPurchaseButton
         showSizeButtons(viewModel.shouldShowSizeButtons)
 
@@ -103,8 +107,6 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     }
     
     // MARK: - Setup
-
-    var stackView = UIStackView()
 
     private func addSizeButtons(for sizes: [String]) {
         stackView = UIStackView(arrangedSubviews: sizes.map { size -> SizeButton in
@@ -235,7 +237,7 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         RootViewController.shared.popViewController()
     }
 
-    @IBAction func tutorialButtonTapped(_ sender: Any) {
+    @IBAction func instructionsButtonTapped(_ sender: Any) {
         viewModel.updateTutorialProgress()
     }
 

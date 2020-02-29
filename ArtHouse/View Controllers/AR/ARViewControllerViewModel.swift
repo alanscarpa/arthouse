@@ -63,6 +63,10 @@ struct ARViewControllerViewModel {
         realWorldPosition = position
     }
 
+    var shouldShowInstructions: Bool {
+        return !shouldShowPurchaseButton
+    }
+
     var didCompleteTutorial: Bool {
         switch tutorialProgress {
         case .finishedInThisSession, .finishedInAnotherSession:
@@ -102,14 +106,14 @@ struct ARViewControllerViewModel {
         tutorialProgress = .standThreeFeetAway
     }
 
-    var tutorialText: String? {
+    var instructionsText: String? {
         switch tutorialProgress {
         case .finishedInAnotherSession, .finishedInThisSession:
-            return nil
+            return "Tap wall to place artwork"
         case .standThreeFeetAway:
             return """
             STEP 1:
-            Stand 3 feet (0.91 meters) away from your wall.  This is will ensure accurate artwork size!
+            Stand 3 feet away from your wall.  This is will ensure accurate artwork size!
             """
         case .tapToPlace:
             return """
@@ -119,22 +123,21 @@ struct ARViewControllerViewModel {
         case .touchAndDrag:
             return """
             STEP 3:
-            Use 1 finger to move your artwork.
-            NOTE: You can't resize the artwork. This is a real world representation of how it will look on your wall.
+            Use 1 finger to move your artwork around.
             """
         }
     }
 
-    var tutorialButtonText: String? {
+    var instructionsButtonText: String? {
         switch tutorialProgress {
         case .finishedInAnotherSession, .finishedInThisSession, .tapToPlace, .touchAndDrag:
             return nil
         case .standThreeFeetAway:
-            return "I'm 3 feet from my wall. NEXT!"
+            return "Next"
         }
     }
 
-    var shouldShowTutorialButton: Bool {
+    var shouldShowInstructionsButton: Bool {
         switch tutorialProgress {
         case .standThreeFeetAway:
             return true

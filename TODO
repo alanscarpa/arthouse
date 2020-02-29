@@ -3,13 +3,15 @@
 - [x] Decided how to append curator code, either in CSV or in app
 - [x] Add tags - might have to reupload everything with tags array....
 - [x] Make tags searchable
+- [x] reupload all poster JSON with "sizes" array with X capital
 
-- reupload all poster JSON with "sizes" array with X capital
+- Trim the left inch off all artwork..if possible
+- Add "Tap to place" 
 - Put most popular items first....right now popularity is random
 - Tap to place artwork instruction?
 - Tap and drag should move from finger point, not move center to finger point
 - Add camera button under size button and share screenshot
-
+- test on diff screen sizes
 - either search while text or show possible tags while searching
 - if multiple sizes, show alert reminding user to select correct size on next page
 - Prevent rotatingn of image when rotating phone
@@ -29,13 +31,13 @@
 - [x] change arrow to blue
 - [x] Put tutorial in view for padding
 - Put artwork title on arvc in view and add padding
-- Add option to change artwork sizes
-	- Add sizes
+- [x] Add option to change artwork sizes
+	- [x] Add sizes
 - [x] Scrape hundreds of items
 	- [x] Leave good review for scraper
 	- [x] Remove background for all images
-	- Upload all images 
-	- Use JSON to create objects and upload to Firebase - test with small set first
+	- [x] Upload all images 
+	- [x] Use JSON to create objects and upload to Firebase - test with small set first
 - [x] Make the instructions progressive, first time every session
 	- Make tutorial prettier
 
