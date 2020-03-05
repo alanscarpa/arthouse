@@ -1,36 +1,42 @@
+- Decide how to handle wood art's "foot" size...show inches in app? or show feet? show " or '
+- Upload all the artwork for
+	- framed prints
+	- wood wall art
+- Trim the left inch off all artwork..if possible
+- Add "Tap to place" 
+- Put most popular items first....right now popularity is random
+- Tap and drag should move from finger point, not move center to finger point
+- Add camera button under size button and share screenshot
+- test on diff screen sizes
+- either search while text or show possible tags while searching
+- if multiple sizes, show alert reminding user to select correct size on BUY NOW page..maybe
+- Prevent rotating of image when rotating phone
+- BUG - Web vc not going to top of screen
+- Create firebase search index for each category (try search in each category to get easy link)
+	- framed prints
+	- tapestries
+	- wood wall art
+	- wall hangings
+- Make additional query to search artworks by name, then consolidate results into 1 array along with tags result
+- Update onboarding chooseartwork image
+- Update onboarding 3 feet from wall image
+	- Make onboarding and tutorial say "camera should be 3 feet from wall"
+- Update for dark mode
+
 - [x] Get info back from society 6 about curator string disappearing
 - [x] Log in to society 6 or make new account
 - [x] Decided how to append curator code, either in CSV or in app
 - [x] Add tags - might have to reupload everything with tags array....
 - [x] Make tags searchable
 - [x] reupload all poster JSON with "sizes" array with X capital
-
-- Trim the left inch off all artwork..if possible
-- Add "Tap to place" 
-- Put most popular items first....right now popularity is random
-- Tap to place artwork instruction?
-- Tap and drag should move from finger point, not move center to finger point
-- Add camera button under size button and share screenshot
-- test on diff screen sizes
-- either search while text or show possible tags while searching
-- if multiple sizes, show alert reminding user to select correct size on next page
-- Prevent rotatingn of image when rotating phone
-- Maybe get rid of step 3 in tut
-- Web vc not going to top of screen
-- Create index for each category (try search in each category to get easy link)
-- Make additional query to search by name, then consolidate results, and set tags doc as last
-
-- Update for dark mode
+- [x] Tap to place artwork instruction?
 - [x] Remove prices from homepage
 - [x] Remove length for tapestries and hangings
-- Update onboarding chooseartwork image
-- Update onboarding 3 feet from wall image
-	- Make onboarding and tutorial say "camera should be 3 feet from wall"
 - [x] Go through onboarding and QA all scenarios (including turning off camera permissions later)
 - [x] Change screen titles in nav bar to blue
 - [x] change arrow to blue
 - [x] Put tutorial in view for padding
-- Put artwork title on arvc in view and add padding
+- [x] Put artwork title on arvc in view and add padding
 - [x] Add option to change artwork sizes
 	- [x] Add sizes
 - [x] Scrape hundreds of items
@@ -39,11 +45,4 @@
 	- [x] Upload all images 
 	- [x] Use JSON to create objects and upload to Firebase - test with small set first
 - [x] Make the instructions progressive, first time every session
-	- Make tutorial prettier
-
-
-
-
-	- remove all backgrounds
-	- upload all to art-images/posters
-	-
+	- [x] Make tutorial prettier

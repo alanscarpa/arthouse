@@ -44,6 +44,8 @@
 		45F5676C23FD70D900166C0C /* test.json in Resources */ = {isa = PBXBuildFile; fileRef = 45F5676B23FD70D900166C0C /* test.json */; };
 		45F5676E23FDAFBF00166C0C /* posters.json in Resources */ = {isa = PBXBuildFile; fileRef = 45F5676D23FDAFBF00166C0C /* posters.json */; };
 		45F5677023FEC06E00166C0C /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F5676F23FEC06E00166C0C /* SearchBar.swift */; };
+		45F56A25241138340090E224 /* framed-prints.json in Resources */ = {isa = PBXBuildFile; fileRef = 45F56A23241138330090E224 /* framed-prints.json */; };
+		45F56A26241138340090E224 /* wood-wall-art.json in Resources */ = {isa = PBXBuildFile; fileRef = 45F56A24241138330090E224 /* wood-wall-art.json */; };
 		45F7E222207448CE00C7228E /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F7E221207448CE00C7228E /* RootViewController.swift */; };
 		45F7E22520744C9E00C7228E /* UIColor+AH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F7E22420744C9E00C7228E /* UIColor+AH.swift */; };
 		45F7E22720744D1300C7228E /* UIViewController+AH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F7E22620744D1300C7228E /* UIViewController+AH.swift */; };
@@ -91,6 +93,8 @@
 		45F5676B23FD70D900166C0C /* test.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = test.json; sourceTree = "<group>"; };
 		45F5676D23FDAFBF00166C0C /* posters.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = posters.json; sourceTree = "<group>"; };
 		45F5676F23FEC06E00166C0C /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
+		45F56A23241138330090E224 /* framed-prints.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "framed-prints.json"; sourceTree = "<group>"; };
+		45F56A24241138330090E224 /* wood-wall-art.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "wood-wall-art.json"; sourceTree = "<group>"; };
 		45F7E221207448CE00C7228E /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		45F7E22420744C9E00C7228E /* UIColor+AH.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+AH.swift"; sourceTree = "<group>"; };
 		45F7E22620744D1300C7228E /* UIViewController+AH.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+AH.swift"; sourceTree = "<group>"; };
@@ -225,6 +229,8 @@
 				45F5676B23FD70D900166C0C /* test.json */,
 				45F5676D23FDAFBF00166C0C /* posters.json */,
 				45768A6424034F1700AC8F33 /* prints.json */,
+				45F56A23241138330090E224 /* framed-prints.json */,
+				45F56A24241138330090E224 /* wood-wall-art.json */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -336,12 +342,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45F56A26241138340090E224 /* wood-wall-art.json in Resources */,
 				45C0D62B2079299000CBBA44 /* PositionYourselfViewController.xib in Resources */,
 				45F5676C23FD70D900166C0C /* test.json in Resources */,
 				45F5676E23FDAFBF00166C0C /* posters.json in Resources */,
 				455BDE892062ED7A009CA00A /* art.scnassets in Resources */,
 				45768A6524034F1700AC8F33 /* prints.json in Resources */,
 				455BDE932062ED7A009CA00A /* LaunchScreen.storyboard in Resources */,
+				45F56A25241138340090E224 /* framed-prints.json in Resources */,
 				455BDE902062ED7A009CA00A /* Assets.xcassets in Resources */,
 				4505BBAC21D05D5900336295 /* HomeCollectionViewController.xib in Resources */,
 				45C0D6232079295300CBBA44 /* EnableCameraViewController.xib in Resources */,
