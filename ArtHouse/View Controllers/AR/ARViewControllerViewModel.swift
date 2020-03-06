@@ -21,8 +21,8 @@ struct ARViewControllerViewModel {
         case finishedInAnotherSession
     }
 
-    init(tutorialProgress: TutorialProgress, artwork: Artwork) {
-        self.tutorialProgress = tutorialProgress
+    init(with artwork: Artwork) {
+        self.tutorialProgress  = SessionManager.sharedSession.didCompleteArtworkTutorial ? .finishedInAnotherSession : .standThreeFeetAway
         self.artwork = artwork
         self.detailsText = "\(artwork.title)"
         self.sizes = artwork.sizes
@@ -46,7 +46,7 @@ struct ARViewControllerViewModel {
         }
     }
 
-    private(set) var tutorialProgress: TutorialProgress
+    private var tutorialProgress: TutorialProgress
 
     var realWorldPosition: SCNVector3? {
         didSet {

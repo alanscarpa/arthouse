@@ -19,7 +19,7 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
         Auth.auth().signInAnonymously() { user, error in
             guard user != nil else { print(error?.localizedDescription ?? ""); return }
             // RUN AN UPLOAD FOR ARTWORK THEN COMMENT OUT
-            //Uploader.uploadArtwork()
+            // Uploader.uploadArtwork()
         }
         setTitleImage()
     }

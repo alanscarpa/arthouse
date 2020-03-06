@@ -17,7 +17,7 @@ class Uploader {
         /// STEP 0 - Get .csv sheet for category and remove all duplicates!
         
         /// STEP 1 - CHANGE THIS
-        let category = Artwork.Category.prints
+        let category = Artwork.Category.framedPrints
         
         /// STEP 2 - ADD ALL ARTWORK HERE
         /// Most popular = 0
@@ -25,7 +25,7 @@ class Uploader {
         /// STEP 3 - CAN ENTER THE SAME ID, IT IS NOT UPLOAD, ONLY CREATED WHEN DOWNLOADED
 
         /// STEP 4 - CHANGE FILE NAME
-        let artworks: [Artwork] = ArtworkFromJSON.artworkFromJSON(filename: "prints", category: category)
+        let artworks: [Artwork] = ArtworkFromJSON.artworkFromJSON(filename: "framed-prints", category: category)
 
         let db = Firestore.firestore()
         let collection = db.collection(category.rawValue)

@@ -40,8 +40,7 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     
     init(_ artwork: Artwork) {
         self.artwork = artwork
-        let tutorialProgress: ARViewControllerViewModel.TutorialProgress  = SessionManager.sharedSession.didCompleteArtworkTutorial ? .finishedInAnotherSession : .standThreeFeetAway
-        viewModel = ARViewControllerViewModel(tutorialProgress: tutorialProgress, artwork: artwork)
+        self.viewModel = ARViewControllerViewModel(with: artwork)
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -103,7 +102,7 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
             button?.isSelected = index == viewModel.sizeButtonSelectedIndex
         }
 
-        updateArtworkOnScreenSize(with: viewModel.currentSize)
+        updateArtworkNodeSize(with: viewModel.currentSize)
     }
     
     // MARK: - Setup
@@ -163,6 +162,12 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         let boxGeometry = SCNBox(width: size.width * 0.0254, height: size.height * 0.0254, length: length, chamferRadius: 0.0)
         let imageMaterial = SCNMaterial()
         imageMaterial.diffuse.contents = artwork.image
+
+        // This transform is needed because all the images had extra white space
+        // due to imperfect cropping. This can remain a TODO until new images
+        // are used. Which..might be never.
+        imageMaterial.diffuse.contentsTransform = SCNMatrix4Mult(SCNMatrix4MakeTranslation(0.02, 0.005, 0), SCNMatrix4MakeScale(0.98, 0.98, 1))
+        
         let blackFrameMaterial = SCNMaterial()
         blackFrameMaterial.diffuse.contents = UIColor.black
         boxGeometry.materials = [imageMaterial, blackFrameMaterial, blackFrameMaterial, blackFrameMaterial, blackFrameMaterial, blackFrameMaterial]
@@ -253,7 +258,7 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         viewModel.sizeButtonTapped(at: selectedIndex!)
     }
 
-    private func updateArtworkOnScreenSize(with size: (width: CGFloat, height: CGFloat)) {
+    private func updateArtworkNodeSize(with size: (width: CGFloat, height: CGFloat)) {
         guard artworkNode.parent != nil else { return }
         let eulerAngles = artworkNode.eulerAngles
         let position = artworkNode.position
