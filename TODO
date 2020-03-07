@@ -1,24 +1,30 @@
-- Decide how to handle wood art's "foot" size...show inches in app? or show feet? show " or '
+- Prevent rotating of image when holding image and rotating phone
 - Redo tapestries and wall hangings - CURRENTLY CRASHES 
+- Update for dark mode
 - Put most popular items first....right now popularity is random
-- Tap and drag should move from finger point, not move center to finger point
 - Add camera button under size button and share screenshot
 - test on diff screen sizes
 - either search while text or show possible tags while searching
 - if multiple sizes, show alert reminding user to select correct size on BUY NOW page..maybe
-- Prevent rotating of image when rotating phone
 - BUG - Web vc not going to top of screen
 - Create firebase search index for each category (try search in each category to get easy link)
-	- framed prints
+	- [x] framed prints
 	- tapestries
-	- wood wall art
+	- [x] wood wall art
 	- wall hangings
 - Make additional query to search artworks by name, then consolidate results into 1 array along with tags result
 - Update onboarding chooseartwork image
 - Update onboarding 3 feet from wall image
 	- Make onboarding and tutorial say "camera should be 3 feet from wall"
-- Update for dark mode
 
+
+- [x] Decide how to handle wood art's "foot" size...show inches in app? or show feet? show " or '
+- [x] Tap and drag should move from finger point, not move center to finger point
+- [x] Upload all the artwork for
+	- [x] framed prints
+	- [x] wood wall art
+- [x] Trim the left inch off all artwork..if possible (IT WAS)
+- [x] Add "Tap to place"
 - [x] Get info back from society 6 about curator string disappearing
 - [x] Log in to society 6 or make new account
 - [x] Decided how to append curator code, either in CSV or in app
