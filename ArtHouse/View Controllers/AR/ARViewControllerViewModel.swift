@@ -12,27 +12,6 @@ import SceneKit
 
 struct ARViewControllerViewModel {
 
-    mutating func vectorPosition(from touchPoint: CGPoint, in sceneView: ARSCNView, with currentFrame: ARFrame) -> SCNVector3 {
-        var translation = matrix_identity_float4x4
-        translation.columns.3.z = -1.0
-        let pointTransform = matrix_multiply(currentFrame.camera.transform, translation)
-        let normalizedZValue = sceneView.projectPoint(SCNVector3Make(
-            pointTransform.columns.3.x,
-            pointTransform.columns.3.y,
-            pointTransform.columns.3.z)).z
-
-        let position = sceneView.unprojectPoint(SCNVector3Make(Float(touchPoint.x), Float(touchPoint.y), normalizedZValue))
-        return position
-    }
-
-    func eulerAngles(from currentFrame: ARFrame) -> SCNVector3 {
-        let pitch: Float = 0
-        let yaw = currentFrame.camera.eulerAngles.y
-        let orientationCompensation = currentFrame.camera.eulerAngles.z < -0.5 ? Float.pi/2 : 0
-        let roll = currentFrame.camera.eulerAngles.z + orientationCompensation
-        return SCNVector3Make(pitch, yaw, roll)
-    }
-
     typealias Size = (width: CGFloat, height: CGFloat)
 
     enum TutorialProgress {
@@ -48,7 +27,7 @@ struct ARViewControllerViewModel {
         self.artwork = artwork
         self.detailsText = "\(artwork.title)"
         self.sizes = artwork.sizes
-        self.currentSize = artwork.sizes.first!.artworkSize()
+        self.currentSize = artwork.sizes.first!.artworkSize(inFeet: artwork.sizeIsInFeet)
     }
 
     var sizes: [String]
@@ -214,11 +193,32 @@ struct ARViewControllerViewModel {
     }
 
     var sizeButtonSelectedIndex: Int {
-        sizes.firstIndex { $0.artworkSize() == currentSize }!
+        sizes.firstIndex { $0.artworkSize(inFeet: artwork.sizeIsInFeet) == currentSize }!
     }
 
     mutating func sizeButtonTapped(at index: Int) {
-        currentSize = sizes[index].artworkSize()
+        currentSize = sizes[index].artworkSize(inFeet: artwork.sizeIsInFeet)
+    }
+
+    func vectorPosition(from touchPoint: CGPoint, in sceneView: ARSCNView, with currentFrame: ARFrame) -> SCNVector3 {
+        var translation = matrix_identity_float4x4
+        translation.columns.3.z = -1.0
+        let pointTransform = matrix_multiply(currentFrame.camera.transform, translation)
+        let normalizedZValue = sceneView.projectPoint(SCNVector3Make(
+            pointTransform.columns.3.x,
+            pointTransform.columns.3.y,
+            pointTransform.columns.3.z)).z
+
+        let position = sceneView.unprojectPoint(SCNVector3Make(Float(touchPoint.x), Float(touchPoint.y), normalizedZValue))
+        return position
+    }
+
+    func eulerAngles(from currentFrame: ARFrame) -> SCNVector3 {
+        let pitch: Float = 0
+        let yaw = currentFrame.camera.eulerAngles.y
+        let orientationCompensation = currentFrame.camera.eulerAngles.z < -0.5 ? Float.pi/2 : 0
+        let roll = currentFrame.camera.eulerAngles.z + orientationCompensation
+        return SCNVector3Make(pitch, yaw, roll)
     }
 }
 
@@ -257,10 +257,16 @@ class SizeButton: UIButton {
 }
 
 extension String {
-    func artworkSize() -> (width: CGFloat, height: CGFloat) {
+    func artworkSize(inFeet: Bool) -> (width: CGFloat, height: CGFloat) {
+        var cleanedString = self.replacingOccurrences(of: "\"", with: "")
+        cleanedString = cleanedString.replacingOccurrences(of: "'", with: "")
         let sizeArray = components(separatedBy: "X")
-        let width = CGFloat(exactly: NumberFormatter().number(from: sizeArray[0])!)!
-        let height = CGFloat(exactly: NumberFormatter().number(from: sizeArray[1])!)!
+        var width = CGFloat(exactly: NumberFormatter().number(from: sizeArray[0])!)!
+        var height = CGFloat(exactly: NumberFormatter().number(from: sizeArray[1])!)!
+        if inFeet {
+            width = width * 12
+            height = height * 12
+        }
         return (width: width, height: height)
     }
 }

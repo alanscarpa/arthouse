@@ -70,6 +70,15 @@ class Artwork {
     let tags: [String]
     let sizes: [String]
 
+    var sizeIsInFeet: Bool {
+        switch category {
+        case .framedPrints, .posters, .prints, .wallHanging:
+            return false
+        case .wallTapestry, .woodWallArt:
+            return true
+        }
+    }
+
     enum Category: String {
         case framedPrints = "framed-prints"
         case wallTapestry = "wall-tapestry"
