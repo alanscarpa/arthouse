@@ -113,7 +113,8 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
 
     private func addSizeButtons(for sizes: [String]) {
         stackView = UIStackView(arrangedSubviews: sizes.map { size -> SizeButton in
-            let button = SizeButton(title: size)
+            let displaySize = viewModel.displaySize(for: size)
+            let button = SizeButton(title: displaySize)
             button.addTarget(self, action: #selector(sizeButtonTapped(_:)), for: .touchUpInside)
             button.translatesAutoresizingMaskIntoConstraints = false
             button.heightAnchor.constraint(equalToConstant: SizeButton.widthHeight).isActive = true

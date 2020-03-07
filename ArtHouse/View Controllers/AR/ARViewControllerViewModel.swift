@@ -220,10 +220,23 @@ struct ARViewControllerViewModel {
         let roll = currentFrame.camera.eulerAngles.z + orientationCompensation
         return SCNVector3Make(pitch, yaw, roll)
     }
+
+    func displaySize(for size: String) -> String {
+        let sizeArray = size.components(separatedBy: "X")
+        if artwork.sizeIsInFeet {
+            let width = sizeArray[0]
+            let height = sizeArray[1] + "'"
+            return width + "x" + height
+        } else {
+            let width = sizeArray[0]
+            let height = sizeArray[1] + "\""
+            return width + "x" + height
+        }
+    }
 }
 
 class SizeButton: UIButton {
-    static let widthHeight: CGFloat = 60
+    static let widthHeight: CGFloat = 65
 
     init(title: String) {
         super.init(frame: .zero)
