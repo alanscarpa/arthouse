@@ -256,7 +256,7 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     @IBAction func buyNowButtonTapped() {
         guard let buyNowURL = URL(string: artwork.buyURLString) else { return }
         let safariVC = SFSafariViewController(url: buyNowURL)
-        safariVC.modalPresentationStyle = .popover
+        safariVC.modalPresentationStyle = .overFullScreen
         present(safariVC, animated: true)
     }
 
