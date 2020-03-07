@@ -71,10 +71,10 @@ class Artwork {
     let sizes: [String]
 
     enum Category: String {
-        case posters
-        case prints
         case framedPrints = "framed-prints"
         case wallTapestry = "wall-tapestry"
+        case posters
+        case prints
         case woodWallArt = "wood-wall-art"
         case wallHanging = "wall-hangings"
     }

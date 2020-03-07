@@ -28,6 +28,10 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     var artworkNode = SCNNode()
     var sizeButtons = [SizeButton]()
 
+    // Used to keep track of where the user initially touched to calculate the delta
+    // when the user drags their finger.
+    var referenceTouchPoint = SCNVector3()
+
     // This is the value that will determine our UI state
     var viewModel: ARViewControllerViewModel {
         didSet {
@@ -117,7 +121,7 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
             return button
         })
         stackView.axis = .vertical
-        stackView.spacing = 40
+        stackView.spacing = 20
         stackView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(stackView)
         NSLayoutConstraint.activate([
@@ -147,7 +151,7 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         sceneView.delegate = self
         sceneView.scene = SCNScene()
         let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(panGesture(_:)))
-        panGestureRecognizer.minimumNumberOfTouches = 1
+        panGestureRecognizer.maximumNumberOfTouches = 1
         sceneView.addGestureRecognizer(panGestureRecognizer)
     }
     
@@ -157,7 +161,7 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         sceneView.session.run(configuration)
     }
     
-    func artworkNode(position: SCNVector3, size: (width: CGFloat, height: CGFloat)) -> SCNNode {
+    func artworkNode(position: SCNVector3, size: (width: CGFloat, height: CGFloat), eulerAngles: SCNVector3) -> SCNNode {
         let length = viewModel.artworkLength
         let boxGeometry = SCNBox(width: size.width * 0.0254, height: size.height * 0.0254, length: length, chamferRadius: 0.0)
         let imageMaterial = SCNMaterial()
@@ -172,39 +176,27 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         boxGeometry.materials = [imageMaterial, blackFrameMaterial, blackFrameMaterial, blackFrameMaterial, blackFrameMaterial, blackFrameMaterial]
         let node = SCNNode(geometry: boxGeometry)
         node.position = position
+
+        node.eulerAngles = eulerAngles
         return node
     }
     
     // MARK: - UIEvents
-
-    var referencePos = SCNVector3()
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard touches.first?.tapCount == 1 else { return }
         guard let touchPoint = touches.first?.location(in: sceneView) else { return }
-        
-        var translationn = matrix_identity_float4x4
-        translationn.columns.3.z = -1.0
-        let pointTransformm = matrix_multiply(sceneView.session.currentFrame!.camera.transform, translationn)
-        let normalizedZValuee = sceneView.projectPoint(SCNVector3Make(
-            pointTransformm.columns.3.x,
-            pointTransformm.columns.3.y,
-            pointTransformm.columns.3.z)).z
-        referencePos = sceneView.unprojectPoint(SCNVector3Make(Float(touchPoint.x), Float(touchPoint.y), normalizedZValuee))
+        guard let currentFrame = sceneView.session.currentFrame else { return }
+
+        // Needed because when the finger begins to drag, we need to calculate
+        // the delta from this point and adjust the center position accordingly.
+        referenceTouchPoint = viewModel.vectorPosition(from: touchPoint, in: sceneView, with: currentFrame)
 
         guard viewModel.canPlaceArtwork else { return }
         guard artworkNode.parent == nil else { return }
-        guard let currentFrame = sceneView.session.currentFrame else { return }
 
-        let position = viewModel.vectorPosition(from: touchPoint, in: sceneView)
-        artworkNode = self.artworkNode(position: position, size: viewModel.currentSize)
-
-        let pitch: Float = 0
-        let yaw = currentFrame.camera.eulerAngles.y
-        let orientationCompensation = currentFrame.camera.eulerAngles.z < -0.5 ? Float.pi/2 : 0
-        let roll = sceneView.session.currentFrame!.camera.eulerAngles.z + orientationCompensation
-        let newRotation = SCNVector3Make(pitch, yaw, roll)
-        artworkNode.eulerAngles = newRotation
+        let position = viewModel.vectorPosition(from: touchPoint, in: sceneView, with: currentFrame)
+        artworkNode = artworkNode(position: position, size: viewModel.currentSize, eulerAngles: viewModel.eulerAngles(from: currentFrame))
         sceneView.scene.rootNode.addChildNode(artworkNode)
 
         viewModel.updateArtworkPosition(position)
@@ -216,39 +208,21 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         if let tappednode = hits.first?.node, let result = hits.first {
 
             let newX = result.worldCoordinates.x
-            let oldX = tappednode.worldPosition.x
-
-            let deltaX: Float
-            let newVectorX: Float
-
-            if newX >= oldX {
-                deltaX = newX - referencePos.x
-                newVectorX = (oldX + deltaX)
-            } else {
-                deltaX = newX - referencePos.x
-                newVectorX = deltaX + oldX
-            }
+            let oldCenterX = tappednode.worldPosition.x
+            let deltaX = newX - referenceTouchPoint.x
+            let newCenterX = deltaX + oldCenterX
 
             let newY = result.worldCoordinates.y
-            let oldY = tappednode.worldPosition.y
+            let oldCenterY = tappednode.worldPosition.y
+            let deltaY = newY - referenceTouchPoint.y
+            let newCenterY = deltaY + oldCenterY
 
-            let deltaY: Float
-            let newVectorY: Float
-
-            if newY >= oldY {
-                deltaY = newY - referencePos.y
-                newVectorY = oldY + deltaY
-            } else {
-                deltaY = newY - referencePos.y
-                newVectorY = deltaY + oldY
-            }
-
-            referencePos = SCNVector3(CGFloat(newX), CGFloat(newY), CGFloat(referencePos.z))
-
-            let newPosition = SCNVector3Make(newVectorX, newVectorY, artworkNode.position.z)
+            let newPosition = SCNVector3Make(newCenterX, newCenterY, artworkNode.position.z)
             tappednode.position = newPosition
             viewModel.updateArtworkPosition(newPosition)
             viewModel.updateTutorialProgress()
+
+            referenceTouchPoint = SCNVector3(CGFloat(newX), CGFloat(newY), CGFloat(referenceTouchPoint.z))
         }
     }
 
@@ -293,11 +267,8 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
 
     private func updateArtworkNodeSize(with size: (width: CGFloat, height: CGFloat)) {
         guard artworkNode.parent != nil else { return }
-        let eulerAngles = artworkNode.eulerAngles
-        let position = artworkNode.position
         artworkNode.removeFromParentNode()
-        artworkNode = artworkNode(position: position, size: size)
-        artworkNode.eulerAngles = eulerAngles
+        artworkNode = artworkNode(position: artworkNode.position, size: size, eulerAngles: artworkNode.eulerAngles)
         sceneView.scene.rootNode.addChildNode(artworkNode)
     }
 

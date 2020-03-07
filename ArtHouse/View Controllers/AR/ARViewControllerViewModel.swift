@@ -12,25 +12,25 @@ import SceneKit
 
 struct ARViewControllerViewModel {
 
-    // Used to calculate where the user has touched and then
-    // how much the artwork should move when they drag their finger
-    // along the screen.
-    var touchReferencePosition = SCNVector3()
+    mutating func vectorPosition(from touchPoint: CGPoint, in sceneView: ARSCNView, with currentFrame: ARFrame) -> SCNVector3 {
+        var translation = matrix_identity_float4x4
+        translation.columns.3.z = -1.0
+        let pointTransform = matrix_multiply(currentFrame.camera.transform, translation)
+        let normalizedZValue = sceneView.projectPoint(SCNVector3Make(
+            pointTransform.columns.3.x,
+            pointTransform.columns.3.y,
+            pointTransform.columns.3.z)).z
 
-    mutating func vectorPosition(from touchPoint: CGPoint, in sceneView: ARSCNView, setAsReference: Bool = false) -> SCNVector3 {
-        var translationn = matrix_identity_float4x4
-        translationn.columns.3.z = -1.0
-        let pointTransformm = matrix_multiply(sceneView.session.currentFrame!.camera.transform, translationn)
-        let normalizedZValuee = sceneView.projectPoint(SCNVector3Make(
-            pointTransformm.columns.3.x,
-            pointTransformm.columns.3.y,
-            pointTransformm.columns.3.z)).z
-
-        let position = sceneView.unprojectPoint(SCNVector3Make(Float(touchPoint.x), Float(touchPoint.y), normalizedZValuee))
-        if setAsReference {
-            touchReferencePosition = position
-        }
+        let position = sceneView.unprojectPoint(SCNVector3Make(Float(touchPoint.x), Float(touchPoint.y), normalizedZValue))
         return position
+    }
+
+    func eulerAngles(from currentFrame: ARFrame) -> SCNVector3 {
+        let pitch: Float = 0
+        let yaw = currentFrame.camera.eulerAngles.y
+        let orientationCompensation = currentFrame.camera.eulerAngles.z < -0.5 ? Float.pi/2 : 0
+        let roll = currentFrame.camera.eulerAngles.z + orientationCompensation
+        return SCNVector3Make(pitch, yaw, roll)
     }
 
     typealias Size = (width: CGFloat, height: CGFloat)
