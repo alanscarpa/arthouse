@@ -8,8 +8,30 @@
 
 import Foundation
 import ARKit
+import SceneKit
 
 struct ARViewControllerViewModel {
+
+    // Used to calculate where the user has touched and then
+    // how much the artwork should move when they drag their finger
+    // along the screen.
+    var touchReferencePosition = SCNVector3()
+
+    mutating func vectorPosition(from touchPoint: CGPoint, in sceneView: ARSCNView, setAsReference: Bool = false) -> SCNVector3 {
+        var translationn = matrix_identity_float4x4
+        translationn.columns.3.z = -1.0
+        let pointTransformm = matrix_multiply(sceneView.session.currentFrame!.camera.transform, translationn)
+        let normalizedZValuee = sceneView.projectPoint(SCNVector3Make(
+            pointTransformm.columns.3.x,
+            pointTransformm.columns.3.y,
+            pointTransformm.columns.3.z)).z
+
+        let position = sceneView.unprojectPoint(SCNVector3Make(Float(touchPoint.x), Float(touchPoint.y), normalizedZValuee))
+        if setAsReference {
+            touchReferencePosition = position
+        }
+        return position
+    }
 
     typealias Size = (width: CGFloat, height: CGFloat)
 
@@ -43,6 +65,18 @@ struct ARViewControllerViewModel {
             return 0.02
         case .wallHanging, .wallTapestry:
             return 0
+        }
+    }
+
+    // This transform is needed because all the images had extra white space
+    // due to imperfect cropping. This can remain a TODO until new images
+    // are used. Which..might be never.
+    var diffuseTransform: SCNMatrix4? {
+        switch artwork.category {
+        case .framedPrints, .posters, .prints, .woodWallArt:
+            return SCNMatrix4Mult(SCNMatrix4MakeTranslation(0.02, 0.005, 0), SCNMatrix4MakeScale(0.98, 0.98, 1))
+        case .wallHanging, .wallTapestry:
+            return nil
         }
     }
 

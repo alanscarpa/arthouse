@@ -163,10 +163,9 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         let imageMaterial = SCNMaterial()
         imageMaterial.diffuse.contents = artwork.image
 
-        // This transform is needed because all the images had extra white space
-        // due to imperfect cropping. This can remain a TODO until new images
-        // are used. Which..might be never.
-        imageMaterial.diffuse.contentsTransform = SCNMatrix4Mult(SCNMatrix4MakeTranslation(0.02, 0.005, 0), SCNMatrix4MakeScale(0.98, 0.98, 1))
+        if let diffuseTransform = viewModel.diffuseTransform {
+            imageMaterial.diffuse.contentsTransform = diffuseTransform
+        }
         
         let blackFrameMaterial = SCNMaterial()
         blackFrameMaterial.diffuse.contents = UIColor.black
@@ -177,24 +176,27 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     }
     
     // MARK: - UIEvents
+
+    var referencePos = SCNVector3()
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        guard viewModel.canPlaceArtwork else { return }
-        guard artworkNode.parent == nil else { return }
         guard touches.first?.tapCount == 1 else { return }
         guard let touchPoint = touches.first?.location(in: sceneView) else { return }
+        
+        var translationn = matrix_identity_float4x4
+        translationn.columns.3.z = -1.0
+        let pointTransformm = matrix_multiply(sceneView.session.currentFrame!.camera.transform, translationn)
+        let normalizedZValuee = sceneView.projectPoint(SCNVector3Make(
+            pointTransformm.columns.3.x,
+            pointTransformm.columns.3.y,
+            pointTransformm.columns.3.z)).z
+        referencePos = sceneView.unprojectPoint(SCNVector3Make(Float(touchPoint.x), Float(touchPoint.y), normalizedZValuee))
+
+        guard viewModel.canPlaceArtwork else { return }
+        guard artworkNode.parent == nil else { return }
         guard let currentFrame = sceneView.session.currentFrame else { return }
 
-        let cameraTransform = currentFrame.camera.transform
-        print(sceneView.session.currentFrame?.camera.eulerAngles.z ?? "No camera transform frame")
-        var translation = matrix_identity_float4x4
-        translation.columns.3.z = -1.0
-        let pointTransform = matrix_multiply(cameraTransform, translation)
-        let normalizedZValue = sceneView.projectPoint(SCNVector3Make(
-            pointTransform.columns.3.x,
-            pointTransform.columns.3.y,
-            pointTransform.columns.3.z)).z
-        let position = sceneView.unprojectPoint(SCNVector3Make(Float(touchPoint.x), Float(touchPoint.y), normalizedZValue))
+        let position = viewModel.vectorPosition(from: touchPoint, in: sceneView)
         artworkNode = self.artworkNode(position: position, size: viewModel.currentSize)
 
         let pitch: Float = 0
@@ -212,9 +214,40 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     @objc func panGesture(_ gesture: UIPanGestureRecognizer) {
         let hits = self.sceneView.hitTest(gesture.location(in: gesture.view), options: nil)
         if let tappednode = hits.first?.node, let result = hits.first {
-            let position = SCNVector3Make(result.worldCoordinates.x, result.worldCoordinates.y, artworkNode.position.z)
-            tappednode.position = position
-            viewModel.updateArtworkPosition(position)
+
+            let newX = result.worldCoordinates.x
+            let oldX = tappednode.worldPosition.x
+
+            let deltaX: Float
+            let newVectorX: Float
+
+            if newX >= oldX {
+                deltaX = newX - referencePos.x
+                newVectorX = (oldX + deltaX)
+            } else {
+                deltaX = newX - referencePos.x
+                newVectorX = deltaX + oldX
+            }
+
+            let newY = result.worldCoordinates.y
+            let oldY = tappednode.worldPosition.y
+
+            let deltaY: Float
+            let newVectorY: Float
+
+            if newY >= oldY {
+                deltaY = newY - referencePos.y
+                newVectorY = oldY + deltaY
+            } else {
+                deltaY = newY - referencePos.y
+                newVectorY = deltaY + oldY
+            }
+
+            referencePos = SCNVector3(CGFloat(newX), CGFloat(newY), CGFloat(referencePos.z))
+
+            let newPosition = SCNVector3Make(newVectorX, newVectorY, artworkNode.position.z)
+            tappednode.position = newPosition
+            viewModel.updateArtworkPosition(newPosition)
             viewModel.updateTutorialProgress()
         }
     }
