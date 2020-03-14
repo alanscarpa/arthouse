@@ -1,22 +1,27 @@
-- Redo tapestries and wall hangings - CURRENTLY CRASHES 
-- Create firebase search index for each category (try search in each category to get easy link)
-	- [x] framed prints
-	- tapestries
-	- [x] wood wall art
-	- wall hangings
+- Consdier new homepage design - make edges round?
+- Update onboarding chooseartwork image
+- Update onboarding 3 feet from wall image
+	- Make onboarding and tutorial say "camera should be 3 feet from wall"
+- Work on scroll and loading
+- BUG - Loading spinner doesnt show on slow internet
+- BUG - Prints and Framed Prints have a lot of empty imageurl strings = maybe reupload
 - Update for dark mode
 - Put most popular items first....right now popularity is random
 - Add camera button under size button and share screenshot
 - test on diff screen sizes
 - either search while text or show possible tags while searching
 - if multiple sizes, show alert reminding user to select correct size on BUY NOW page..maybe
-- BUG - Web vc not going to top of screen
 - Make additional query to search artworks by name, then consolidate results into 1 array along with tags result
-- Update onboarding chooseartwork image
-- Update onboarding 3 feet from wall image
-	- Make onboarding and tutorial say "camera should be 3 feet from wall"
 
 
+- [x] Redo tapestries and wall hangings - CURRENTLY CRASHES 
+	- [x] add more sizes to size array for each
+- [x] Create firebase search index for each category (try search in each category to get easy link)
+	- [x] framed prints
+	- [x] tapestries
+	- [x] wood wall art
+	- [x] wall hangings
+- [x] BUG - Web vc not going to top of screen
 - [x] Decide how to handle wood art's "foot" size...show inches in app? or show feet? show " or '
 - [x] Tap and drag should move from finger point, not move center to finger point
 - [x] Upload all the artwork for

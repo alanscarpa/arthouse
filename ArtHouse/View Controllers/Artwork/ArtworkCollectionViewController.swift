@@ -73,7 +73,6 @@ class ArtworkCollectionViewController: UICollectionViewController, UICollectionV
 
         isDownloadingArtwork = true
 
-
         query.getDocuments { [weak self] querySnapshot, error in
             defer { self?.isDownloadingArtwork = false }
             guard error == nil, let self = self, let snapshot = querySnapshot else {
