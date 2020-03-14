@@ -12,7 +12,7 @@ protocol OnboardingDelegate: class {
     func nextButtonTapped()
 }
 
-class OnboardingPageViewController: UIPageViewController, UIPageViewControllerDataSource, OnboardingDelegate {
+class OnboardingPageViewController: UIPageViewController, OnboardingDelegate {
     
     lazy var allViewControllers: [UIViewController] = {
         let enableVC = EnableCameraViewController()
@@ -32,50 +32,21 @@ class OnboardingPageViewController: UIPageViewController, UIPageViewControllerDa
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        dataSource = self
         setViewControllers([allViewControllers.first!], direction: .forward, animated: false, completion: nil)
     }
     
     // MARK: - OnboardingDelegate
     
     func nextButtonTapped() {
-        if currentVCIndex == allViewControllers.count - 1 {
+        currentVCIndex += 1
+        if currentVCIndex == allViewControllers.count {
             finishOnboarding()
         } else {
-            guard let nextVC = dataSource?.pageViewController(self, viewControllerAfter: allViewControllers[currentVCIndex]) else { return }
-            setViewControllers([nextVC], direction: .forward, animated: true, completion: nil)
-        }
-    }
-
-    // MARK: - UIPageViewControllerDataSource
-    
-    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        guard let viewControllerIndex = indexOfViewController(viewController) else { return nil }
-        let previousIndex = viewControllerIndex - 1
-        guard previousIndex >= 0 && numberOfViewControllers > previousIndex else { return nil }
-        currentVCIndex = previousIndex
-        return allViewControllers[previousIndex]
-    }
-    
-    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        guard let viewControllerIndex = indexOfViewController(viewController) else { return nil }
-        let nextIndex = viewControllerIndex + 1
-        if nextIndex == allViewControllers.count {
-            finishOnboarding()
-            return nil
-        } else {
-            guard numberOfViewControllers != nextIndex && numberOfViewControllers > nextIndex else { return nil }
-            currentVCIndex = nextIndex
-            return allViewControllers[nextIndex]
+            setViewControllers([allViewControllers[currentVCIndex]], direction: .forward, animated: true, completion: nil)
         }
     }
      
     // MARK: - Helpers
-    
-    private func indexOfViewController(_ viewController: UIViewController) -> Int? {
-        guard let viewControllerIndex = allViewControllers.firstIndex(of: viewController) else { return nil }
-        return viewControllerIndex
-    }
     
     private func finishOnboarding() {
         UserDefaultsManager.shared.hasCompletedOnboarding = true
