@@ -126,7 +126,7 @@ struct ARViewControllerViewModel {
         case .standThreeFeetAway:
             return """
             STEP 1:
-            Stand 3 feet away from your wall.  This is will ensure accurate artwork size!
+            Hold your phone 3 feet from the wall.  This is will give you an accurate artwork size!
             """
         case .tapToPlace:
             return """

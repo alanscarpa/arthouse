@@ -1,7 +1,4 @@
 - Consdier new homepage design - make edges round?
-- Update onboarding chooseartwork image
-- Update onboarding 3 feet from wall image
-	- Make onboarding and tutorial say "camera should be 3 feet from wall"
 - Work on scroll and loading
 - BUG - Loading spinner doesnt show on slow internet
 - BUG - Prints and Framed Prints have a lot of empty imageurl strings = maybe reupload
