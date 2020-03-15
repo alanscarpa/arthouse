@@ -80,11 +80,11 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     }
 
     private func setUpUI() {
-        backButton.roundCorners()
-        instructionsLabelContainerView.roundCorners()
-        artworkTitleContainer.roundCorners()
-        buyNowButton.roundCorners()
-        instructionsButton.roundCorners()
+        backButton.round()
+        instructionsLabelContainerView.round()
+        artworkTitleContainer.round()
+        buyNowButton.round()
+        instructionsButton.round()
         addSizeButtons(for: viewModel.sizes)
     }
 

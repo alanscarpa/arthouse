@@ -14,7 +14,7 @@ class ChooseArtworkViewController: OnboardingChildViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        nextButton.roundCorners()
+        nextButton.round()
     }
 
     @IBAction func nextButtonTapped() {

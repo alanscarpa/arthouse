@@ -32,14 +32,14 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
     // MARK: - Setup
     
     private func setTitleImage() {
-        let imageView = UIImageView(image: UIImage(named: "title-image"))
+        let imageView = UIImageView(image: UIImage(named: "title-image-4"))
         imageView.contentMode = .scaleAspectFit
         navigationItem.titleView = imageView
     }
     
     private func setUpCollectionView() {
         collectionView.registerCell(HomeCollectionViewCell.self)
-        collectionView.backgroundColor = .white
+        collectionView.backgroundColor = .darkGray
     }
 
     // MARK: UICollectionViewDataSource
@@ -68,7 +68,7 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
     // MARK: UICollectionViewDelegateFlowLayout
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.size.width, height: 300)
+        return CGSize(width: view.frame.size.width, height: 400)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {

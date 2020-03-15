@@ -15,7 +15,7 @@ class EnableCameraViewController: OnboardingChildViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        enableCameraButton.roundCorners()
+        enableCameraButton.round()
     }
 
     override func viewDidAppear(_ animated: Bool) {

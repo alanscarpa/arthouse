@@ -19,9 +19,10 @@ class HomeCollectionViewCell: UICollectionViewCell {
     }
     
     func setUpForCategory(_ category: Artwork.Category) {
-        categoryTitleLabel.roundCorners()
+        categoryTitleLabel.roundCorners([.layerMaxXMaxYCorner, .layerMinXMaxYCorner])
         categoryTitleLabel.text = category.title
         categoryImageView.image = category.image
+        categoryImageView.roundCorners([.layerMaxXMinYCorner, .layerMinXMinYCorner])
     }
 
 }
