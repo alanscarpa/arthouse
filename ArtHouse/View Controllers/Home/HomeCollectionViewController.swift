@@ -39,7 +39,12 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
     
     private func setUpCollectionView() {
         collectionView.registerCell(HomeCollectionViewCell.self)
-        collectionView.backgroundColor = .darkGray
+        let backgroundView = UIView()
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = self.view.bounds
+        gradientLayer.colors = [UIColor.white.cgColor, UIColor.ahLightBlue.cgColor]
+        backgroundView.layer.insertSublayer(gradientLayer, at: 0)
+        collectionView.backgroundView = backgroundView
     }
 
     // MARK: UICollectionViewDataSource
@@ -68,7 +73,7 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
     // MARK: UICollectionViewDelegateFlowLayout
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.size.width, height: 400)
+        return CGSize(width: view.frame.size.width, height: 500)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {

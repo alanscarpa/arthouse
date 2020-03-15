@@ -17,12 +17,18 @@ class HomeCollectionViewCell: UICollectionViewCell {
         categoryTitleLabel.text = nil
         categoryImageView.image = nil
     }
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        categoryTitleLabel.backgroundColor = .ahPrimaryBlue
+        categoryTitleLabel.roundCorners([.layerMaxXMaxYCorner, .layerMinXMaxYCorner])
+        categoryImageView.roundCorners([.layerMaxXMinYCorner, .layerMinXMinYCorner])
+        
+    }
     
     func setUpForCategory(_ category: Artwork.Category) {
-        categoryTitleLabel.roundCorners([.layerMaxXMaxYCorner, .layerMinXMaxYCorner])
         categoryTitleLabel.text = category.title
         categoryImageView.image = category.image
-        categoryImageView.roundCorners([.layerMaxXMinYCorner, .layerMinXMinYCorner])
     }
 
 }

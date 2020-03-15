@@ -17,24 +17,24 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <imageView clipsSubviews="YES" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="framed" translatesAutoresizingMaskIntoConstraints="NO" id="1eR-be-KlV" userLabel="Category Image View">
-                        <rect key="frame" x="20" y="28" width="313" height="242.00000000000006"/>
+                        <rect key="frame" x="20" y="12" width="313" height="246.00000000000006"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Iau-40-vo7">
-                        <rect key="frame" x="20" y="270" width="313" height="60"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <rect key="frame" x="20" y="258" width="313" height="60"/>
+                        <color key="backgroundColor" red="0.62005171361560185" green="0.72070219514224143" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="60" id="SUX-o9-5J5"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="22"/>
-                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
             </view>
             <constraints>
-                <constraint firstItem="ZTg-uK-7eu" firstAttribute="bottom" secondItem="Iau-40-vo7" secondAttribute="bottom" constant="12" id="IlO-Uw-6E6"/>
+                <constraint firstItem="ZTg-uK-7eu" firstAttribute="bottom" secondItem="Iau-40-vo7" secondAttribute="bottom" constant="24" id="IlO-Uw-6E6"/>
                 <constraint firstItem="Iau-40-vo7" firstAttribute="trailing" secondItem="1eR-be-KlV" secondAttribute="trailing" id="MLs-ks-6Nn"/>
-                <constraint firstItem="1eR-be-KlV" firstAttribute="top" secondItem="ZTg-uK-7eu" secondAttribute="top" constant="28" id="Ro0-ez-tIK"/>
+                <constraint firstItem="1eR-be-KlV" firstAttribute="top" secondItem="ZTg-uK-7eu" secondAttribute="top" constant="12" id="Ro0-ez-tIK"/>
                 <constraint firstItem="1eR-be-KlV" firstAttribute="leading" secondItem="ZTg-uK-7eu" secondAttribute="leading" constant="20" id="cGo-Ya-GgL"/>
                 <constraint firstItem="ZTg-uK-7eu" firstAttribute="trailing" secondItem="1eR-be-KlV" secondAttribute="trailing" constant="20" id="hZR-f3-sTH"/>
                 <constraint firstItem="Iau-40-vo7" firstAttribute="leading" secondItem="1eR-be-KlV" secondAttribute="leading" id="vVy-DQ-uRp"/>
