@@ -18,6 +18,7 @@ class ArtworkCollectionViewController: UICollectionViewController, UICollectionV
     private var lastDocument: DocumentSnapshot?
     private var isDownloadingArtwork = false
     private var fetchLimit = 20
+    private let activityIndicatorView = UIActivityIndicatorView(style: .large)
     private weak var searchBar: UISearchBar?
 
     // MARK: - View Lifecycle
@@ -28,6 +29,12 @@ class ArtworkCollectionViewController: UICollectionViewController, UICollectionV
         downloadArtwork()
         title = category?.title.capitalized
         navigationItem.setHidesBackButton(false, animated: false)
+
+        // Show loading indicator on intiial load as it takes some time to download
+        // the initial data for the initial cells.
+        view.addSubview(activityIndicatorView)
+        activityIndicatorView.center = view.center
+        activityIndicatorView.startAnimating()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -74,7 +81,10 @@ class ArtworkCollectionViewController: UICollectionViewController, UICollectionV
         isDownloadingArtwork = true
 
         query.getDocuments { [weak self] querySnapshot, error in
-            defer { self?.isDownloadingArtwork = false }
+            defer {
+                self?.activityIndicatorView.stopAnimating()
+                self?.isDownloadingArtwork = false
+            }
             guard error == nil, let self = self, let snapshot = querySnapshot else {
                 print(error?.localizedDescription ?? "Something went wrong. :(");
                 return
@@ -96,10 +106,6 @@ class ArtworkCollectionViewController: UICollectionViewController, UICollectionV
     }
     
     // MARK: UICollectionViewDataSource
-    
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return artworks.count

@@ -1,5 +1,5 @@
-- Consdier new homepage design - make edges round?
 - Work on scroll and loading
+- Consdier new homepage design - make edges round?
 - BUG - Loading spinner doesnt show on slow internet
 - BUG - Prints and Framed Prints have a lot of empty imageurl strings = maybe reupload
 - Update for dark mode
@@ -10,7 +10,9 @@
 - if multiple sizes, show alert reminding user to select correct size on BUY NOW page..maybe
 - Make additional query to search artworks by name, then consolidate results into 1 array along with tags result
 
-
+- [x] Update onboarding chooseartwork image
+- [x] Update onboarding 3 feet from wall image
+	- [x] Make onboarding and tutorial say "camera should be 3 feet from wall"
 - [x] Redo tapestries and wall hangings - CURRENTLY CRASHES 
 	- [x] add more sizes to size array for each
 - [x] Create firebase search index for each category (try search in each category to get easy link)

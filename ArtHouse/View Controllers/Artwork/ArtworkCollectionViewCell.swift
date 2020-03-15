@@ -19,20 +19,24 @@ class ArtworkCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var artTitleLabel: UILabel!
 
     weak var delegate: ArtworkCollectionViewCellDelegate?
-    
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        artImageView.kf.indicatorType = .activity
+    }
+
     override func prepareForReuse() {
         super.prepareForReuse()
-        artTitleLabel.text = nil
         artImageView.kf.cancelDownloadTask()
+        artTitleLabel.text = nil
         artImageView.image = nil
     }
     
     func setUpWithArtwork(_ artwork: Artwork, delegate: ArtworkCollectionViewCellDelegate) {
         self.delegate = delegate
         artTitleLabel.text = artwork.title
-        artImageView.kf.indicatorType = .activity
 
-        artImageView.kf.setImage(with: URL(string: artwork.imageURLString), options: [.transition(.fade(0.3))]) { [weak self] result in
+        self.artImageView.kf.setImage(with: URL(string: artwork.imageURLString), options: [.transition(.fade(0.45))]) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success(let value):
