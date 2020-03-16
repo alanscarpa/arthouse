@@ -29,9 +29,9 @@ class HomeCollectionViewCell: UICollectionViewCell {
 
         containerView.layer.masksToBounds = false
         containerView.layer.shadowColor = UIColor.black.cgColor
-        containerView.layer.shadowOpacity = 0.3
+        containerView.layer.shadowOpacity = 0.1
         containerView.layer.shadowOffset = .zero
-        containerView.layer.shadowRadius = 6
+        containerView.layer.shadowRadius = 8
         
     }
     
