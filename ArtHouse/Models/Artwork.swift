@@ -82,9 +82,9 @@ class Artwork {
     enum Category: String {
         case framedPrints = "framed-prints"
         case posters
-        case wallTapestry = "wall-tapestry"
         case prints
         case woodWallArt = "wood-wall-art"
+        case wallTapestry = "wall-tapestry"
         case wallHanging = "wall-hangings"
     }
     
@@ -156,6 +156,23 @@ extension Artwork.Category: CaseIterable {
             return "Tapestries"
         case .woodWallArt:
             return "Wood Wall Art"
+        }
+    }
+
+    var subtitle: String {
+        switch self {
+        case .framedPrints:
+            return "Eco-friendly and minimalistic frames provide a natural warmth to complement your favorite piece of art."
+        case .posters:
+            return "Banish those blank walls. Posters are the most convenient way to bring rad art to your space."
+        case .prints:
+            return "Mix and match your favorite art prints on a gallery wall showcasing everything that makes your style unique."
+        case .wallHanging:
+            return "Crafted from yarns in varying textures and patterns, these are a unique and easy-to-hang alternative to the standard tapestry."
+        case .wallTapestry:
+            return "Wall tapestries truly can do it all. Lightweight to hang on the wall, durable to use as a tablecloth and vivid colors make it an eye-catching picnic blanket."
+        case .woodWallArt:
+            return "With this stylish, multi-square design, you have the power to adjust the spacing between each section to form exactly the right look."
         }
     }
 

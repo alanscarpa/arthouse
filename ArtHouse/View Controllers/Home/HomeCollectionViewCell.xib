@@ -20,24 +20,33 @@
                         <rect key="frame" x="20" y="12" width="313" height="473"/>
                         <subviews>
                             <imageView clipsSubviews="YES" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="framed" translatesAutoresizingMaskIntoConstraints="NO" id="1eR-be-KlV" userLabel="Category Image View">
-                                <rect key="frame" x="0.0" y="0.0" width="313" height="412.50000000000006"/>
+                                <rect key="frame" x="0.0" y="0.0" width="313" height="390.5"/>
                             </imageView>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="amP-pi-f4x" userLabel="Chin View">
-                                <rect key="frame" x="0.0" y="412.5" width="313" height="60.5"/>
+                                <rect key="frame" x="0.0" y="390.5" width="313" height="82.5"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="752" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0zA-k9-baN" userLabel="Cateegory Title Label">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="752" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0zA-k9-baN" userLabel="Category Title Label">
                                         <rect key="frame" x="24" y="20" width="265" height="20.5"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="752" text="This is something yea" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pv2-Y0-6ha" userLabel="Subtitle Label">
+                                        <rect key="frame" x="24" y="44.5" width="265" height="18"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="0zA-k9-baN" secondAttribute="bottom" constant="20" id="4gs-gM-eKm"/>
                                     <constraint firstItem="0zA-k9-baN" firstAttribute="leading" secondItem="amP-pi-f4x" secondAttribute="leading" constant="24" id="JI6-we-AFy"/>
+                                    <constraint firstAttribute="bottom" secondItem="Pv2-Y0-6ha" secondAttribute="bottom" constant="20" id="Kgs-c4-Nbk"/>
                                     <constraint firstAttribute="trailing" secondItem="0zA-k9-baN" secondAttribute="trailing" constant="24" id="Ks0-lt-vEp"/>
                                     <constraint firstItem="0zA-k9-baN" firstAttribute="top" secondItem="amP-pi-f4x" secondAttribute="top" constant="20" id="Py2-Ny-Q4M"/>
+                                    <constraint firstItem="Pv2-Y0-6ha" firstAttribute="top" secondItem="0zA-k9-baN" secondAttribute="bottom" constant="4" id="Yd3-Ni-QtE"/>
+                                    <constraint firstItem="Pv2-Y0-6ha" firstAttribute="leading" secondItem="0zA-k9-baN" secondAttribute="leading" id="nOb-ov-Dja"/>
+                                    <constraint firstItem="Pv2-Y0-6ha" firstAttribute="trailing" secondItem="0zA-k9-baN" secondAttribute="trailing" id="wvV-Me-Mh1"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -64,6 +73,7 @@
             <size key="customSize" width="353" height="442"/>
             <connections>
                 <outlet property="categoryImageView" destination="1eR-be-KlV" id="W7I-j7-MNn"/>
+                <outlet property="categorySubtitleLabel" destination="Pv2-Y0-6ha" id="NXl-eq-tnv"/>
                 <outlet property="categoryTitleLabel" destination="0zA-k9-baN" id="0HN-jI-pqe"/>
                 <outlet property="chinView" destination="amP-pi-f4x" id="GNV-nH-NHT"/>
                 <outlet property="containerView" destination="g07-JR-lvZ" id="44E-Jf-7HP"/>

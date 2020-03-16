@@ -14,6 +14,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var categoryImageView: UIImageView!
     @IBOutlet weak var categoryTitleLabel: UILabel!
     @IBOutlet weak var chinView: UIView!
+    @IBOutlet weak var categorySubtitleLabel: UILabel!
     
     override func prepareForReuse() {
         categoryTitleLabel.text = nil
@@ -37,6 +38,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
     
     func setUpForCategory(_ category: Artwork.Category) {
         categoryTitleLabel.text = category.title
+        categorySubtitleLabel.text = category.subtitle
         categoryImageView.image = category.image
     }
 
