@@ -10,52 +10,67 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="HomeCollectionViewCell" customModule="ArtHouse" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="353" height="451"/>
+            <rect key="frame" x="0.0" y="0.0" width="353" height="505"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="353" height="451"/>
+                <rect key="frame" x="0.0" y="0.0" width="353" height="505"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="framed" translatesAutoresizingMaskIntoConstraints="NO" id="1eR-be-KlV" userLabel="Category Image View">
-                        <rect key="frame" x="20" y="12" width="313" height="346.00000000000006"/>
-                    </imageView>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="amP-pi-f4x" userLabel="Chin View">
-                        <rect key="frame" x="20" y="358" width="313" height="73"/>
+                    <view contentMode="scaleToFill" verticalHuggingPriority="240" verticalCompressionResistancePriority="900" translatesAutoresizingMaskIntoConstraints="NO" id="g07-JR-lvZ" userLabel="Container View">
+                        <rect key="frame" x="20" y="12" width="313" height="473"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="752" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0zA-k9-baN" userLabel="Cateegory Title Label">
-                                <rect key="frame" x="24" y="20" width="265" height="33"/>
-                                <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="24"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView clipsSubviews="YES" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="framed" translatesAutoresizingMaskIntoConstraints="NO" id="1eR-be-KlV" userLabel="Category Image View">
+                                <rect key="frame" x="0.0" y="0.0" width="313" height="400"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="400" id="Vvf-Zd-vQt"/>
+                                </constraints>
+                            </imageView>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="amP-pi-f4x" userLabel="Chin View">
+                                <rect key="frame" x="0.0" y="400" width="313" height="73"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="752" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0zA-k9-baN" userLabel="Cateegory Title Label">
+                                        <rect key="frame" x="24" y="20" width="265" height="33"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="24"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="0zA-k9-baN" secondAttribute="bottom" constant="20" id="4gs-gM-eKm"/>
+                                    <constraint firstItem="0zA-k9-baN" firstAttribute="leading" secondItem="amP-pi-f4x" secondAttribute="leading" constant="24" id="JI6-we-AFy"/>
+                                    <constraint firstAttribute="trailing" secondItem="0zA-k9-baN" secondAttribute="trailing" constant="24" id="Ks0-lt-vEp"/>
+                                    <constraint firstItem="0zA-k9-baN" firstAttribute="top" secondItem="amP-pi-f4x" secondAttribute="top" constant="20" id="Py2-Ny-Q4M"/>
+                                </constraints>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="0zA-k9-baN" secondAttribute="bottom" constant="20" id="4gs-gM-eKm"/>
-                            <constraint firstItem="0zA-k9-baN" firstAttribute="leading" secondItem="amP-pi-f4x" secondAttribute="leading" constant="24" id="JI6-we-AFy"/>
-                            <constraint firstAttribute="trailing" secondItem="0zA-k9-baN" secondAttribute="trailing" constant="24" id="Ks0-lt-vEp"/>
-                            <constraint firstItem="0zA-k9-baN" firstAttribute="top" secondItem="amP-pi-f4x" secondAttribute="top" constant="20" id="Py2-Ny-Q4M"/>
+                            <constraint firstAttribute="trailing" secondItem="1eR-be-KlV" secondAttribute="trailing" id="1AA-CS-oIl"/>
+                            <constraint firstItem="amP-pi-f4x" firstAttribute="leading" secondItem="1eR-be-KlV" secondAttribute="leading" id="3lN-qA-pKp"/>
+                            <constraint firstItem="1eR-be-KlV" firstAttribute="leading" secondItem="g07-JR-lvZ" secondAttribute="leading" id="55B-jL-vbt"/>
+                            <constraint firstItem="amP-pi-f4x" firstAttribute="top" secondItem="1eR-be-KlV" secondAttribute="bottom" id="K45-fd-xYV"/>
+                            <constraint firstItem="1eR-be-KlV" firstAttribute="top" secondItem="g07-JR-lvZ" secondAttribute="top" id="RwO-e8-E75"/>
+                            <constraint firstItem="amP-pi-f4x" firstAttribute="trailing" secondItem="1eR-be-KlV" secondAttribute="trailing" id="fw9-MU-oCP"/>
+                            <constraint firstAttribute="bottom" secondItem="amP-pi-f4x" secondAttribute="bottom" id="z70-3d-2aY"/>
                         </constraints>
                     </view>
                 </subviews>
             </view>
             <constraints>
-                <constraint firstItem="1eR-be-KlV" firstAttribute="top" secondItem="ZTg-uK-7eu" secondAttribute="top" constant="12" id="57g-ya-1Ox"/>
-                <constraint firstItem="amP-pi-f4x" firstAttribute="top" secondItem="1eR-be-KlV" secondAttribute="bottom" id="IcF-MV-9Fx"/>
-                <constraint firstItem="amP-pi-f4x" firstAttribute="leading" secondItem="1eR-be-KlV" secondAttribute="leading" id="SRC-ar-SXW"/>
-                <constraint firstItem="ZTg-uK-7eu" firstAttribute="bottom" secondItem="amP-pi-f4x" secondAttribute="bottom" constant="20" id="gFF-Nn-Sxw"/>
-                <constraint firstItem="1eR-be-KlV" firstAttribute="leading" secondItem="ZTg-uK-7eu" secondAttribute="leading" constant="20" id="lmt-gG-KaR"/>
-                <constraint firstItem="ZTg-uK-7eu" firstAttribute="trailing" secondItem="1eR-be-KlV" secondAttribute="trailing" constant="20" id="mbO-Qy-EUD"/>
-                <constraint firstItem="amP-pi-f4x" firstAttribute="trailing" secondItem="1eR-be-KlV" secondAttribute="trailing" id="sC5-xF-Vce"/>
+                <constraint firstItem="g07-JR-lvZ" firstAttribute="leading" secondItem="ZTg-uK-7eu" secondAttribute="leading" constant="20" id="2Qf-zz-jsb"/>
+                <constraint firstItem="g07-JR-lvZ" firstAttribute="top" secondItem="ZTg-uK-7eu" secondAttribute="top" constant="12" id="NnB-iB-gU9"/>
+                <constraint firstItem="ZTg-uK-7eu" firstAttribute="trailing" secondItem="g07-JR-lvZ" secondAttribute="trailing" constant="20" id="oK8-Dt-lfD"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
-            <size key="customSize" width="353" height="388"/>
+            <size key="customSize" width="353" height="442"/>
             <connections>
                 <outlet property="categoryImageView" destination="1eR-be-KlV" id="W7I-j7-MNn"/>
                 <outlet property="categoryTitleLabel" destination="0zA-k9-baN" id="0HN-jI-pqe"/>
                 <outlet property="chinView" destination="amP-pi-f4x" id="GNV-nH-NHT"/>
+                <outlet property="containerView" destination="g07-JR-lvZ" id="44E-Jf-7HP"/>
             </connections>
-            <point key="canvasLocation" x="380" y="265.81709145427288"/>
+            <point key="canvasLocation" x="380" y="290.10494752623691"/>
         </collectionViewCell>
     </objects>
     <resources>

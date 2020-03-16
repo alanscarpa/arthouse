@@ -10,6 +10,7 @@ import UIKit
 
 class HomeCollectionViewCell: UICollectionViewCell {
 
+    @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var categoryImageView: UIImageView!
     @IBOutlet weak var categoryTitleLabel: UILabel!
     @IBOutlet weak var chinView: UIView!
@@ -21,14 +22,16 @@ class HomeCollectionViewCell: UICollectionViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+
+        containerView.round()
         chinView.roundCorners([.layerMaxXMaxYCorner, .layerMinXMaxYCorner])
         categoryImageView.roundCorners([.layerMaxXMinYCorner, .layerMinXMinYCorner])
 
-        chinView.layer.masksToBounds = false
-        chinView.layer.shadowColor = UIColor.black.cgColor
-        chinView.layer.shadowOpacity = 0.3
-        chinView.layer.shadowOffset = CGSize(width: 0, height: 3)
-        chinView.layer.shadowRadius = 2
+        containerView.layer.masksToBounds = false
+        containerView.layer.shadowColor = UIColor.black.cgColor
+        containerView.layer.shadowOpacity = 0.3
+        containerView.layer.shadowOffset = .zero
+        containerView.layer.shadowRadius = 6
         
     }
     
