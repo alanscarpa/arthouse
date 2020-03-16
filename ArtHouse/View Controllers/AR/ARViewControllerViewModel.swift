@@ -262,10 +262,12 @@ class SizeButton: UIButton {
 
     private func setSelectedUI() {
         layer.borderColor = CGColor(srgbRed: 113.0 / 255.0, green: 193.0 / 255.0, blue: 255.0 / 255.0, alpha: 1)
+        backgroundColor = .white
     }
 
     private func setUnselectedUI() {
         layer.borderColor = CGColor(srgbRed: 255, green: 255, blue: 255, alpha: 1)
+        backgroundColor = .clear
     }
 }
 
