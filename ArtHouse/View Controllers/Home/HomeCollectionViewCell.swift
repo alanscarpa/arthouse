@@ -10,8 +10,9 @@ import UIKit
 
 class HomeCollectionViewCell: UICollectionViewCell {
 
-    @IBOutlet weak var categoryTitleLabel: UILabel!
     @IBOutlet weak var categoryImageView: UIImageView!
+    @IBOutlet weak var categoryTitleLabel: UILabel!
+    @IBOutlet weak var chinView: UIView!
     
     override func prepareForReuse() {
         categoryTitleLabel.text = nil
@@ -20,9 +21,14 @@ class HomeCollectionViewCell: UICollectionViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        categoryTitleLabel.backgroundColor = .ahPrimaryBlue
-        categoryTitleLabel.roundCorners([.layerMaxXMaxYCorner, .layerMinXMaxYCorner])
+        chinView.roundCorners([.layerMaxXMaxYCorner, .layerMinXMaxYCorner])
         categoryImageView.roundCorners([.layerMaxXMinYCorner, .layerMinXMinYCorner])
+
+        chinView.layer.masksToBounds = false
+        chinView.layer.shadowColor = UIColor.black.cgColor
+        chinView.layer.shadowOpacity = 0.3
+        chinView.layer.shadowOffset = CGSize(width: 0, height: 3)
+        chinView.layer.shadowRadius = 2
         
     }
     

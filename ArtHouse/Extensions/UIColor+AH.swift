@@ -16,6 +16,6 @@ extension UIColor {
     }
 
     static var ahLightBlue: UIColor {
-        return UIColor(red: 242.0 / 255.0, green: 249.0 / 255.0, blue: 255.0 / 255.0, alpha: 1)
+        return UIColor(red: 239.0 / 255.0, green: 247.0 / 255.0, blue: 253.0 / 255.0, alpha: 1)
     }
 }
