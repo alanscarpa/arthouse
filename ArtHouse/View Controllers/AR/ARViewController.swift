@@ -207,7 +207,6 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     @objc func panGesture(_ gesture: UIPanGestureRecognizer) {
         let hits = self.sceneView.hitTest(gesture.location(in: gesture.view), options: nil)
         if let tappednode = hits.first?.node, let result = hits.first {
-
             let newX = result.worldCoordinates.x
             let oldCenterX = tappednode.worldPosition.x
             let deltaX = newX - referenceTouchPoint.x

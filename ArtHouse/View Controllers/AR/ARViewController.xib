@@ -62,7 +62,7 @@ Stand 3 feet (0.91 meters) away from the wall.  This is important. The close
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fUh-zE-7dT" userLabel="Instructions Button">
-                    <rect key="frame" x="16" y="352.33333333333331" width="343" height="37"/>
+                    <rect key="frame" x="16" y="352.33333333333331" width="343" height="52"/>
                     <color key="backgroundColor" red="0.4431372549" green="0.75686274509999996" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                     <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
@@ -74,7 +74,7 @@ Stand 3 feet (0.91 meters) away from the wall.  This is important. The close
                     </connections>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NM9-d3-c2W" userLabel="Artwork Title Label Container">
-                    <rect key="frame" x="16" y="640.66666666666663" width="343" height="52.333333333333371"/>
+                    <rect key="frame" x="16" y="625.66666666666663" width="343" height="52.333333333333371"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artwork Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ONq-H8-inz" userLabel="Artwork Title Label">
                             <rect key="frame" x="16" y="15.999999999999998" width="311" height="20.333333333333329"/>
@@ -94,8 +94,11 @@ Stand 3 feet (0.91 meters) away from the wall.  This is important. The close
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kxn-mj-Qr3">
-                    <rect key="frame" x="31" y="717" width="313" height="37"/>
+                    <rect key="frame" x="31" y="702" width="313" height="52"/>
                     <color key="backgroundColor" red="0.4431372549" green="0.75686274509999996" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="52" id="c5Q-HQ-1gU"/>
+                    </constraints>
                     <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                     <inset key="contentEdgeInsets" minX="0.0" minY="8" maxX="0.0" maxY="8"/>
                     <state key="normal" title="BUY NOW">

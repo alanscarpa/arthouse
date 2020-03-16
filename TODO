@@ -1,12 +1,15 @@
-- Work on scroll and loading
+- Test actual size
+- Show "Popular" header
+	- Put most popular items first....right now popularity is random
 - BUG - Prints and Framed Prints have a lot of empty imageurl strings = maybe reupload
 - Update for dark mode
-- Put most popular items first....right now popularity is random
 - Add camera button under size button and share screenshot
 - test on diff screen sizes
 - either search while text or show possible tags while searching
-- if multiple sizes, show alert reminding user to select correct size on BUY NOW page..maybe
 - Make additional query to search artworks by name, then consolidate results into 1 array along with tags result
+- Work on scroll and loading - maybe add a "Scroll to load more" thing
+- if multiple sizes, show alert reminding user to select correct size on BUY NOW page..maybe
+- BUG - turning phone will dragging art is buggy
 
 - [x] Consider new homepage design - make edges round?
 - [x] BUG - Loading spinner doesnt show on slow internet
