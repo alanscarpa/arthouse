@@ -81,8 +81,8 @@ class Artwork {
 
     enum Category: String {
         case framedPrints = "framed-prints"
-        case wallTapestry = "wall-tapestry"
         case posters
+        case wallTapestry = "wall-tapestry"
         case prints
         case woodWallArt = "wood-wall-art"
         case wallHanging = "wall-hangings"

@@ -20,17 +20,14 @@
                         <rect key="frame" x="20" y="12" width="313" height="473"/>
                         <subviews>
                             <imageView clipsSubviews="YES" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="framed" translatesAutoresizingMaskIntoConstraints="NO" id="1eR-be-KlV" userLabel="Category Image View">
-                                <rect key="frame" x="0.0" y="0.0" width="313" height="400"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="400" id="Vvf-Zd-vQt"/>
-                                </constraints>
+                                <rect key="frame" x="0.0" y="0.0" width="313" height="412.50000000000006"/>
                             </imageView>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="amP-pi-f4x" userLabel="Chin View">
-                                <rect key="frame" x="0.0" y="400" width="313" height="73"/>
+                                <rect key="frame" x="0.0" y="412.5" width="313" height="60.5"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="752" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0zA-k9-baN" userLabel="Cateegory Title Label">
-                                        <rect key="frame" x="24" y="20" width="265" height="33"/>
-                                        <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="24"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="752" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0zA-k9-baN" userLabel="Cateegory Title Label">
+                                        <rect key="frame" x="24" y="20" width="265" height="20.5"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -61,6 +58,7 @@
                 <constraint firstItem="g07-JR-lvZ" firstAttribute="leading" secondItem="ZTg-uK-7eu" secondAttribute="leading" constant="20" id="2Qf-zz-jsb"/>
                 <constraint firstItem="g07-JR-lvZ" firstAttribute="top" secondItem="ZTg-uK-7eu" secondAttribute="top" constant="12" id="NnB-iB-gU9"/>
                 <constraint firstItem="ZTg-uK-7eu" firstAttribute="trailing" secondItem="g07-JR-lvZ" secondAttribute="trailing" constant="20" id="oK8-Dt-lfD"/>
+                <constraint firstItem="ZTg-uK-7eu" firstAttribute="bottom" secondItem="g07-JR-lvZ" secondAttribute="bottom" constant="20" id="t3L-px-F6s"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="353" height="442"/>
