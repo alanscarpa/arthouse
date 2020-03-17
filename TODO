@@ -1,5 +1,4 @@
 - BUG - turning phone will dragging art is buggy
-- Add Firebase analytics to screens
 - Show "Popular" header
 	- Put most popular items first....right now popularity is random
 - BUG - Prints and Framed Prints have a lot of empty imageurl strings = maybe reupload
@@ -11,6 +10,7 @@
 - Work on scroll and loading - maybe add a "Scroll to load more" thing
 - if multiple sizes, show alert reminding user to select correct size on BUY NOW page..maybe
 
+- [x] Add Firebase analytics to screens
 - [x] Test actual size
 - [x] Consider new homepage design - make edges round?
 - [x] BUG - Loading spinner doesnt show on slow internet

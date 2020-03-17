@@ -14,9 +14,9 @@
             filePath = "ArtHouse/View Controllers/AR/ARViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "116"
-            endingLineNumber = "116"
-            landmarkName = "configureUI()"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
+            landmarkName = "addSizeButtons(for:)"
             landmarkType = "7">
             <Locations>
                <Location
@@ -55,16 +55,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "BC495F89-704B-4EBB-AD5D-B7BA624622E1"
+            uuid = "9D84459C-7985-429B-9F26-7FD4AF5C6676"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ArtHouse/View Controllers/AR/ARViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "211"
-            endingLineNumber = "211"
-            landmarkName = "touchesBegan(_:with:)"
+            startingLineNumber = "218"
+            endingLineNumber = "218"
+            landmarkName = "panGesture(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
