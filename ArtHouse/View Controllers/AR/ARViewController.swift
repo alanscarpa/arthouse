@@ -10,6 +10,7 @@ import UIKit
 import SceneKit
 import ARKit
 import SafariServices
+import FirebaseAnalytics
 
 class ARViewController: UIViewController, ARSCNViewDelegate {
 
@@ -66,6 +67,8 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
 
         setUpBuyNowButtonAnimation()
         setUpSceneView()
+
+        trackLoadForAnalytics()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -254,6 +257,7 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
 
     @IBAction func buyNowButtonTapped() {
         guard let buyNowURL = URL(string: artwork.buyURLString) else { return }
+        trackBuyNowButtonTapped()
         let safariVC = SFSafariViewController(url: buyNowURL)
         safariVC.modalPresentationStyle = .overFullScreen
         present(safariVC, animated: true)
@@ -275,5 +279,21 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
 
     private func showSizeButtons(_ shouldShow: Bool) {
         stackView.isHidden = !shouldShow
+    }
+
+    // MARK: - Analytics
+
+    private func trackLoadForAnalytics() {
+        Analytics.logEvent(AnalyticsEventViewItem, parameters: [
+            AnalyticsParameterItemID: "id-AR-Screen",
+            AnalyticsParameterItemName: "AR Screen for: \(artwork.title)"
+        ])
+    }
+
+    private func trackBuyNowButtonTapped() {
+        Analytics.logEvent(AnalyticsEventViewItem, parameters: [
+            AnalyticsParameterItemID: "id-Buy-Now-Button-Tapped",
+            AnalyticsParameterItemName: "Buy Now Button tapped for: \(artwork.title)"
+        ])
     }
 }

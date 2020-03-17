@@ -1,4 +1,5 @@
-- Test actual size
+- BUG - turning phone will dragging art is buggy
+- Add Firebase analytics to screens
 - Show "Popular" header
 	- Put most popular items first....right now popularity is random
 - BUG - Prints and Framed Prints have a lot of empty imageurl strings = maybe reupload
@@ -9,8 +10,8 @@
 - Make additional query to search artworks by name, then consolidate results into 1 array along with tags result
 - Work on scroll and loading - maybe add a "Scroll to load more" thing
 - if multiple sizes, show alert reminding user to select correct size on BUY NOW page..maybe
-- BUG - turning phone will dragging art is buggy
 
+- [x] Test actual size
 - [x] Consider new homepage design - make edges round?
 - [x] BUG - Loading spinner doesnt show on slow internet
 - [x] Update onboarding chooseartwork image

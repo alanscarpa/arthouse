@@ -10,6 +10,7 @@ import UIKit
 import FirebaseFirestore
 import FirebaseStorage
 import Photos
+import FirebaseAnalytics
 
 class ArtworkCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, ArtworkCollectionViewCellDelegate, SearchBarDelegate {
     
@@ -35,6 +36,8 @@ class ArtworkCollectionViewController: UICollectionViewController, UICollectionV
         view.addSubview(activityIndicatorView)
         activityIndicatorView.center = view.center
         activityIndicatorView.startAnimating()
+
+        trackLoadForAnalytics()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -177,4 +180,14 @@ class ArtworkCollectionViewController: UICollectionViewController, UICollectionV
     func didSearch(for query: String) {
         downloadArtwork(searchString: query, shouldEmptyCurrentResults: true)
     }
+
+    // MARK: - Analytics
+
+    private func trackLoadForAnalytics() {
+        Analytics.logEvent(AnalyticsEventViewItem, parameters: [
+            AnalyticsParameterItemID: "id-\(title ?? "")",
+            AnalyticsParameterItemName: (title ?? "") + "Collection View"
+        ])
+    }
+
 }

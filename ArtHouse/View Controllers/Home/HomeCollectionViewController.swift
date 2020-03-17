@@ -10,6 +10,7 @@ import UIKit
 import FirebaseFirestore
 import FirebaseAuth
 import FirebaseStorage
+import FirebaseAnalytics
 
 class HomeCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
@@ -22,6 +23,7 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
             // Uploader.uploadArtwork()
         }
         setTitleImage()
+        trackLoadForAnalytics()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -82,6 +84,15 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
+    }
+
+    // MARK: - Analytics
+
+    private func trackLoadForAnalytics() {
+        Analytics.logEvent(AnalyticsEventViewItem, parameters: [
+            AnalyticsParameterItemID: "id-\(HomeCollectionViewController.className)",
+            AnalyticsParameterItemName: HomeCollectionViewController.className
+        ])
     }
 
 }
