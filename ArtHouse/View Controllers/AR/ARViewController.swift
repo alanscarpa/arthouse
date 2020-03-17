@@ -164,7 +164,7 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     
     func artworkNode(position: SCNVector3, size: (width: CGFloat, height: CGFloat), eulerAngles: SCNVector3) -> SCNNode {
         let length = viewModel.artworkLength
-        let boxGeometry = SCNBox(width: size.width * 0.0254, height: size.height * 0.0254, length: length, chamferRadius: 0.0)
+        let boxGeometry = SCNBox(width: size.width * 0.03, height: size.height * 0.03, length: length, chamferRadius: 0.0)
         let imageMaterial = SCNMaterial()
         imageMaterial.diffuse.contents = artwork.image
 
