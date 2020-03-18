@@ -18,7 +18,7 @@ class ArtworkCollectionViewController: UICollectionViewController, UICollectionV
     private var artworks = [Artwork]()
     private var lastDocument: DocumentSnapshot?
     private var isDownloadingArtwork = false
-    private var fetchLimit = 20
+    private var fetchLimit = 50
     private let activityIndicatorView = UIActivityIndicatorView(style: .large)
     private weak var searchBar: UISearchBar?
 
@@ -71,14 +71,16 @@ class ArtworkCollectionViewController: UICollectionViewController, UICollectionV
 
         let db = Firestore.firestore()
 
-        var query = db.collection(category).limit(to: fetchLimit).order(by: "popularity")
+        var query = db.collection(category).order(by: "popularity")
 
         if let lastDocument = lastDocument {
             query = query.start(afterDocument: lastDocument)
         }
 
+        query = query.limit(to: fetchLimit)
+
         if let searchString = searchString, !searchString.isEmpty {
-            query = query.whereField("tags", arrayContains: searchString)
+            query = query.whereField("tags", arrayContains: searchString.lowercased())
         }
 
         isDownloadingArtwork = true

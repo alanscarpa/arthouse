@@ -20,7 +20,7 @@ class SearchBar: UICollectionReusableView, UISearchBarDelegate {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        searchBar.placeholder = "Search e.g \"Inspiration\""
+        searchBar.placeholder = "\"Abstract\", \"Photography\", \"Landscape\""
         searchBar.delegate = self
         addSubview(searchBar)
         searchBar.translatesAutoresizingMaskIntoConstraints = false

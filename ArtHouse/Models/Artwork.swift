@@ -42,7 +42,7 @@ struct ArtworkFromJSON: Codable {
         for artwork in artworks {
             let buyURLString = artwork.link + "&curator=thescarpagroup"
             let sizeArray = artwork.sizes.components(separatedBy: ",")
-            let tagsArray = artwork.tags.components(separatedBy: ",")
+            let tagsArray = artwork.tags.lowercased().replacingOccurrences(of: " ", with: "").components(separatedBy: ",")
 
             // For now, we will just take the first price because
             // we aren't displaying price. Maybe in the future we will
