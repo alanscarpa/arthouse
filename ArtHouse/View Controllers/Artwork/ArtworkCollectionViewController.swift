@@ -38,7 +38,7 @@ class ArtworkCollectionViewController: UICollectionViewController, UICollectionV
 
         trackLoadForAnalytics()
 
-        downloadArtwork()
+        self.downloadArtwork()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -63,51 +63,55 @@ class ArtworkCollectionViewController: UICollectionViewController, UICollectionV
         guard isDownloadingArtwork == false else { return }
         guard let category = category?.rawValue else { return }
 
-        if shouldEmptyCurrentResults {
-            artworks = [Artwork]()
-            // TODO: Show loading spinner
-            lastDocument = nil
-            collectionView.reloadData()
-        }
-
-        let db = Firestore.firestore()
-
-        var query = db.collection(category).order(by: "popularity")
-
-        if let lastDocument = lastDocument {
-            query = query.start(afterDocument: lastDocument)
-        }
-
-        query = query.limit(to: fetchLimit)
-
-        if let searchString = searchString, !searchString.isEmpty {
-            query = query.whereField("tags", arrayContains: searchString.lowercased())
-        }
-
-        isDownloadingArtwork = true
-
-        query.getDocuments { [weak self] querySnapshot, error in
-            defer {
-                self?.activityIndicatorView.stopAnimating()
-                self?.isDownloadingArtwork = false
+        DispatchQueue.global(qos: .background).async { [weak self] in
+            guard let self = self else { return }
+            if shouldEmptyCurrentResults {
+                self.artworks = [Artwork]()
+                // TODO: Show loading spinner
+                self.lastDocument = nil
+                self.collectionView.reloadData()
             }
-            guard error == nil, let self = self, let snapshot = querySnapshot else {
-                print(error?.localizedDescription ?? "Something went wrong. :(");
-                return
+
+            let db = Firestore.firestore()
+
+            var query = db.collection(category).order(by: "popularity")
+
+            if let lastDocument = self.lastDocument {
+                query = query.start(afterDocument: lastDocument)
             }
-            guard !snapshot.documents.isEmpty else {
-                print("No more additional documents!")
-                return
+
+            query = query.limit(to: self.fetchLimit)
+
+            if let searchString = searchString, !searchString.isEmpty {
+                query = query.whereField("tags", arrayContains: searchString.lowercased())
             }
-            for document in snapshot.documents {
-                let artwork = Artwork(with: document.data(), id: document.documentID)
-                if !artwork.imageURLString.isEmpty {
-                    self.artworks.append(artwork)
+
+            self.isDownloadingArtwork = true
+
+            query.getDocuments { [weak self] querySnapshot, error in
+                guard let self = self else { return }
+                defer {
+                    self.activityIndicatorView.stopAnimating()
+                    self.isDownloadingArtwork = false
                 }
+                guard error == nil, let snapshot = querySnapshot else {
+                    print(error?.localizedDescription ?? "Something went wrong. :(");
+                    return
+                }
+                guard !snapshot.documents.isEmpty else {
+                    print("No more additional documents!")
+                    return
+                }
+                for document in snapshot.documents {
+                    let artwork = Artwork(with: document.data(), id: document.documentID)
+                    if !artwork.imageURLString.isEmpty {
+                        self.artworks.append(artwork)
+                    }
+                }
+                self.artworks.sort(by: { $0.popularity < $1.popularity })
+                self.lastDocument = snapshot.documents.last
+                self.collectionView.reloadData()
             }
-            self.artworks.sort(by: { $0.popularity < $1.popularity })
-            self.lastDocument = snapshot.documents.last
-            self.collectionView.reloadData()
         }
     }
     
