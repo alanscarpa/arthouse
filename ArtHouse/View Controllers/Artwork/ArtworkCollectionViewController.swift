@@ -27,7 +27,6 @@ class ArtworkCollectionViewController: UICollectionViewController, UICollectionV
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpCollectionView()
-        downloadArtwork()
         title = category?.title.capitalized
         navigationItem.setHidesBackButton(false, animated: false)
 
@@ -38,6 +37,8 @@ class ArtworkCollectionViewController: UICollectionViewController, UICollectionV
         activityIndicatorView.startAnimating()
 
         trackLoadForAnalytics()
+
+        downloadArtwork()
     }
     
     override func viewWillAppear(_ animated: Bool) {

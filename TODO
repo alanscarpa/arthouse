@@ -1,15 +1,21 @@
-- Show "Popular" header
-	- Put most popular items first....right now popularity is random
-- Would like to drag from touch point..gotta get math right
-- BUG - Prints and Framed Prints have a lot of empty imageurl strings = maybe reupload
-- Update for dark mode
-- Add camera button under size button and share screenshot
+- BUG - start, turn then show art and it scales oddly
 - test on diff screen sizes
+
+- Update for dark mode
+- Show "Popular" header
+- Show "Categories"
+- Add tabs (Popular/Collections/Types)
 - either search while text or show possible tags while searching
 - Make additional query to search artworks by name, then consolidate results into 1 array along with tags result
+- Would like to drag from touch point..gotta get math right
+- Add camera button under size button and share screenshot
 - Work on scroll and loading - maybe add a "Scroll to load more" thing
-- if multiple sizes, show alert reminding user to select correct size on BUY NOW page..maybe
 
+
+- [x] - not doing - if multiple sizes, show alert reminding user to select correct size on BUY NOW page..maybe
+- [x] BUG - search doesnt show everything
+- [x] REUPLOAD ALL TO FIX TAGS
+- [x] BUG - Prints and  Framed Prints have a lot of empty imageurl strings = maybe reupload
 - [x] BUG - turning phone will dragging art is buggy
 - [x] Add Firebase analytics to screens
 - [x] Test actual size
