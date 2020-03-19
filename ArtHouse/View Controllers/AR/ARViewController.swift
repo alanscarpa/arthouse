@@ -29,10 +29,6 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     var artworkNode = SCNNode()
     var sizeButtons = [SizeButton]()
 
-    // Used to keep track of where the user initially touched to calculate the delta
-    // when the user drags their finger.
-    var referenceTouchPoint = SCNVector3()
-
     // This is the value that will determine our UI state
     var viewModel: ARViewControllerViewModel {
         didSet {
@@ -178,10 +174,11 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         let blackFrameMaterial = SCNMaterial()
         blackFrameMaterial.diffuse.contents = UIColor.black
         boxGeometry.materials = [imageMaterial, blackFrameMaterial, blackFrameMaterial, blackFrameMaterial, blackFrameMaterial, blackFrameMaterial]
+
         let node = SCNNode(geometry: boxGeometry)
         node.position = position
-
         node.eulerAngles = eulerAngles
+
         return node
     }
     
@@ -192,14 +189,11 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         guard let touchPoint = touches.first?.location(in: sceneView) else { return }
         guard let currentFrame = sceneView.session.currentFrame else { return }
 
-        // Needed because when the finger begins to drag, we need to calculate
-        // the delta from this point and adjust the center position accordingly.
-        referenceTouchPoint = viewModel.vectorPosition(from: touchPoint, in: sceneView, with: currentFrame)
-
         guard viewModel.canPlaceArtwork else { return }
         guard artworkNode.parent == nil else { return }
 
         let position = viewModel.vectorPosition(from: touchPoint, in: sceneView, with: currentFrame)
+
         artworkNode = artworkNode(position: position, size: viewModel.currentSize, eulerAngles: viewModel.eulerAngles(from: currentFrame))
         sceneView.scene.rootNode.addChildNode(artworkNode)
 
@@ -208,28 +202,12 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     }
     
     @objc func panGesture(_ gesture: UIPanGestureRecognizer) {
-        let hits = self.sceneView.hitTest(gesture.location(in: gesture.view), options: nil)
-        if let tappednode = hits.first?.node, let result = hits.first {
-//            let newX = result.worldCoordinates.x
-//            let oldCenterX = tappednode.worldPosition.x
-//            let deltaX = newX - referenceTouchPoint.x
-//            let newCenterX = deltaX + oldCenterX
-//
-//            let newY = result.worldCoordinates.y
-//            let oldCenterY = tappednode.worldPosition.y
-//            let deltaY = newY - referenceTouchPoint.y
-//            let newCenterY = deltaY + oldCenterY
-//            let newPosition = SCNVector3Make(newCenterX, newCenterY, artworkNode.position.z)
-
-            var newPosition = artworkNode.position
-            newPosition.x = result.worldCoordinates.x
-            newPosition.y = result.worldCoordinates.y
-            tappednode.position = newPosition
-            viewModel.updateArtworkPosition(newPosition)
-            viewModel.updateTutorialProgress()
-
-            //referenceTouchPoint = SCNVector3(CGFloat(newX), CGFloat(newY), CGFloat(referenceTouchPoint.z))
-        }
+        guard let tappedNode = self.sceneView.hitTest(gesture.location(in: sceneView), options: nil).first?.node else { return }
+        let touchPoint = gesture.location(in: sceneView)
+        let newPosition = viewModel.vectorPosition(from: touchPoint, in: sceneView, with: sceneView.session.currentFrame!)
+        tappedNode.position = newPosition
+        viewModel.updateArtworkPosition(newPosition)
+        viewModel.updateTutorialProgress()
     }
 
     // MARK: - ARSCNViewDelegate

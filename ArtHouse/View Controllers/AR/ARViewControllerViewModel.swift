@@ -210,6 +210,7 @@ struct ARViewControllerViewModel {
             pointTransform.columns.3.z)).z
 
         let position = sceneView.unprojectPoint(SCNVector3Make(Float(touchPoint.x), Float(touchPoint.y), normalizedZValue))
+
         return position
     }
 
