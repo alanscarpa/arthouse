@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina5_9" orientation="portrait" appearance="light"/>
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -21,14 +21,14 @@
             </connections>
         </placeholder>
         <view contentMode="scaleToFill" id="JJl-3l-0Aj">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NiV-2t-u0H">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                 </arscnView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="viM-n3-pht">
-                    <rect key="frame" x="12" y="56" width="55" height="48"/>
+                    <rect key="frame" x="12" y="12" width="55" height="48"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <fontDescription key="fontDescription" type="system" weight="black" pointSize="20"/>
                     <inset key="contentEdgeInsets" minX="20" minY="12" maxX="20" maxY="12"/>
@@ -40,10 +40,10 @@
                     </connections>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X9t-yz-CME" userLabel="Instructions Label Container View">
-                    <rect key="frame" x="16" y="144" width="343" height="184.33333333333337"/>
+                    <rect key="frame" x="16" y="100" width="343" height="184.5"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iml-yP-4EY" userLabel="Instructions Label">
-                            <rect key="frame" x="16" y="16" width="311" height="152.33333333333334"/>
+                            <rect key="frame" x="16" y="16" width="311" height="152.5"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <string key="text">STEP 1:
 Stand 3 feet (0.91 meters) away from the wall.  This is important. The closer to 3 feet from the wall you are, the more accurate the artwork size will be!</string>
@@ -62,7 +62,7 @@ Stand 3 feet (0.91 meters) away from the wall.  This is important. The close
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fUh-zE-7dT" userLabel="Instructions Button">
-                    <rect key="frame" x="16" y="352.33333333333331" width="343" height="52"/>
+                    <rect key="frame" x="16" y="308.5" width="343" height="52"/>
                     <color key="backgroundColor" red="0.4431372549" green="0.75686274509999996" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                     <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
@@ -74,10 +74,10 @@ Stand 3 feet (0.91 meters) away from the wall.  This is important. The close
                     </connections>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NM9-d3-c2W" userLabel="Artwork Title Label Container">
-                    <rect key="frame" x="16" y="625.66666666666663" width="343" height="52.333333333333371"/>
+                    <rect key="frame" x="16" y="511.5" width="343" height="52.5"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artwork Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ONq-H8-inz" userLabel="Artwork Title Label">
-                            <rect key="frame" x="16" y="15.999999999999998" width="311" height="20.333333333333329"/>
+                            <rect key="frame" x="16" y="16" width="311" height="20.5"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -94,7 +94,7 @@ Stand 3 feet (0.91 meters) away from the wall.  This is important. The close
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kxn-mj-Qr3">
-                    <rect key="frame" x="31" y="702" width="313" height="52"/>
+                    <rect key="frame" x="31" y="590" width="313" height="52"/>
                     <color key="backgroundColor" red="0.4431372549" green="0.75686274509999996" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="52" id="c5Q-HQ-1gU"/>
@@ -112,14 +112,15 @@ Stand 3 feet (0.91 meters) away from the wall.  This is important. The close
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="fUh-zE-7dT" firstAttribute="centerX" secondItem="iml-yP-4EY" secondAttribute="centerX" id="FVf-3C-nVG"/>
+                <constraint firstItem="x1h-s1-6GN" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="fUh-zE-7dT" secondAttribute="bottom" constant="25" id="H1i-8N-CRh"/>
                 <constraint firstItem="viM-n3-pht" firstAttribute="leading" secondItem="x1h-s1-6GN" secondAttribute="leading" constant="12" id="Is0-Y2-rzJ"/>
                 <constraint firstAttribute="bottom" secondItem="NiV-2t-u0H" secondAttribute="bottom" id="K9Z-xb-clP"/>
                 <constraint firstItem="NM9-d3-c2W" firstAttribute="leading" secondItem="X9t-yz-CME" secondAttribute="leading" id="Kdu-B5-gM0"/>
+                <constraint firstItem="kxn-mj-Qr3" firstAttribute="top" secondItem="NM9-d3-c2W" secondAttribute="bottom" constant="26.000000000000114" id="LHm-CO-z6V"/>
                 <constraint firstItem="X9t-yz-CME" firstAttribute="leading" secondItem="x1h-s1-6GN" secondAttribute="leading" constant="16" id="NyD-zI-cgt"/>
                 <constraint firstItem="fUh-zE-7dT" firstAttribute="leading" secondItem="X9t-yz-CME" secondAttribute="leading" id="OG5-sb-T9m"/>
                 <constraint firstItem="viM-n3-pht" firstAttribute="top" secondItem="x1h-s1-6GN" secondAttribute="top" constant="12" id="Oqd-3L-8ml"/>
                 <constraint firstItem="NiV-2t-u0H" firstAttribute="leading" secondItem="JJl-3l-0Aj" secondAttribute="leading" id="UKP-MH-mug"/>
-                <constraint firstItem="kxn-mj-Qr3" firstAttribute="top" secondItem="NM9-d3-c2W" secondAttribute="bottom" constant="24" id="Vqh-2M-eSA"/>
                 <constraint firstItem="NM9-d3-c2W" firstAttribute="trailing" secondItem="X9t-yz-CME" secondAttribute="trailing" id="WZY-GW-9IZ"/>
                 <constraint firstItem="fUh-zE-7dT" firstAttribute="top" secondItem="X9t-yz-CME" secondAttribute="bottom" constant="24" id="WdC-20-oA7"/>
                 <constraint firstAttribute="trailing" secondItem="NiV-2t-u0H" secondAttribute="trailing" id="WdP-EB-V62"/>
@@ -127,7 +128,7 @@ Stand 3 feet (0.91 meters) away from the wall.  This is important. The close
                 <constraint firstItem="NiV-2t-u0H" firstAttribute="top" secondItem="JJl-3l-0Aj" secondAttribute="top" id="auL-e6-Rd4"/>
                 <constraint firstItem="kxn-mj-Qr3" firstAttribute="centerX" secondItem="NiV-2t-u0H" secondAttribute="centerX" id="dYC-cK-ECq"/>
                 <constraint firstItem="fUh-zE-7dT" firstAttribute="height" secondItem="kxn-mj-Qr3" secondAttribute="height" id="dwA-db-eti"/>
-                <constraint firstItem="kxn-mj-Qr3" firstAttribute="bottom" secondItem="x1h-s1-6GN" secondAttribute="bottom" constant="-24" id="dyr-tT-cqJ"/>
+                <constraint firstItem="kxn-mj-Qr3" firstAttribute="bottom" secondItem="x1h-s1-6GN" secondAttribute="bottom" constant="-25" id="dyr-tT-cqJ"/>
                 <constraint firstItem="kxn-mj-Qr3" firstAttribute="leading" secondItem="X9t-yz-CME" secondAttribute="leading" constant="15" id="gSa-vN-pSn"/>
                 <constraint firstItem="x1h-s1-6GN" firstAttribute="trailing" secondItem="X9t-yz-CME" secondAttribute="trailing" constant="16" id="iHh-GL-9v3"/>
                 <constraint firstItem="fUh-zE-7dT" firstAttribute="trailing" secondItem="X9t-yz-CME" secondAttribute="trailing" id="pAi-2I-0iG"/>

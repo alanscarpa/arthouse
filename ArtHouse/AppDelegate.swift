@@ -30,11 +30,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().tintColor = UIColor.ahPrimaryBlue
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.ahPrimaryBlue]
 
-        if UserDefaultsManager.shared.hasCompletedOnboarding {
-            RootViewController.shared.goToHomeVC()
-        } else {
-            RootViewController.shared.goToOnboardingVC()
-        }
+        RootViewController.shared.goToHomeVC()
+//        if UserDefaultsManager.shared.hasCompletedOnboarding {
+//            RootViewController.shared.goToHomeVC()
+//        } else {
+//            RootViewController.shared.goToOnboardingVC()
+//        }
         
         return true
     }
