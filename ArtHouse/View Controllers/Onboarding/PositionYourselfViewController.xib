@@ -25,7 +25,7 @@
                         <constraint firstAttribute="width" constant="292" id="Zds-av-eyb"/>
                     </constraints>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n27-di-kTW">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n27-di-kTW">
                     <rect key="frame" x="41.5" y="382" width="292" height="64.5"/>
                     <string key="text">Hold your phone 
 3 feet from the wall to see accurate artwork size.</string>
@@ -56,6 +56,7 @@
                 <constraint firstItem="1jr-P6-zR7" firstAttribute="top" secondItem="n27-di-kTW" secondAttribute="bottom" constant="48" id="ScK-bq-Y6s"/>
                 <constraint firstItem="HUq-KM-dOs" firstAttribute="centerX" secondItem="dVr-93-Kdn" secondAttribute="centerX" id="gOg-cn-X8m"/>
                 <constraint firstItem="n27-di-kTW" firstAttribute="width" secondItem="HUq-KM-dOs" secondAttribute="width" id="hZK-cM-knm"/>
+                <constraint firstItem="dVr-93-Kdn" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="1jr-P6-zR7" secondAttribute="bottom" constant="25" id="m5e-sU-NMY"/>
                 <constraint firstItem="dVr-93-Kdn" firstAttribute="top" secondItem="HUq-KM-dOs" secondAttribute="top" constant="-34" id="tLp-5H-1G6"/>
                 <constraint firstItem="n27-di-kTW" firstAttribute="top" secondItem="HUq-KM-dOs" secondAttribute="bottom" constant="48" id="wtt-SB-XN0"/>
             </constraints>

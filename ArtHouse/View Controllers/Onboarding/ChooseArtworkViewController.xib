@@ -25,7 +25,7 @@
                         <constraint firstAttribute="width" constant="292" id="rHU-ZZ-36N"/>
                     </constraints>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Then, simply choose an awesome piece of art from our gallery." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eat-q3-fQo">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Then, simply choose an awesome piece of art from our gallery." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eat-q3-fQo">
                     <rect key="frame" x="14" y="384" width="292" height="42.5"/>
                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                     <nil key="textColor"/>
@@ -56,6 +56,7 @@
                 <constraint firstItem="GOe-bu-50O" firstAttribute="top" secondItem="Eat-q3-fQo" secondAttribute="bottom" constant="48" id="apY-yT-Q0p"/>
                 <constraint firstItem="Eat-q3-fQo" firstAttribute="top" secondItem="uaf-o5-199" secondAttribute="bottom" constant="50" id="rOC-39-s7V"/>
                 <constraint firstItem="GOe-bu-50O" firstAttribute="width" secondItem="Eat-q3-fQo" secondAttribute="width" id="tGA-mz-m25"/>
+                <constraint firstItem="mEL-g5-f4W" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="GOe-bu-50O" secondAttribute="bottom" constant="25" id="w7i-hu-Omf"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="mEL-g5-f4W"/>
             <point key="canvasLocation" x="33.5" y="104.5"/>

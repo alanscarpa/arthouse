@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina5_5" orientation="portrait" appearance="light"/>
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -15,24 +15,24 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="camera-framed" translatesAutoresizingMaskIntoConstraints="NO" id="Jer-1b-X3q">
-                    <rect key="frame" x="61" y="34" width="292" height="300"/>
+                    <rect key="frame" x="14" y="34" width="292" height="300"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="300" id="fWC-mS-rOX"/>
                         <constraint firstAttribute="width" constant="292" id="x7w-JN-O7p"/>
                     </constraints>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To start the fun, we need to enable your camera first." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jAk-K5-kEL">
-                    <rect key="frame" x="61" y="404" width="292" height="42.333333333333314"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To start the fun, we need to enable your camera first." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jAk-K5-kEL">
+                    <rect key="frame" x="14" y="404" width="292" height="42.5"/>
                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="egL-mB-yZP">
-                    <rect key="frame" x="61" y="494.33333333333326" width="292" height="48"/>
+                    <rect key="frame" x="14" y="494.5" width="292" height="48"/>
                     <color key="backgroundColor" red="0.4431372549" green="0.75686274509999996" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="48" id="FrF-CM-NMm"/>
@@ -55,6 +55,7 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="top" secondItem="Jer-1b-X3q" secondAttribute="top" constant="-34" id="AtC-BD-ash"/>
                 <constraint firstItem="egL-mB-yZP" firstAttribute="centerX" secondItem="jAk-K5-kEL" secondAttribute="centerX" id="E94-XB-ixz"/>
                 <constraint firstItem="egL-mB-yZP" firstAttribute="top" secondItem="jAk-K5-kEL" secondAttribute="bottom" constant="48" id="Fab-ac-dNP"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="egL-mB-yZP" secondAttribute="bottom" constant="25.5" id="ifT-ez-Ind"/>
                 <constraint firstItem="egL-mB-yZP" firstAttribute="width" secondItem="jAk-K5-kEL" secondAttribute="width" id="nE0-kY-t5C"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>

@@ -1,6 +1,6 @@
-- BUG - start, turn then show art and it scales oddly
 - test on diff screen sizes
 
+- Delay on taps (maybe)
 - Update for dark mode
 - Show "Popular" header
 - Show "Categories"
@@ -11,7 +11,7 @@
 - Add camera button under size button and share screenshot
 - Work on scroll and loading - maybe add a "Scroll to load more" thing
 
-
+- [x] BUG - start, turn then show art and it scales oddly
 - [x] - not doing - if multiple sizes, show alert reminding user to select correct size on BUY NOW page..maybe
 - [x] BUG - search doesnt show everything
 - [x] REUPLOAD ALL TO FIX TAGS
