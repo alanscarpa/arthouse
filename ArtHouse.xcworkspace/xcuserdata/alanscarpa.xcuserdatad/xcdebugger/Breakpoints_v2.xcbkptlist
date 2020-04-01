@@ -78,9 +78,9 @@
             filePath = "ArtHouse/View Controllers/AR/ARViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "223"
-            endingLineNumber = "223"
-            landmarkName = "session(_:didFailWithError:)"
+            startingLineNumber = "239"
+            endingLineNumber = "239"
+            landmarkName = "buyNowButtonTapped()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -94,10 +94,10 @@
             filePath = "ArtHouse/View Controllers/AR/ARViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "219"
-            endingLineNumber = "219"
-            landmarkName = "ARViewController"
-            landmarkType = "3">
+            startingLineNumber = "235"
+            endingLineNumber = "235"
+            landmarkName = "instructionsButtonTapped(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -110,9 +110,9 @@
             filePath = "ArtHouse/View Controllers/AR/ARViewControllerViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "227"
-            endingLineNumber = "227"
-            landmarkName = "displaySize(for:)"
+            startingLineNumber = "242"
+            endingLineNumber = "242"
+            landmarkName = "init(title:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -126,9 +126,9 @@
             filePath = "ArtHouse/View Controllers/AR/ARViewControllerViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "220"
-            endingLineNumber = "220"
-            landmarkName = "eulerAngles(from:)"
+            startingLineNumber = "235"
+            endingLineNumber = "235"
+            landmarkName = "displaySize(for:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -142,9 +142,9 @@
             filePath = "ArtHouse/View Controllers/AR/ARViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "200"
-            endingLineNumber = "200"
-            landmarkName = "touchesBegan(_:with:)"
+            startingLineNumber = "216"
+            endingLineNumber = "216"
+            landmarkName = "session(_:didFailWithError:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -158,9 +158,9 @@
             filePath = "ArtHouse/View Controllers/AR/ARViewControllerViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "214"
-            endingLineNumber = "214"
-            landmarkName = "vectorPosition(from:in:with:)"
+            startingLineNumber = "229"
+            endingLineNumber = "229"
+            landmarkName = "displaySize(for:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

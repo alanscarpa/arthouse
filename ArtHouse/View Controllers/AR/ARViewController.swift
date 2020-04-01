@@ -157,7 +157,6 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     
     func setUpARWorldTrackingConfiguration() {
         let configuration = ARWorldTrackingConfiguration()
-        configuration.planeDetection = .vertical
         sceneView.session.run(configuration)
     }
     

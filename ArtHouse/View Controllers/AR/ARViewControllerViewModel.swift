@@ -217,8 +217,7 @@ struct ARViewControllerViewModel {
     func eulerAngles(from currentFrame: ARFrame) -> SCNVector3 {
         let pitch: Float = 0
         let yaw = currentFrame.camera.eulerAngles.y
-        let orientationCompensation = currentFrame.camera.eulerAngles.z < -0.5 ? Float.pi/2 : 0
-        let roll = currentFrame.camera.eulerAngles.z + orientationCompensation
+        let roll: Float = 0
         return SCNVector3Make(pitch, yaw, roll)
     }
 
