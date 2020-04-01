@@ -204,7 +204,12 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     @objc func panGesture(_ gesture: UIPanGestureRecognizer) {
         guard let tappedNode = self.sceneView.hitTest(gesture.location(in: sceneView), options: nil).first?.node else { return }
         let touchPoint = gesture.location(in: sceneView)
-        let newPosition = viewModel.vectorPosition(from: touchPoint, in: sceneView, with: sceneView.session.currentFrame!)
+        var newPosition = viewModel.vectorPosition(from: touchPoint, in: sceneView, with: sceneView.session.currentFrame!)
+
+        // We want to keep the z position the same, even if the user
+        // moves around. This keeps the artwork where it was placed.
+        newPosition.z = self.artworkNode.position.z
+        
         tappedNode.position = newPosition
         viewModel.updateArtworkPosition(newPosition)
         viewModel.updateTutorialProgress()
