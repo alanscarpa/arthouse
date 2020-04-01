@@ -202,8 +202,9 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     
     @objc func panGesture(_ gesture: UIPanGestureRecognizer) {
         guard let tappedNode = self.sceneView.hitTest(gesture.location(in: sceneView), options: nil).first?.node else { return }
+        guard let currentFrame = sceneView.session.currentFrame else { return }
         let touchPoint = gesture.location(in: sceneView)
-        var newPosition = viewModel.vectorPosition(from: touchPoint, in: sceneView, with: sceneView.session.currentFrame!)
+        let newPosition = viewModel.vectorPosition(from: touchPoint, in: sceneView, with: currentFrame)
         tappedNode.position = newPosition
         viewModel.updateArtworkPosition(newPosition)
         viewModel.updateTutorialProgress()
