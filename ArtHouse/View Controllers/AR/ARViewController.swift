@@ -192,7 +192,6 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         guard artworkNode.parent == nil else { return }
 
         let position = viewModel.vectorPosition(from: touchPoint, in: sceneView, with: currentFrame)
-
         artworkNode = artworkNode(position: position, size: viewModel.currentSize, eulerAngles: viewModel.eulerAngles(from: currentFrame))
         sceneView.scene.rootNode.addChildNode(artworkNode)
 
@@ -203,8 +202,13 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     @objc func panGesture(_ gesture: UIPanGestureRecognizer) {
         guard let tappedNode = self.sceneView.hitTest(gesture.location(in: sceneView), options: nil).first?.node else { return }
         guard let currentFrame = sceneView.session.currentFrame else { return }
-        let touchPoint = gesture.location(in: sceneView)
-        let newPosition = viewModel.vectorPosition(from: touchPoint, in: sceneView, with: currentFrame)
+
+        guard let hitTestResult = self.sceneView.hitTest(gesture.location(in: sceneView), options: nil).first else { return }
+        let newPosition = SCNVector3(hitTestResult.worldCoordinates.x, hitTestResult.worldCoordinates.y, tappedNode.worldPosition.z)
+
+//        let touchPoint = gesture.location(in: sceneView)
+//        let newPosition = viewModel.vectorPosition(from: touchPoint, in: sceneView, with: currentFrame)
+
         tappedNode.position = newPosition
         viewModel.updateArtworkPosition(newPosition)
         viewModel.updateTutorialProgress()

@@ -1,5 +1,6 @@
 v2.0
 -----------------------------
+- BUG: When you start AR screen, and turn left or right, then place artwork, when you try to move it, it does not move properly.
 - Delay on taps (maybe)
 - Update for dark mode
 - Show "Popular" header
