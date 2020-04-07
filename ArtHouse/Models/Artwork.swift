@@ -72,9 +72,9 @@ class Artwork {
 
     var sizeIsInFeet: Bool {
         switch category {
-        case .framedPrints, .posters, .prints, .wallHanging:
+        case .framedPrints, .posters, .prints, .wallHanging, .wallTapestry:
             return false
-        case .wallTapestry, .woodWallArt:
+        case .woodWallArt:
             return true
         }
     }

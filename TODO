@@ -2,6 +2,7 @@ v2.0
 -----------------------------
 - BUG: When you start AR screen, and turn left or right, then place artwork, when you try to move it, it does not move properly.
 - Delay on taps (maybe)
+- Screenshot of artwork on wall
 - Update for dark mode
 - Show "Popular" header
 - Show "Categories"
@@ -15,6 +16,9 @@ v2.0
 
 v1.0
 ------------------------------
+- [x] BUG - Z value changes when you step back and drag!!!
+	- [x] When you walk far back, you cant move the object much
+- [x] Quick video of using the app
 - [x] test on diff screen sizes
 - [x] BUG - start, turn then show art and it scales oddly
 - [x] - not doing - if multiple sizes, show alert reminding user to select correct size on BUY NOW page..maybe
